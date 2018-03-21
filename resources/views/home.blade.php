@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <example-component></example-component>
+                    <about></about>
                 </div>
             </div>
         </div>

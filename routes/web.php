@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/apartments', 'ApartmentController@index')->name('all_apartments');
+
+Route::get('/new', 'ApartmentController@create')->name('new_apartment');
+
+Route::post('/create', 'ApartmentController@save')->name('save_apartment');
+
