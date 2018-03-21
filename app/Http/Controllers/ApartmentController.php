@@ -38,5 +38,48 @@ class ApartmentController extends Controller
 
 	    return redirect()->route('all_apartments');
     }
+	
+	public function edit($id)
+	{
+	    $apartment = Apartment::find($id);
+	    return view('apartments.edit', compact('apartment'));
+	}
+
+
+	public function doEdit(Request $request)
+	{
+	    $apartment = Apartment::find($request->get('id'));
+	    $apartment->name = $request->get('name');
+	    $apartment->location = $request->get('location');
+	    if($request->get('description')!='') 
+	    	$apartment->description = $request->get('description');
+	    $apartment->save();
+
+	    return redirect()->route('all_apartments');
+	}
+
+
+	public function delete($id)
+	{
+ 		$apartment = Apartment::find($id);
+	    return view('apartments.delete', compact('apartment'));
+	}
+
+		public function doDelete(Request $request)
+	{
+ 		$apartment = Apartment::find($request->get('id'));
+	    $apartment->delete();
+
+	    return redirect()->route('all_apartments');
+	}
+
+
+	public function show($id)
+	{
+	    $task = Task::find($id);
+	    return View('task', compact('task'));
+	}
+
+
 
 }

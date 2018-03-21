@@ -22,6 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/apartments', 'ApartmentController@index')->name('all_apartments');
 
 Route::get('/new', 'ApartmentController@create')->name('new_apartment');
-
 Route::post('/create', 'ApartmentController@save')->name('save_apartment');
+
+Route::post('/edit', 'ApartmentController@doEdit')->name('update_apartment');
+Route::get('/edit/{apartment}','ApartmentController@edit');
+
+Route::post('/delete', 'ApartmentController@doDelete')->name('do_delete');
+Route::get('/delete/{apartment}', 'ApartmentController@delete')->name('delete_apartment');
+
 

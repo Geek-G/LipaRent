@@ -23,7 +23,10 @@
 			              <td>{{ $apartment->name }}</td>
 			              <td>{{ $apartment->location}}</td>
 			              <td>{{ $apartment->description}}</td>
-			              <td>
+							<td>			              
+							<a href="{{ action('ApartmentController@edit',$apartment->id) }}" class="btn btn-default">Edit</a>
+							<a href="{{ action('ApartmentController@delete',$apartment->id) }}" class="btn btn-danger">Delete</a>
+							</td>
 			            </tr>
 			            @endforeach
 			          </tbody>
