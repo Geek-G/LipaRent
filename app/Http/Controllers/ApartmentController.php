@@ -36,7 +36,7 @@ class ApartmentController extends Controller
 	    $apartment->description = $request->get('description');
 	    $apartment->save();
 
-	    return redirect()->route('all_apartments');
+	    return redirect()->route('all_apartments')->with('status', 'Apartment Added!');
     }
 	
 	public function edit($id)
@@ -55,7 +55,7 @@ class ApartmentController extends Controller
 	    	$apartment->description = $request->get('description');
 	    $apartment->save();
 
-	    return redirect()->route('all_apartments');
+	    return redirect()->route('all_apartments')->with('status', 'Apartment updated!');
 	}
 
 
@@ -70,7 +70,7 @@ class ApartmentController extends Controller
  		$apartment = Apartment::find($request->get('id'));
 	    $apartment->delete();
 
-	    return redirect()->route('all_apartments');
+	    return redirect()->route('all_apartments')->with('status', 'Apartment deleted!');
 	}
 
 

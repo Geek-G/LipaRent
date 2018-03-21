@@ -11,8 +11,10 @@
 					<form class="form-horizontal" method="POST" action="{{ route('do_delete') }}">
 					 {{ csrf_field() }}
 					<input type="hidden" name="id" value="{{ $apartment->id }}">
-					<button type="submit" class="btn btn-danger ">Yes</button>
-					<a href="{{ route('all_apartments') }}" class="btn btn-primary"> No </a
+					<div class="alert">
+                        <button type="submit" class="btn btn-danger ">Yes</button>
+    					<a href="{{ route('all_apartments') }}" class="btn btn-primary"> No </a>
+                    </div>
 					</form>
                 <div class="panel-body">
 					

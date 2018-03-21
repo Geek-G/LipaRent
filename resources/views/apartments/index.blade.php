@@ -4,7 +4,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-        <a class="btn btn-primary" href="{{route('new_apartment')}}"> New </a>
+		@if (session('status'))
+		    
+			<div class="alert alert-success alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert"
+				aria-hidden="true">
+				&times;
+				</button>
+		        {{ session('status') }}
+		    </div>
+		@endif
+		<div class="form-group">
+        	<a class="btn btn-primary" href="{{route('new_apartment')}}"> New </a>
+        </div>
             <div class="panel panel-default">
                 <div class="panel-heading">All Apartments</div>
                 <div class="panel-body">
