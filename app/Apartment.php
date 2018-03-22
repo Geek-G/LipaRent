@@ -12,9 +12,19 @@ class Apartment extends Model
 
 
 
-    public function user()
+    public function landlord()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Landlord');
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo('App\Tenant');
+    }
+
+    public function house()
+    {
+        return $this->hasMany('App\House');
     }
 
 }

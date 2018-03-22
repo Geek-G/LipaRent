@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
        $apartments = Apartment::all();
@@ -55,7 +60,7 @@ class ApartmentController extends Controller
 	    	$apartment->description = $request->get('description');
 	    $apartment->save();
 
-	    return redirect()->route('all_apartments')->with('status', 'Apartment updated!');
+	    return redirect()->route('all_apartments')->with('status', 'Nyumba imewekwa!');
 	}
 
 

@@ -18,11 +18,15 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    public function apartment()
+    public function landlord()
     {
-        return $this->hasMany(Apartment::class);
+        return $this->hasOne('App\Landlord');
     }
 
+    public function tenant()
+    {
+        return $this->hasOne('App\Tenant');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
