@@ -35,7 +35,7 @@ class ApartmentController extends Controller
 	            'description' => 'required|string|min:4'
 	    ]);
 		$apartment = new Apartment;
-		$apartment->user_id = Auth::id();;
+		$apartment->user_id = Auth::id();
 	    $apartment->name = $request->get('name');
 	    $apartment->location = $request->get('location');
 	    $apartment->description = $request->get('description');

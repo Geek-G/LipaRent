@@ -61,7 +61,16 @@
 		                            </div>
 		                        </div>
 		                    </form>
-
+						
+						{!! Form::open(['action' => 'ApartmentController@save', 'method'=>'POST']) !!}
+						<div class="form-group">
+								{{Form::label('title','Title')}}
+								{{Form::text('title','',['class'=>'form-control', 'placeholder'=>'title'])}}
+							</div>			
+							<div class="form-group">	
+								{{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+							</div>	
+						{!! Form::close() !!}
                 </div>
             </div>
         </div>

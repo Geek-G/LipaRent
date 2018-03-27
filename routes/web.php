@@ -30,4 +30,8 @@ Route::get('/edit/{apartment}','ApartmentController@edit');
 Route::post('/delete', 'ApartmentController@doDelete')->name('do_delete');
 Route::get('/delete/{apartment}', 'ApartmentController@delete')->name('delete_apartment');
 
+Route::get('/apartments/{apartment}/houses', 'HouseController@index')->name('apartment_houses');
+Route::get('/apartments/houses/new', 'HouseController@create')->name('new_house');
+Route::post('/apartments/houses/save', 'HouseController@save')->name('save_house');
+
 

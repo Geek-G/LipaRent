@@ -15,30 +15,29 @@
 		    </div>
 		@endif
 		<div class="form-group">
-        	<a class="btn btn-primary" href="{{route('new_apartment')}}"> New </a>
+        	<a class="btn btn-primary" href="{{route('new_house')}}"> New </a>
         </div>
             <div class="panel panel-default">
-                <div class="panel-heading">All Apartments</div>
+                <div class="panel-heading">Apartment Houses</div>
                 <div class="panel-body">
 			        <table class="table table-hover table-striped">
 			          <thead>
 			            <tr>
-			              <td>Name</td>
-			              <td>Location</td>
-			              <td>Description</td>
+			              <td>House No</td>
+			              <td>Type</td>
+			              <td>Price</td>
 			              <td></td>
 			            </tr>
 			          </thead>
 			          <tbody>
-			            @foreach($apartments as $apartment)
+			            @foreach($houses as $house)
 			            <tr>
-			              <td>{{ $apartment->name }}</td>
-			              <td>{{ $apartment->location}}</td>
-			              <td>{{ $apartment->description}}</td>
+			              <td>{{ $house->house_no }}</td>
+			              <td>{{ $house->id}}</td>
+			              <td>{{ $house->price}}</td>
 							<td>			              
-							<a href="{{ action('ApartmentController@edit',$apartment->id) }}" class="btn btn-default">Edit</a>
-							<a href="{{ action('HouseController@index',$apartment->id) }}" class="btn btn-info">Houses</a>
-							<a href="{{ action('ApartmentController@delete',$apartment->id) }}" class="btn btn-danger">Delete</a>
+							<a href="#" class="btn btn-default">Edit</a>
+							<a href="#" class="btn btn-danger">Delete</a>
 							</td>
 			            </tr>
 			            @endforeach

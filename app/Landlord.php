@@ -23,6 +23,6 @@ class Landlord extends Model
 
     public function country()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\Country');
     }
 }

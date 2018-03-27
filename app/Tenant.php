@@ -18,7 +18,7 @@ class Tenant extends Model
 
     public function house()
     {
-        return $this->hasOne('App\House');
+        return $this->hasMany('App\House');
     }
 
     public function apartment()
