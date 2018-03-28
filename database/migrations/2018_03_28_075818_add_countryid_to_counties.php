@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Countries extends Migration
+class AddCountryidToCounties extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class Countries extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('code')->nullable();
-            $table->timestamps();
+        Schema::table('counties', function (Blueprint $table) {
+            $table->integer('country_id')->unsigned()->after('id');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
@@ -28,6 +26,6 @@ class Countries extends Migration
      */
     public function down()
     {
-            Schema::dropIfExists('countries');
+        //
     }
 }
