@@ -11,9 +11,9 @@ class Landlord extends Model
     ];
 
 
-    public function apartment()
+    public function property()
     {
-        return $this->hasMany('App\Apartment');
+        return $this->hasMany('App\Property');
     }
 
     public function user()
@@ -23,6 +23,6 @@ class Landlord extends Model
 
     public function country()
     {
-        return $this->hasOne('App\Country');
+        return $this->belongsTo('App\Country');
     }
 }

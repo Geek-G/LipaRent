@@ -8,8 +8,8 @@
                 <div class="panel-heading">Edit Apartment</div>
 
                 <div class="panel-body">
-					<form class="form-horizontal" method="POST" action="{{ route('update_apartment') }}">
-		                       <input type="hidden" name="id" value="{{ $apartment->id }}">
+					<form class="form-horizontal" method="POST" action="{{ route('update_property') }}">
+		                       <input type="hidden" name="id" value="{{ $property->id }}">
 
 		                        {{ csrf_field() }}
 
@@ -17,7 +17,7 @@
 		                            <label for="title" class="col-md-4 control-label">Name</label>
 
 		                            <div class="col-md-6">
-		                                <input id="name" type="text" class="form-control" name="name" value="{{ $apartment->name }}" required autofocus>
+		                                <input id="name" type="text" class="form-control" name="name" value="{{ $property->name }}" required autofocus>
 
 		                                @if ($errors->has('name'))
 		                                    <span class="help-block">
@@ -31,7 +31,7 @@
 		                            <label for="location" class="col-md-4 control-label">Location</label>
 
 		                            <div class="col-md-6">
-		                                <input id="location" type="text" class="form-control" name="location" value="{{ $apartment->location }}" required autofocus>
+		                                <input id="location" type="text" class="form-control" name="location" value="{{ $property->street_id }}" required autofocus>
 
 		                                @if ($errors->has('location'))
 		                                    <span class="help-block">
@@ -45,7 +45,7 @@
 		                            <label for="description" class="col-md-4 control-label">Description</label>
 
 		                            <div class="col-md-6">
-		                                <textarea name="description" id="description" placeholder="{{ $apartment->description }}" class="form-control"></textarea> 
+		                                <textarea name="description" id="description" placeholder="{{ $property->description }}" class="form-control"></textarea> 
 		                                   @if ($errors->has('description'))
 		                                    <span class="help-block">
 		                                        <strong>{{ $errors->first('description') }}</strong>

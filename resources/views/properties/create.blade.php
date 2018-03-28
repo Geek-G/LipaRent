@@ -8,7 +8,7 @@
                 <div class="panel-heading">New Apartment</div>
 
                 <div class="panel-body">
-					<form class="form-horizontal" method="POST" action="{{ route('save_apartment') }}">
+					<form class="form-horizontal" method="POST" action="{{ route('save_property') }}">
 		                        {{ csrf_field() }}
 
 		                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
@@ -61,16 +61,6 @@
 		                            </div>
 		                        </div>
 		                    </form>
-						
-						{!! Form::open(['action' => 'ApartmentController@save', 'method'=>'POST']) !!}
-						<div class="form-group">
-								{{Form::label('title','Title')}}
-								{{Form::text('title','',['class'=>'form-control', 'placeholder'=>'title'])}}
-							</div>			
-							<div class="form-group">	
-								{{Form::submit('Submit',['class'=>'btn btn-primary'])}}
-							</div>	
-						{!! Form::close() !!}
                 </div>
             </div>
         </div>

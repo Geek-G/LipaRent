@@ -17,21 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home','ApartmentController@index')->name('home');
+Route::get('/home','PropertyController@index')->name('home');
 
-Route::get('/apartments', 'ApartmentController@index')->name('all_apartments');
+Route::get('/properties', 'PropertyController@index')->name('all_properties');
 
-Route::get('/new', 'ApartmentController@create')->name('new_apartment');
-Route::post('/create', 'ApartmentController@save')->name('save_apartment');
+Route::get('/new', 'PropertyController@create')->name('new_property');
+Route::post('/create', 'PropertyController@save')->name('save_property');
 
-Route::post('/edit', 'ApartmentController@doEdit')->name('update_apartment');
-Route::get('/edit/{apartment}','ApartmentController@edit');
+Route::post('/edit', 'PropertyController@doEdit')->name('update_property');
+Route::get('/edit/{property}','PropertyController@edit');
 
-Route::post('/delete', 'ApartmentController@doDelete')->name('do_delete');
-Route::get('/delete/{apartment}', 'ApartmentController@delete')->name('delete_apartment');
+Route::post('/delete', 'PropertyController@doDelete')->name('do_delete');
+Route::get('/delete/{property}', 'PropertyController@delete')->name('delete_property');
 
-Route::get('/apartments/{apartment}/houses', 'HouseController@index')->name('apartment_houses');
-Route::get('/apartments/houses/new', 'HouseController@create')->name('new_house');
-Route::post('/apartments/houses/save', 'HouseController@save')->name('save_house');
+Route::get('/properties/{property}/houses', 'HouseController@index')->name('property_houses');
+Route::get('/properties/houses/new', 'HouseController@create')->name('new_house');
+Route::post('/properties/houses/save', 'HouseController@save')->name('save_house');
 
 

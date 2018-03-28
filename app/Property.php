@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Apartment extends Model
+class Property extends Model
 {
         protected $fillable = [
         'name', 'location', 'description',
@@ -15,11 +15,6 @@ class Apartment extends Model
     public function landlord()
     {
         return $this->belongsTo('App\Landlord');
-    }
-
-    public function tenant()
-    {
-        return $this->belongsTo('App\Tenant');
     }
 
     public function house()
