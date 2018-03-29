@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function () {
+    return view('components');
+});
+
 Auth::routes();
 
 Route::get('/home','PropertyController@index')->name('home');
