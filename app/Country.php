@@ -12,12 +12,12 @@ class Country extends Model
 
     public function landlord()
     {
-        return $this->belongsTo('App\Landlord');
+        return $this->hasMany('App\Landlord');
     }
 
     public function tenant()
     {
-        return $this->belongsTo('App\Tenant');
+        return $this->hasMany('App\Tenant');
     }
 
 }

@@ -1,50 +1,94 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\House;
 
 use Illuminate\Http\Request;
+use App\House;
 
 class HouseController extends Controller
 {
-    public function __construct()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $this->middleware('auth');
+        $houses=House::all();
+        return view ('house.index')->with('houses',$houses);
     }
 
-
-    private $apartment_id;
-    
-    public function index($id)
-    {
-       $apartment_id=$id;
-       $houses = House::where('apartment_id', $id);
-        return view('house.index', [
-            'houses' => $houses
-        ]);
-    }
-    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('house.create');
+        //
     }
 
-    public function save(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-		$this->validate($request, [
-	            'name' => 'required|string|max:20',
-	            'price' => 'required|integer|numeric|max:50000'
-	    ]);
-	    dd('making house');
-		$newhouse = new House;
-		$newhouse->apartment_id = 1;
-	    $newhouse->landlord_id = 1;
-	    $newhouse->house_no = $request->get('house_no');
-	    $newhouse->type_id = $request->get('type');
-        $newhouse->price = $request->get('price');
-	    $newhouse->save();
+        
+    $house = new House;
+    $house->name = $request->get('name');
+    $house->property_id =3;
+    $house->house_type_id =1;
+    $house->price = $request->get('price');
+    $house->save();
 
-        return redirect()->route('apartment_houses')->with('status', 'House Added!');
+    return redirect()->back()->with('status', 'House Added!');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

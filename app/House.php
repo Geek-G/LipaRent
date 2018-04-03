@@ -10,14 +10,9 @@ class House extends Model
         'house_no', 'apartment_id', 'landlord_id','type_id','price'
     ];
 
-    public function landlord()
+    public function property()
     {
-        return $this->belongsTo('App\Landlord');
-    }
-
-    public function apartment()
-    {
-        return $this->belongsTo('App\Apartment');
+        return $this->belongsTo('App\Property');
     }
 
     public function tenant()
@@ -25,9 +20,9 @@ class House extends Model
         return $this->belongsTo('App\Tenant');
     }
 
-    public function type()
+    public function house_type()
     {
-        return $this->hasOne('App\Type');
+        return $this->belongsTo('App\HouseType');
     }
 
 

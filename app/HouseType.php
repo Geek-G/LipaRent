@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Type extends Model
+class HouseType extends Model
 {
     protected $fillable = [
         'name', 'bedrooms', 'bathrooms','parking'
@@ -12,7 +12,7 @@ class Type extends Model
 
     public function house()
     {
-        return $this->belongsTo('App\House');
+        return $this->hasMany('App\House');
     }
 
   
