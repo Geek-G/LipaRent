@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Country;
 
 class HomeController extends Controller
 {
@@ -16,8 +17,10 @@ class HomeController extends Controller
     {
         if(Auth::user()->landlord) 
         {
-        $landlord=Auth::user()->landlord;    
-        return view('landlord.index', compact('landlord'));
+            return redirect()->route('property.index');
+        }
+        else {
+            return redirect()->route('landlord.index');
         }
     }
 

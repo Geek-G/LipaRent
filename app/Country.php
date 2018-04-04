@@ -20,4 +20,9 @@ class Country extends Model
         return $this->hasMany('App\Tenant');
     }
 
+    public function county()
+    {
+        return $this->hasMany('App\County');
+    }
+
 }

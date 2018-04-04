@@ -51,8 +51,8 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li> <a href="#">Edit</a> </li>
-                  <li><a href="#">Delete</a></li>
+										<li><a href="#"><i class="fa fa-edit"></i> <span> Edit</span></a></li>
+										<li><a href="#"><i class="fa fa-times"></i> <span> Delete</span></a></li>
                 </ul>
                 </div>
             </td>
@@ -75,14 +75,13 @@
 							<div class="modal-header">
 							  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span></button>
-							  <h4 class="modal-title">New House</h4>
+							  <h4 class="modal-title">New Property</h4>
 							</div>
-							<form action="{{route('house.store')}}" method="post">
+							<form action="{{route('property.store')}}" method="post">
 							<div class="modal-body">
 									{{ csrf_field() }}
-
 		                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
-		                            <label for="name" class="control-label">House No</label>
+		                            <label for="name" class="control-label">Property Name</label>
 
 		                            <div class="">
 		                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -95,44 +94,51 @@
 		                            </div>
 		                        </div>
 
-                                <div class="form-group">
-                                <label for="type" class=" control-label">Select Type</label>
+                            <div class="form-group">
+                                <label for="type" class=" control-label">Property Type</label>
                                 <div class="">
-                                    <select id="type" class="form-control">
-                                        <option value="1">Single Room</option>
-                                        <option value="2">Double Room</option>
-                                        <option value="3">Bedsitter</option>
-                                        <option value="4">One bedroom</option>
-                                        <option value="5">Two bedroom</option>
+                                    <select id="type" name="type" class="form-control">
+																				@foreach($types as $type)
+																					<option value="{{$type->id}}">{{$type->name}}</option>
+																				@endforeach	
+																		</select>
+                                </div>
+														</div>
+														
+														<div id="locdiv">
+															
+														<div class="form-group" id="countydiv">
+                                <label for="county" class=" control-label">County</label>
+                                <div class="">
+                                    <select id="county" name="county" class="form-control">
+																			@foreach($landlord->country->county as $county)
+																				<option value="{{$county->id}}">{{$county->name}}</option>
+																			@endforeach	
                                     </select>
                                 </div>
-                                </div>
+														</div>
+															
+
+														</div>
 
 
-		                        <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-		                            <label for="location" class="col-md-4 control-label">Price</label>
+		                        <div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+		                            <label for="description" class=" control-label">Description</label>
 
 		                            <div class="">
-
-		                             <div class="form-group input-group  ">
-                                            <span class="input-group-addon">KSh</span>
-                                            <input id="price" type="text" class="form-control" name="price" value="{{ old('price') }}" required autofocus>
-                                            <span class="input-group-addon">.00</span>
-                                     </div>
-		                                
-
-		                                @if ($errors->has('price'))
-		                                    <span class="help-block">
-		                                        <strong>{{ $errors->first('price') }}</strong>
-		                                    </span>
-		                                @endif
-		                            </div>
+																	<textarea name="description" id="description"  class="form-control"></textarea> 
+																		@if ($errors->has('description'))
+																		<span class="help-block">
+																				<strong>{{ $errors->first('description') }}</strong>
+																		</span>
+																    @endif          
+																</div>
 		                        </div>
-  
 							</div>
 							<div class="modal-footer">
 							  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-							  <button type="submit" class="btn btn-primary">Save</button>
+								<button type="submit" class="btn btn-primary">Save</button>
+							</div>	
 							</form>
 
 							</div>

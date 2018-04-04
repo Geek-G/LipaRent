@@ -17,6 +17,10 @@ class Property extends Model
         return $this->belongsTo('App\Landlord');
     }
 
+    public function type()
+    {
+        return $this->belongsTo('App\PropertyType');
+    }
 
     public function street()
     {

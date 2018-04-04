@@ -1,37 +1,39 @@
-@extends('layouts.app')
+@extends('layouts.masternav')
 @section('content')
 <div class="register-box">
         <div class="register-box-body">
           <p class="login-box-msg">Register as a landlord</p>
       
-          <form action="#" method="post">
-            <div class="form-group has-feedback">
-              <input type="text" class="form-control" placeholder="Full name">
-              <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          <form action="{{route('landlord.store')}}" method="post">
+              {{ csrf_field() }}
+            <div class=" has-feedback form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
+              <input type="text" class="form-control" placeholder="phone no">
+              <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+              @if ($errors->has('name'))
+              <span class="help-block">
+                  <strong>{{ $errors->first('phone') }}</strong>
+              </span>
+              @endif
             </div>
-            <div class="form-group has-feedback">
-              <input type="email" class="form-control" placeholder="Email">
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-              <input type="password" class="form-control" placeholder="Password">
-              <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
+
+            <div class="form-group has-feedback {{ $errors->has('id') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" placeholder="id no">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @if ($errors->has('id'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('phone') }}</strong>
+                </span>
+                @endif
+            </div
 
             <div class="form-group">
-                    <select class="form-control">
-                      <option>Kenya</option>
-                      <option>Uganda</option>
-                      <option>Tanzania</option>
-                      <option>Ghana</option>
-                      <option>Nigeria</option>
-                    </select>
+              <select id="county" name="country" class="form-control">
+                @foreach($countries as $country)
+                  <option value="{{$country->id}}">{{$country->name}}</option>
+                @endforeach	
+              </select>
             </div>
 
-            <div class="form-group has-feedback">
-              <input type="password" class="form-control" placeholder="Retype password">
-              <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
             <div class="row">
               <div class="col-xs-8">
                 <div class="checkbox icheck">
@@ -47,7 +49,7 @@
               <!-- /.col -->
             </div>
           </form>
-          <a href="login.html" class="text-center">I already have a membership</a>
+          <a href="#" class="text-center">Register as tenant</a>
         </div>
         <!-- /.form-box -->
       </div>

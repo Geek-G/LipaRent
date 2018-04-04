@@ -3,33 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\PropertyType;
-use App\Property;
+use App\Country;
+use App\Landlord;
 
-class PropertyController extends Controller
-{  
-    
-    
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
+class LandlordController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        if(Auth::user()->landlord) 
-        {
-            $landlord=Auth::user()->landlord; 
-            $types= PropertyType::all();   
-            return view('landlord.index', [
-                'types' => $types,
-                'landlord' => $landlord  
-            ]);
-        }
+        $countries= Country::all();   
+        return view('landlord.signup', [
+            'countries' => $countries
+        ]);
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //
@@ -43,14 +40,14 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        $property = new Property;
-        $property->name = $request->get('name');
-        $property->property_type_id =$request->get('type');
-        $property->landlord_id = Auth::user()->landlord->id;
-        $property->street_id = 1;
-        $property->description = $request->get('description');
-        $property->save();
-        return redirect()->route('property.index')->with('status', 'property Added!');
+        
+    $landlord = new Landlord;
+    $house->id_no = $request->get('id');
+    $landlord->phone_no = $request->get('phone');
+    $landlord->user_id =Auth::user()->id;
+    $landlord->country_id = $request->get('country');
+    $landlord->save();
+    return redirect('home');
     }
 
     /**

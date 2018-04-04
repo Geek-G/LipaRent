@@ -30,6 +30,53 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
+
+<div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="{{asset('images/user.jpg')}}" class="user-image" alt="User Image">
+              <span class="hidden-xs"> {{ Auth::user()->name }}</span>
+            </a>
+            <ul class="dropdown-menu">
+            @guest
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
+            @else
+              <!-- User image -->
+              <li class="user-header">
+                <img src="{{asset('images/user.jpg')}}" class="img-circle" alt="User Image">
+                <p>
+                    {{ Auth::user()->name }}
+                  <small>Landlord</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                    <a href="{{ route('logout') }}"  class="btn btn-default btn-flat"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+                </div>
+              </li>
+            @endguest  
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -41,7 +88,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
+          <img src="{{asset('images/user.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{Auth::user()->name}}</p>
@@ -54,8 +101,9 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-building-o"></i> <span>Properties</span></a></li>
-        <li><a href="#"><i class="fa fa-users"></i> <span>Tenants</span></a></li>
+        <li class="active"><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="/home"><i class="fa fa-building-o"></i> <span>Properties</span></a></li>
+        <li><a href="/house"><i class="fa fa-home"></i> <span>Houses</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-bar-chart"></i> <span>Reports</span>
             <span class="pull-right-container">
