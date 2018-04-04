@@ -20,7 +20,8 @@ class HomeController extends Controller
             return redirect()->route('property.index');
         }
         else {
-            return redirect()->route('landlord.index');
+            return view ('choose');
+            //return redirect()->route('landlord.index');
         }
     }
 

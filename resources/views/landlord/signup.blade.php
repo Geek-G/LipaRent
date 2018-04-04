@@ -7,7 +7,7 @@
           <form action="{{route('landlord.store')}}" method="post">
               {{ csrf_field() }}
             <div class=" has-feedback form-group {{ $errors->has('phone') ? ' has-error' : '' }}">
-              <input type="text" class="form-control" placeholder="phone no">
+              <input type="text"name="phone" class="form-control" placeholder="phone no">
               <span class="glyphicon glyphicon-phone form-control-feedback"></span>
               @if ($errors->has('name'))
               <span class="help-block">
@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group has-feedback {{ $errors->has('id') ? ' has-error' : '' }}">
-                <input type="text" class="form-control" placeholder="id no">
+                <input type="text" name="id" class="form-control" placeholder="id no">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 @if ($errors->has('id'))
                 <span class="help-block">
