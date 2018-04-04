@@ -17,6 +17,12 @@ class Property extends Model
         return $this->belongsTo('App\Landlord');
     }
 
+
+    public function street()
+    {
+        return $this->belongsTo('App\Street');
+    }
+
     public function house()
     {
         return $this->hasMany('App\House');

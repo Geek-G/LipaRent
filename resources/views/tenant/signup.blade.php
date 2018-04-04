@@ -2,7 +2,7 @@
 @section('content')
 <div class="register-box">
         <div class="register-box-body">
-          <p class="login-box-msg">Register as a landlord</p>
+          <p class="login-box-msg">Register as a Tenant</p>
       
           <form action="#" method="post">
             <div class="form-group has-feedback">

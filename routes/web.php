@@ -42,7 +42,7 @@ Route::get('/relate', function () {
 
 Auth::routes();
 
-Route::get('/home','PropertyController@index')->name('home');
+Route::get('/home','HomeController@index')->name('home');
 
 Route::get('/properties', 'PropertyController@index')->name('all_properties');
 
