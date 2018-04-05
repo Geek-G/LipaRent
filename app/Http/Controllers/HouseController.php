@@ -18,15 +18,11 @@ class HouseController extends Controller
     public function index()
     {   
         $landlord= Auth::user()->landlord;
-        $houses = House::all();
-        //where('property_id', 3);
-        //$houses=$landlord->property->house;
+        $properties= $landlord->property; 
+       
         $housetypes=HouseType::all();
-        
-        $properties= $landlord->property;   
         return view('house.index', [
             'housetypes' => $housetypes,
-            'houses' => $houses,
             'properties' => $properties  
         ]);
     }
@@ -68,14 +64,7 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-        $property= Property::find($id);
-        $houses=$property->house;
-        $housetypes=HouseType::all();   
-        return view('house.show', [
-            'housetypes' => $housetypes,
-            'houses' => $houses, 
-            'property'=>$property 
-        ]);
+
     }
 
     /**

@@ -42,19 +42,10 @@
             <td>{{$property->name}}</td>
             <td>{{$property->street->town->name}}</td>
             <td>{{$property->description}}</td>
-            <td><a href="{{ action('HouseController@show',$property->id) }}" class="btn  btn-info">Houses</a></td>
+            <td><a href="{{ action('PropertyController@show',$property->id) }}" class="btn  btn-info">Houses</a></td>
             <td>
-                <div class="btn-group">
-                <button type="button" class="btn btn-warning">Actions</button>
-                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-										<li><a id="launcher" class="btn btn-sm btn-warning" data-myName="{{$property->name}}" data-toggle="modal" data-target="#modal-edit" ><i class="fa fa-edit" ></i> <span> Edit</span></a></li>
-										<li><a class="btn btn-sm btn-danger" ><i class="fa fa-times"></i> <span> Delete</span></a></li>
-                </ul>
-                </div>
+								<button id="launcher" class="btn btn-sm btn-warning" data-pname="{{$property->name}}" data-pid="{{$property->id}}" data-pdesc="{{$property->description}}" data-toggle="modal" data-target="#modal-edit" ><i class="fa fa-edit" ></i> <span> Edit</span></button>
+								<button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete" data-pid="{{$property->id}}" ><i class="fa fa-times"></i> <span> Delete</span></button>
             </td>
 					  </tr>
 					 @endforeach 
@@ -126,7 +117,7 @@
 		                            <label for="description" class=" control-label">Description</label>
 
 		                            <div class="">
-																	<textarea name="description" id="description"  class="form-control"></textarea> 
+																	<textarea name="description" id="desc"  class="form-control"></textarea> 
 																		@if ($errors->has('description'))
 																		<span class="help-block">
 																				<strong>{{ $errors->first('description') }}</strong>
@@ -162,6 +153,8 @@
 						<form action="{{route('property.update','crap')}}" method="post">
 						<div class="modal-body">
 								{{ csrf_field() }}
+								{{method_field('patch')}}
+								<input type="hidden" id="id" name="id"  >
 													<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 															<label for="name" class="control-label">Property Name</label>
 
@@ -231,5 +224,39 @@
 					</div>
 			<!-- /.modal -->
 	</div>	
+
+
+	<div col-md-10>
+			<div class="modal fade" id="modal-delete">
+					<div class="modal-dialog modal-warning">
+						<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Delete Property</h4>
+						</div>
+						<form action="{{route('property.update','crap')}}" method="post">
+						<div class="modal-body">
+								{{ csrf_field() }}
+								{{method_field('delete')}}
+								<input type="hidden" id="pid" name="id"  >
+								<p>Are you sure you want to delete?<p id="pname"></p></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success pull-left" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-danger">Delete</button>
+						</div>	
+						</form>
+
+						</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+					</div>
+			<!-- /.modal -->
+	</div>
+
+
 @endsection
 

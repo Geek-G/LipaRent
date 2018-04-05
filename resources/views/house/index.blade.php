@@ -23,7 +23,7 @@
 
 				<div class="box">
 				  <div class="box-header">
-					<h3 class="box-title">Responsive Hover Table</h3>
+					<h3 class="box-title">All your Houses</h3>
 		
 					<div class="box-tools">
 					  <div class="input-group input-group-sm" style="width: 150px;">
@@ -46,8 +46,9 @@
 						<th>Price</th>
 						<th>Tenant</th>
 						<th>Description</th>
-					  </tr>
-					 @foreach($houses as $house)
+						</tr>
+					 @foreach($properties as $property)
+					 @foreach($property->house as $house)
 					  <tr>
 						<td>{{$house->name}}</td>
 						<td>{{$house->house_type->name}}</td>
@@ -63,6 +64,7 @@
 						<td>{{$house->description}}</td>
 					  </tr>
 					 @endforeach 
+					 @endforeach
 					</tbody></table>
 				  </div>
 				  <!-- /.box-body -->

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\PropertyType;
 use App\Property;
+use App\HouseType;
 
 class PropertyController extends Controller
 {  
@@ -61,7 +62,14 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        //
+        $property= Property::find($id);
+        $houses=$property->house;
+        $housetypes=HouseType::all();   
+        return view('house.show', [
+            'housetypes' => $housetypes,
+            'houses' => $houses, 
+            'property'=>$property 
+        ]);
     }
 
     /**
@@ -82,9 +90,15 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        
+        $id=$request->get('id');
+        $property= Property::find($id);
+        $property->name = $request->get('name');
+        $property->property_type_id =$request->get('type');
+        $property->description = $request->get('description');
+        $property->save();
+        return redirect()->route('property.index')->with('status', 'property Updated!');
     }
 
     /**
@@ -93,8 +107,11 @@ class PropertyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $id=$request->get('id');
+        $property= Property::find($id);
+        $property->delete();
+        return redirect()->route('property.index')->with('status', 'property Deleted!');
     }
 }

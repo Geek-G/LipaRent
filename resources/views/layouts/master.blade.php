@@ -125,10 +125,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
+        <!-- Page Header area -->
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
@@ -158,12 +155,21 @@
 
 <script>
 	$('#modal-edit').on('show.bs.modal', function (event) {
-    console.log('modal opened');
-    var button=$(event.relatedTarget);
-    var name = button.find('#launcher').data('myName');
-    var modal=$(this);
-    modal.find('.modal-body #name').val(name);
-		})
+    var button=$(event.relatedTarget)
+    var name = button.data('pname')
+    var desc = button.data('pdesc')
+    var id = button.data('pid')
+    $('.modal-body #name').val(name);
+    $('.modal-body #description').val(desc);
+    $('.modal-body #id').val(id);
+    })
+    
+    $('#modal-delete').on('show.bs.modal', function (event) {
+      var button=$(event.relatedTarget)
+      var id = button.data('pid')
+      $('.modal-body #pid').val(id);
+      })
+
 </script>
 
 
