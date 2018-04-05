@@ -19,9 +19,11 @@ class HomeController extends Controller
         {
             return redirect()->route('property.index');
         }
+        else if(Auth::user()->tenant){
+            return view ('tenant.dashboard');
+        }
         else {
             return view ('choose');
-            //return redirect()->route('landlord.index');
         }
     }
 

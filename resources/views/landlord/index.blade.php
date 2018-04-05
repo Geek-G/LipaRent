@@ -27,7 +27,7 @@
 					</div>
 				  </div>
 				  <!-- /.box-header -->
-				  <div class="box-body table-responsive no-padding">
+				  <div class="box-body  no-padding">
 					<table class="table table-hover table-striped ">
 					  <tbody>
 						  <tr>
@@ -42,7 +42,7 @@
             <td>{{$property->name}}</td>
             <td>{{$property->street->town->name}}</td>
             <td>{{$property->description}}</td>
-            <td><a href="#" class="btn  btn-info">Houses</a></td>
+            <td><a href="{{ action('HouseController@show',$property->id) }}" class="btn  btn-info">Houses</a></td>
             <td>
                 <div class="btn-group">
                 <button type="button" class="btn btn-warning">Actions</button>
@@ -51,8 +51,8 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-										<li><a href="#"><i class="fa fa-edit"></i> <span> Edit</span></a></li>
-										<li><a href="#"><i class="fa fa-times"></i> <span> Delete</span></a></li>
+										<li><a id="launcher" class="btn btn-sm btn-warning" data-myName="{{$property->name}}" data-toggle="modal" data-target="#modal-edit" ><i class="fa fa-edit" ></i> <span> Edit</span></a></li>
+										<li><a class="btn btn-sm btn-danger" ><i class="fa fa-times"></i> <span> Delete</span></a></li>
                 </ul>
                 </div>
             </td>
@@ -150,5 +150,86 @@
 				<!-- /.modal -->
 		</div>	
 
+		<div col-md-10>
+			<div class="modal fade" id="modal-edit">
+					<div class="modal-dialog">
+						<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">Edit Property</h4>
+						</div>
+						<form action="{{route('property.update','crap')}}" method="post">
+						<div class="modal-body">
+								{{ csrf_field() }}
+													<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
+															<label for="name" class="control-label">Property Name</label>
+
+															<div class="">
+																	<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+																	@if ($errors->has('name'))
+																			<span class="help-block">
+																					<strong>{{ $errors->first('name') }}</strong>
+																			</span>
+																	@endif
+															</div>
+													</div>
+
+													<div class="form-group">
+															<label for="type" class=" control-label">Property Type</label>
+															<div class="">
+																	<select id="type" name="type" class="form-control">
+																			@foreach($types as $type)
+																				<option value="{{$type->id}}">{{$type->name}}</option>
+																			@endforeach	
+																	</select>
+															</div>
+													</div>
+													
+													<div id="locdiv">
+														
+													<div class="form-group" id="countydiv">
+															<label for="county" class=" control-label">County</label>
+															<div class="">
+																	<select id="county" name="county" class="form-control">
+																		@foreach($landlord->country->county as $county)
+																			<option value="{{$county->id}}">{{$county->name}}</option>
+																		@endforeach	
+																	</select>
+															</div>
+													</div>
+														
+
+													</div>
+
+
+													<div class="form-group {{ $errors->has('description') ? ' has-error' : '' }}">
+															<label for="description" class=" control-label">Description</label>
+
+															<div class="">
+																<textarea name="description" id="description"  class="form-control"></textarea> 
+																	@if ($errors->has('description'))
+																	<span class="help-block">
+																			<strong>{{ $errors->first('description') }}</strong>
+																	</span>
+																	@endif          
+															</div>
+													</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>	
+						</form>
+
+						</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+					</div>
+			<!-- /.modal -->
+	</div>	
 @endsection
 

@@ -84,7 +84,7 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

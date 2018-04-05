@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\House;
-use App\Property;
-use App\HouseType;
+use App\Country;
+use App\Tenant;
 use Auth;
 
-class HouseController extends Controller
+
+class TenantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +16,10 @@ class HouseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $landlord= Auth::user()->landlord;
-        $houses = House::all();
-        //where('property_id', 3);
-        //$houses=$landlord->property->house;
-        $housetypes=HouseType::all();
-        
-        $properties= $landlord->property;   
-        return view('house.index', [
-            'housetypes' => $housetypes,
-            'houses' => $houses,
-            'properties' => $properties  
+    {
+        $countries= Country::all();   
+        return view('tenant.signup', [
+            'countries' => $countries
         ]);
     }
 
@@ -49,15 +41,14 @@ class HouseController extends Controller
      */
     public function store(Request $request)
     {
-        
-    $house = new House;
-    $house->name = $request->get('name');
-    $house->property_id = $request->get('property');
-    $house->house_type_id =$request->get('type');
-    $house->price = $request->get('price');
-    $house->save();
-
-    return redirect()->back()->with('status', 'House Added!');
+        $tenant = new Tenant;
+        $tenant->id_no = $request->get('id');
+        $tenant->phone_no = $request->get('phone');
+        $tenant->user_id =Auth::user()->id;
+        $tenant->country_id = $request->get('country');
+        $tenant->save();
+        //to tenant dash
+        return redirect('/home');
     }
 
     /**
@@ -68,14 +59,8 @@ class HouseController extends Controller
      */
     public function show($id)
     {
-        $property= Property::find($id);
-        $houses=$property->house;
-        $housetypes=HouseType::all();   
-        return view('house.show', [
-            'housetypes' => $housetypes,
-            'houses' => $houses, 
-            'property'=>$property 
-        ]);
+        $property = Property::find($id);
+	    return view('properties.edit', compact('property'));
     }
 
     /**

@@ -85,7 +85,7 @@
 							<form action="{{route('house.store')}}" method="post">
 							<div class="modal-body">
 									{{ csrf_field() }}
-									<input type="hidden" name="property" value="" >
+									<input type="hidden" name="property" value="{{$property->id}}" >
 
 		                        <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
 		                            <label for="name" class="control-label">House No</label>
@@ -99,19 +99,7 @@
 		                                    </span>
 		                                @endif
 		                            </div>
-														</div>
-														
-														
-														<div class="form-group">
-                                <label for="property" class=" control-label">Select Property</label>
-                                <div class="">
-                                    <select id="property" name="property" class="form-control">
-																			@foreach($properties as $property)
-                                        <option value="{{$property->id}}">{{$property->name}}</option>
-																			@endforeach	
-                                    </select>
-                                </div>
-                            </div>
+		                        </div>
 
 
                                 <div class="form-group">
@@ -124,7 +112,6 @@
                                     </select>
                                 </div>
                                 </div>
-
 
 		                        <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
 		                            <label for="location" class="col-md-4 control-label">Price</label>

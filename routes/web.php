@@ -34,4 +34,6 @@ Route::get('/home','HomeController@index')->name('home');
 Route::resource('house','HouseController');
 Route::resource('property','PropertyController');
 Route::resource('landlord','LandlordController');
+Route::resource('tenant','TenantController');
+
 

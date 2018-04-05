@@ -155,5 +155,17 @@
 
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+
+<script>
+	$('#modal-edit').on('show.bs.modal', function (event) {
+    console.log('modal opened');
+    var button=$(event.relatedTarget);
+    var name = button.find('#launcher').data('myName');
+    var modal=$(this);
+    modal.find('.modal-body #name').val(name);
+		})
+</script>
+
+
 </body>
 </html>
