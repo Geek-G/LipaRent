@@ -13,14 +13,14 @@
 			<div class="item active">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Build Effective Designs</h3>
-						<p>Solutions made easy</p>
+						<h3>Pay Rent Smartly</h3>
+						<p>Easy Solution</p>
 						<div class="top-buttons">
 							<div class="bnr-button">
-								<a class="act" href="single.html">Read More</a>
+								<a class="act" href="#">Read More</a>
 							</div>
 							<div class="bnr-button">
-								<a href="portfolio.html" class="two scroll ">Portfolio</a>
+								<a href="#" class="two scroll ">Start</a>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -30,14 +30,14 @@
 			<div class="item item2">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Best Business Thinking</h3>
+						<h3>Best Offers</h3>
 						<p>You deserve the best</p>
 						<div class="top-buttons">
 							<div class="bnr-button">
-								<a class="act" href="single.html">Read More</a>
+								<a class="act" href="#">Read More</a>
 							</div>
 							<div class="bnr-button">
-								<a href="portfolio.html" class="two scroll ">Portfolio</a>
+								<a href="#" class="two scroll ">Start</a>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -47,14 +47,14 @@
 			<div class="item item3">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Build Effective Designs</h3>
+						<h3>Manage Online</h3>
 						<p>Solutions made easy</p>
 						<div class="top-buttons">
 							<div class="bnr-button">
-								<a class="act" href="single.html">Read More</a>
+								<a class="act" href="#">Read More</a>
 							</div>
 							<div class="bnr-button">
-								<a href="portfolio.html" class="two scroll ">Portfolio</a>
+								<a href="#" class="two scroll ">Portfolio</a>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -66,14 +66,14 @@
 				<div class="container">
 					<div class="carousel-caption">
 
-						<h3>Best Business Thinking</h3>
+						<h3>Have a Blast</h3>
 						<p>You deserve the best</p>
 						<div class="top-buttons">
 							<div class="bnr-button">
-								<a class="act" href="single.html">Read More</a>
+								<a class="act" href="#">Read More</a>
 							</div>
 							<div class="bnr-button">
-								<a href="#portfolio" class="two scroll ">Portfolio</a>
+								<a href="#" class="two scroll ">Portfolio</a>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
@@ -459,7 +459,7 @@
 
 
 	<section id="pricing">
-		
+
 	</section>
 
 
