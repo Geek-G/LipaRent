@@ -20,9 +20,12 @@
 	</script>
     <!--//tags -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all" />
-	<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('css/pricestyle.css')}}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{asset('css/prettyPhoto.css')}}"  rel="stylesheet" type="text/css" />
-	<link  href="{{asset('css/font-awesome.css')}}"  rel="stylesheet">
+    <link  href="{{asset('css/font-awesome.css')}}"  rel="stylesheet">
+    <link  href="{{asset('css/team.css')}}"  rel="stylesheet">
+    <link  href="{{asset('css/contact.css')}}"  rel="stylesheet">
 	<!-- //for bootstrap working -->
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,300,300i,400,400i,500,500i,600,600i,700,800" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700" rel="stylesheet">
@@ -54,8 +57,8 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
 							<li><a href="#features">Features</a></li>
-							<li><a href="#">Pricing</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="#pricing">Pricing</a></li>
+							<li><a href="#contact">Contact</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
 								<ul class="dropdown-menu">
@@ -63,7 +66,7 @@
                                     <li><a href="{{ route('login') }}">Login</a></li>
                                     <li><a href="{{ route('register') }}">Register</a></li>
                                     @else
-                                      <div class="pull-right">
+                                      <div class="center">
                                           <a href="{{ route('logout') }}"  class="btn btn-default btn-flat"
                                           onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
@@ -90,7 +93,7 @@
 	<div class="footer">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-3 footer-left">
-				<h2><a href="index.html"><i class="fa fa-clone" aria-hidden="true"></i> Conceit </a></h2>
+				<h2><a href="/"><i class="fa fa-home" aria-hidden="true"></i> LipaRent </a></h2>
 				<p>Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
 				<ul class="social-nav model-3d-0 footer-social social two">
 					<li>
@@ -122,7 +125,7 @@
 			<div class="col-md-9 footer-right">
 				<div class="sign-grds">
 					<div class="col-md-4 sign-gd">
-						<h4>Latest <span>Info</span> </h4>
+						<h4>P<span>ages</span> </h4>
 						<ul>
 							<li><a href="#">Home</a></li>
 							<li><a href="#">Features</a></li>

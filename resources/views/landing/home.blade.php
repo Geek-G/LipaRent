@@ -94,7 +94,7 @@
     
 	<!--//banner -->
 	<!--/ab-->
-	<section id="banner">	
+	<section id="about">	
 	<div class="banner_bottom">
 		<div class="container">
 			<h3 class="tittle-w3ls">What is LipaRent?</h3>
@@ -127,7 +127,7 @@
 								</div>
 							</div>
 							<div class="col-xs-9 banner_bottom_grid_right">
-								<h4>Digital Solutions</h4>
+								<h4>Digital Solution</h4>
 								<p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
 
 							</div>
@@ -144,7 +144,7 @@
 								</div>
 							</div>
 							<div class="col-xs-9 banner_bottom_grid_right">
-								<h4>Live Website Builder</h4>
+								<h4>Anytime Anywhere</h4>
 								<p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
 
 							</div>
@@ -161,7 +161,7 @@
 								</div>
 							</div>
 							<div class="col-xs-9 banner_bottom_grid_right">
-								<h4>Creative Strategy</h4>
+								<h4>Web and Mobile</h4>
 								<p>Lorem Ipsum is simply text the printing and typesetting standard industry.</p>
 
 							</div>
@@ -173,32 +173,33 @@
 			</div>
 		</div>
 	</div>
-    </section>
-	<!--//ab-->
+	</section>
+	
+	<section id="what">
 	<!--/what-->
 	<div class="works">
 		<div class="container">
-			<h3 class="tittle-w3ls cen">What we do</h3>
+			<h3 class="tittle-w3ls cen">What Use LipaRent?</h3>
 			<div class="inner_sec_info_wthree_agile">
 				<div class="ser-first">
 					<div class="col-md-3 ser-first-grid text-center">
 						<span class="fa fa-shield" aria-hidden="true"></span>
-						<h3>Unique Design</h3>
+						<h3>Easy to use!</h3>
 						<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 					</div>
 					<div class="col-md-3 ser-first-grid text-center">
 						<span class="fa fa-pencil" aria-hidden="true"></span>
-						<h3>Different Layout</h3>
+						<h3>Automation</h3>
 						<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 					</div>
 					<div class="col-md-3 ser-first-grid text-center">
 						<span class="fa fa-star" aria-hidden="true"></span>
-						<h3>Portfolio Styles</h3>
+						<h3>Reports</h3>
 						<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 					</div>
 					<div class="col-md-3 ser-first-grid text-center">
 						<span class="fa fa-thumbs-up" aria-hidden="true"></span>
-						<h3>User Experience</h3>
+						<h3>Oline Payments</h3>
 						<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
 					</div>
 					<div class="clearfix"></div>
@@ -208,286 +209,263 @@
 		</div>
 	</div>
 	<!--//what-->
+    </section>
+
+	<section id="team">
+	<div class="banner_bottom proj">
+			<div class="container">
+				<h3 class="tittle-w3ls">Our Team</h3>
+				<div class="inner_sec_info_wthree_agile">
+					<div class="col-md-3 team_grid_info">
+						<img src="images/t1.jpg" alt=" " class="img-responsive">
+						<h3>Jane Mycle </h3>
+						<p>Director</p>
+	
+						<div class="team_icons">
+							<ul>
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+	
+							</ul>
+						</div>
+	
+					</div>
+					<div class="col-md-3 team_grid_info">
+						<img src="images/t2.jpg" alt=" " class="img-responsive">
+						<h3>Amanda Seylon </h3>
+						<p>CEO</p>
+	
+						<div class="team_icons">
+							<ul>
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+	
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 team_grid_info">
+						<img src="images/t3.jpg" alt=" " class="img-responsive">
+						<h3>Laura Mark</h3>
+						<p>Project Manager</p>
+	
+						<div class="team_icons">
+							<ul>
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+	
+							</ul>
+						</div>
+	
+					</div>
+					<div class="col-md-3 team_grid_info">
+						<img src="images/t4.jpg" alt=" " class="img-responsive">
+						<h3>Jane Mycle </h3>
+						<p>HR Manager</p>
+	
+						<div class="team_icons">
+							<ul>
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+	
+							</ul>
+						</div>
+	
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+
+
+	<!--//ab-->
+    </section>
+	
+
+
 	<!--/banner_bottom-->
 	<div class="banner_bottom">
 		<div class="banner_bottom_in">
-			<h3 class="tittle-w3ls we">We provide high quality and cost effective offshore web development services.</h3>
+			<h3 class="tittle-w3ls we">A payment Integraged Real Estate Management System </h3>
 
 			<p>Lorem ipsum dolor sit amet, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
 				nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 
-			<img src="images/banner_mid.jpg" class="img-responsive" alt="">
+			<img src="images/banner_mid.png" class="img-responsive" alt="">
 		</div>
 	</div>
 	<!--//banner_bottom-->
 	
+	<section id="features">	<div class="banner_bottom proj">
+			<div class="wrap_view">
+				<h3 class="tittle-w3ls">Features</h3>
+				<div class="inner_sec">
+					<ul class="portfolio-categ filter">
+						<li class="port-filter all active">
+							<a href="#">All</a>
+						</li>
+						<li class="cat-item-1">
+							<a href="#" title="Category 1">Landlord</a>
+						</li>
+						<li class="cat-item-2">
+							<a href="#" title="Category 2">Tenant</a>
+					</ul>
 	
-	<section id="features">	
-	<div class="banner_bottom">
-		<div class="container">
-			<h3 class="tittle-w3ls">Projects</h3>
-			<div class="inner_sec_info_wthree_agile">
-				<!--/projects-->
-				<ul class="portfolio-categ filter">
-					<li class="port-filter all active">
-						<a href="#">All</a>
-					</li>
-					<li class="cat-item-1">
-						<a href="#" title="Category 1">Category 1</a>
-					</li>
-					<li class="cat-item-2">
-						<a href="#" title="Category 2">Category 2</a>
-					</li>
-					<li class="cat-item-3">
-						<a href="#" title="Category 3">Category 3</a>
-					</li>
-					<li class="cat-item-4">
-						<a href="#" title="Category 4">Category 4</a>
-					</li>
-				</ul>
-
-
-				<ul class="portfolio-area">
-
-					<li class="portfolio-item2" data-id="id-0" data-type="cat-item-4">
-						<div>
-							<span class="image-block block2 img-hover">
-							<a class="image-zoom" href="images/g1.jpg" rel="prettyPhoto[gallery]">
-							
-									<img src="images/g1.jpg" class="img-responsive" alt="Conceit">
-									<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-1" data-type="cat-item-2">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g2.jpg" rel="prettyPhoto[gallery]">
+	
+					<ul class="portfolio-area" style="height: 632px;"><li class="portfolio-item2" data-id="id-0" data-type="cat-item-4">
+							<div>
+								<span class="image-block img-hover">
+								<a class="image-zoom" href="images/g1.jpg" rel="prettyPhoto[gallery]">
 								
-									<img src="images/g2.jpg" class="img-responsive" alt="Conceit">
-								      <div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-2" data-type="cat-item-1">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g3.jpg" rel="prettyPhoto[gallery]">
-							
-									<img src="images/g3.jpg" class="img-responsive" alt="Conceit">
-								<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-3" data-type="cat-item-4">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g4.jpg" rel="prettyPhoto[gallery]">
-								
-									<img src="images/g4.jpg" class="img-responsive" alt="Conceit">
-									<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-4" data-type="cat-item-3">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g5.jpg" rel="prettyPhoto[gallery]">
-								
-									<img src="images/g5.jpg" class="img-responsive" alt="Conceit">
-									<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-5" data-type="cat-item-2">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g6.jpg" rel="prettyPhoto[gallery]">
-								
-									<img src="images/g6.jpg" class="img-responsive" alt="Conceit">
-									<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-6" data-type="cat-item-1">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g7.jpg" rel="prettyPhoto[gallery]">
-							
-									<img src="images/g7.jpg" class="img-responsive" alt="Conceit">
-								      <div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<li class="portfolio-item2" data-id="id-7" data-type="cat-item-1">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g8.jpg" rel="prettyPhoto[gallery]">
-								
-									<img src="images/g8.jpg" class="img-responsive" alt="Conceit">
+										<img src="images/g1.jpg" class="img-responsive" alt="Conceit">
 										<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							
-							</a>
-						</span>
-						</div>
-					</li>
-					<li class="portfolio-item2" data-id="id-7" data-type="cat-item-1">
-						<div>
-							<span class="image-block block2">
-							<a class="image-zoom" href="images/g1.jpg" rel="prettyPhoto[gallery]">
+												<h5>Collect Rent</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-1" data-type="cat-item-1">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g2.jpg" rel="prettyPhoto[gallery]">
+									
+										<img src="images/g2.jpg" class="img-responsive" alt="Conceit">
+									<div class="port-info">
+												<h5>Statistics</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-2" data-type="cat-item-1">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g3.jpg" rel="prettyPhoto[gallery]">
 								
-									<img src="images/g1.jpg" class="img-responsive" alt="Conceit">
+										<img src="images/g3.jpg" class="img-responsive" alt="Conceit">
+									<div class="port-info">
+												<h5>Title</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-3" data-type="cat-item-1">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g4.jpg" rel="prettyPhoto[gallery]">
+									
+										<img src="images/g4.jpg" class="img-responsive" alt="Conceit">
 										<div class="port-info">
-											<h5>View Project</h5>
-											<p>Add Some Description</p>
-										</div>
-							
-							</a>
-						</span>
-						</div>
-					</li>
-
-
-					<div class="clearfix"></div>
-				</ul>
-				<!--end portfolio-area -->
-
+												<h5>Title</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-4" data-type="cat-item-2">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g5.jpg" rel="prettyPhoto[gallery]">
+									
+										<img src="images/g5.jpg" class="img-responsive" alt="Conceit">
+										<div class="port-info">
+												<h5>Title</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-5" data-type="cat-item-2">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g6.jpg" rel="prettyPhoto[gallery]">
+									
+										<img src="images/g6.jpg" class="img-responsive" alt="Conceit">
+										<div class="port-info">
+												<h5>Get Credit</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-6" data-type="cat-item-2">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g7.jpg" rel="prettyPhoto[gallery]">
+								
+										<img src="images/g7.jpg" class="img-responsive" alt="Conceit">
+										  <div class="port-info">
+												<h5>Title</h5>
+												<p>Add Some Description</p>
+											</div>
+								</a>
+							</span>
+							</div>
+						</li><li class="portfolio-item2" data-id="id-7" data-type="cat-item-2">
+							<div>
+								<span class="image-block">
+								<a class="image-zoom" href="images/g8.jpg" rel="prettyPhoto[gallery]">
+									
+										<img src="images/g8.jpg" class="img-responsive" alt="Conceit">
+											<div class="port-info">
+												<h5>Title</h5>
+												<p>Add Some Description</p>
+											</div>
+								
+								</a>
+							</span>
+							</div>
+						</li>
+	
+						
+	
+	
+						
+	
+	
+						
+	
+	
+						
+	
+	
+						
+	
+	
+						
+	
+	
+						
+	
+	
+						
+	
+						
+					</ul>
+					<!--end portfolio-area -->
+	
+				</div>
+	
 			</div>
-
 		</div>
-		<!--//projects-->
-
-	</div>
     </section>
-
 	<!--//projects-->
 
 
+	<section id="pricing">
+		
+	</section>
 
 
-
-	<!--/blog-->
-	<div class="blog_sec">
-		<h3 class="tittle-w3ls">Latest Blogs</h3>
-		<div class="col-md-6 banner-btm-left">
-			<div class="banner-btm-top">
-				<div class="banner-btm-inner a1">
-					<div class="blog_date">
-
-						<h4>Jan.05.2018</h4>
-
-					</div>
-					<h6><a href="single.html">Strategic Planning</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="single.html" class="blog-btn">Know More</a>
-				</div>
-				<div class="banner-btm-inner a2">
-
-				</div>
-			</div>
-			<div class="banner-btm-bottom">
-				<div class="banner-btm-inner a3">
-
-				</div>
-				<div class="banner-btm-inner a4">
-					<div class="blog_date">
-
-						<h4>Jan.08.2018</h4>
-
-					</div>
-					<h6><a href="single.html">Strategic Planning</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="single.html" class="blog-btn">Know More</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 banner-btm-left">
-			<div class="banner-btm-top">
-				<div class="banner-btm-inner a1">
-					<div class="blog_date">
-
-						<h4>Jan.25.2018</h4>
-
-					</div>
-					<h6><a href="single.html">Strategic Planning</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="single.html" class="blog-btn">Know More</a>
-				</div>
-				<div class="banner-btm-inner a5">
-
-				</div>
-			</div>
-			<div class="banner-btm-bottom">
-				<div class="banner-btm-inner a6">
-
-				</div>
-				<div class="banner-btm-inner a4">
-					<div class="blog_date">
-
-						<h4>Jan.05.2018</h4>
-
-					</div>
-					<h6><a href="single.html">Strategic Planning</a></h6>
-					<p class="paragraph">Aenean orci erat, placerat id pulvinar nec, tincidunt vel eros.</p>
-					<div class="clearfix"></div>
-					<a href="single.html" class="blog-btn">Know More</a>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-
-	<!--//blog-->
-	<!--/bottom-->
+	
+	
+		<!--/bottom-->
 	<div class="banner_bottom">
 		<div class="container">
 			<h3 class="tittle-w3ls">Let’s Change How We Manage Business
@@ -496,21 +474,21 @@
 				<div class="help_full">
 
 					<div class="col-md-6 banner_bottom_left">
-						<h4>Entrepreneurs Get Their Act Together </h4>
+						<h4>Join Our Smart Community </h4>
 						<p>Pellentesque convallis diam consequat magna vulputate malesuada. Cras a ornare elit. Nulla viverra pharetra sem, eget
 							pulvinar neque pharetra ac. Lorem Ipsum convallis diam consequat magna vulputate malesuada. Cras a ornare elit. Nulla
 							viverra pharetra sem, eget pulvinar neque pharetra ac.
 
 						</p>
 						<div class="ab_button">
-							<a class="btn btn-primary btn-lg hvr-underline-from-left" href="single.html" role="button">Read More </a>
+							<a class="btn btn-primary btn-lg hvr-underline-from-left" href="#" role="button">Sing Up</a>
 						</div>
 
 
 					</div>
 
 					<div class="col-md-6 banner_bottom_grid help">
-						<img src="images/banner_mid.jpg" alt=" " class="img-responsive">
+						<img src="images/banner_mid.png" alt=" " class="img-responsive">
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -518,6 +496,8 @@
 		</div>
 	</div>
 	<!--//bottom-->
+
+
 	<!--/testimonials-->
 	<div class="tesimonials">
 		<div class="container">
@@ -592,21 +572,74 @@
 	</div>
 	<!--//testimonials-->
 
-	<!-- /newsletter-->
-	<div class="newsletter_w3ls_agileits">
-		<div class="col-sm-6 newsleft">
-			<h3>Sign up for Newsletter !</h3>
-		</div>
-		<div class="col-sm-6 newsright">
-			<form action="#" method="post">
-				<input type="email" placeholder="Enter your email..." name="email" required="">
-				<input type="submit" value="Submit">
-			</form>
+	<section id="contact">
+	<div class="banner_bottom">
+			<div class="container">
+				
+				<div class="mail_form">
+					<h3 class="tittle-w3ls">Send Us a Message</h3>
+					<div class="inner_sec_info_wthree_agile">
+						<form action="#" method="post">
+							<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Name" type="text" id="input-13" placeholder=" " required="">
+							<label class="input__label input__label--chisato" for="input-13">
+								<span class="input__label-content input__label-content--chisato" data-content="Name">Name</span>
+							</label>
+							</span>
+							<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Email" type="email" id="input-14" placeholder=" " required="">
+							<label class="input__label input__label--chisato" for="input-14">
+								<span class="input__label-content input__label-content--chisato" data-content="Email">Email</span>
+							</label>
+							</span>
+							<span class="input input--chisato">
+							<input class="input__field input__field--chisato" name="Subject" type="text" id="input-15" placeholder=" " required="">
+							<label class="input__label input__label--chisato" for="input-15">
+								<span class="input__label-content input__label-content--chisato" data-content="Subject">Subject</span>
+							</label>
+							</span>
+							<textarea name="Message" placeholder="Your comment here..." required=""></textarea>
+							<input type="submit" value="Submit">
+						</form>
+	
+					</div>
+				</div>
+				<div class="inner_sec_info_wthree_agile">
+				   <div class="col-md-8 map">
+						<iframe src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Juja+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0"></iframe>
+					</div>
+					<div class="col-md-4 contact_grids_info">
+						<div class="contact_grid">
+							<div class="contact_grid_right">
+								<h4> OFFICE 1</h4>
+								<p>Juja,</p>
+								<p>Kiambu, Kenya.</p>
+							</div>
+						</div>
+						<div class="contact_grid">
+							<div class="contact_grid_right">
+								<h4> OFFICE 2</h4>
+								<p>Buruburu,</p>
+								<p>Nairobi City Kenya.</p>
+							</div>
+						</div>
+						<div class="contact_grid" data-aos="flip-up">
+	
+							<div class="contact_grid_right">
+								<h4>OFFICE 3</h4>
+								<p>Bypass,</p>
+								<p>Kiambu Kenya.</p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
 		</div>
 
-		<div class="clearfix"></div>
-	</div>
-	<!-- //newsletter-->
 
 	</div>
+	</section>
 	@endsection
