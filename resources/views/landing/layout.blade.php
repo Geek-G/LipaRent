@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
           </button>
 					<div class="logo-w3layouts-agileits">
-						<h1> <a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>LipaRent <span class="desc">Convinience, for you</span></a></h1>
+						<h1> <a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>LipaRent <span class="desc">Convinience, for you.</span></a></h1>
 					</div>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
