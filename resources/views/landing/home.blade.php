@@ -316,7 +316,7 @@
 					</ul>
 	
 	
-					<ul class="portfolio-area" style="height: 632px;"><li class="portfolio-item2" data-id="id-0" data-type="cat-item-4">
+					<ul class="portfolio-area" style="height: 632px;"><li class="portfolio-item2" data-id="id-0" data-type="cat-item-1">
 							<div>
 								<span class="image-block img-hover">
 								<a class="image-zoom" href="images/g1.jpg" rel="prettyPhoto[gallery]">
