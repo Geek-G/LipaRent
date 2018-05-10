@@ -30,7 +30,7 @@
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700" rel="stylesheet">
 </head>
 
-<body>
+<body id="app">
 	<div class="top_header" id="home">
 		<!-- Fixed navbar -->
 		<nav class="navbar navbar-default navbar-fixed-top">
@@ -189,7 +189,7 @@
 				</div>
 			</div>
 			<div class="clearfix"></div>
-			<p class="copy-right">&copy 2018 Liparent. All rights reserved | Design by <a href="http://geoffreynganga.com/">Geek G</a></p>
+			<p class="copy-right">&copy 2018 Liparent. All rights reserved | Design by <a href="http://lipa-rent.co.ke/">LipaRent</a></p>
 		</div>
 	</div>
 	</div>
@@ -236,11 +236,12 @@
 		});
 	</script>
 	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-    <!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
+	<!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
     <script src="{{asset('js/jquery-1.7.2.js')}}"></script>
     <script src="{{asset('js/jquery.quicksand.js')}}"></script>
     <script src="{{asset('js/script.js')}}"></script>
-    <script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
+	<script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
+	<script src="{{asset('js/app.js')}}"></script>
 	<!-- //jQuery-Photo-filter-lightbox-Gallery-plugin -->
 
 </body>

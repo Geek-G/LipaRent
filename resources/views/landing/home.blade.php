@@ -211,81 +211,6 @@
 	<!--//what-->
     </section>
 
-	<section id="team">
-	<div class="banner_bottom proj">
-			<div class="container">
-				<h3 class="tittle-w3ls">Our Team</h3>
-				<div class="inner_sec_info_wthree_agile">
-					<div class="col-md-3 team_grid_info">
-						<img src="images/t1.jpg" alt=" " class="img-responsive">
-						<h3>Jane Mycle </h3>
-						<p>Director</p>
-	
-						<div class="team_icons">
-							<ul>
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-	
-							</ul>
-						</div>
-	
-					</div>
-					<div class="col-md-3 team_grid_info">
-						<img src="images/t2.jpg" alt=" " class="img-responsive">
-						<h3>Amanda Seylon </h3>
-						<p>CEO</p>
-	
-						<div class="team_icons">
-							<ul>
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-	
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-3 team_grid_info">
-						<img src="images/t3.jpg" alt=" " class="img-responsive">
-						<h3>Laura Mark</h3>
-						<p>Project Manager</p>
-	
-						<div class="team_icons">
-							<ul>
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-	
-							</ul>
-						</div>
-	
-					</div>
-					<div class="col-md-3 team_grid_info">
-						<img src="images/t4.jpg" alt=" " class="img-responsive">
-						<h3>Jane Mycle </h3>
-						<p>HR Manager</p>
-	
-						<div class="team_icons">
-							<ul>
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-	
-							</ul>
-						</div>
-	
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
-
-
-	<!--//ab-->
-    </section>
-	
-
-
 	<!--/banner_bottom-->
 	<div class="banner_bottom">
 		<div class="banner_bottom_in">
@@ -496,6 +421,82 @@
 		</div>
 	</div>
 	<!--//bottom-->
+
+	
+	<section id="team">
+		<div class="banner_bottom proj">
+				<div class="container">
+					<h3 class="tittle-w3ls">Our Team</h3>
+					<div class="inner_sec_info_wthree_agile">
+						<div class="col-md-3 team_grid_info">
+							<img src="images/t1.jpg" alt=" " class="img-responsive">
+							<h3>Jane Mycle </h3>
+							<p>Director</p>
+		
+							<div class="team_icons">
+								<ul>
+									<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+		
+								</ul>
+							</div>
+		
+						</div>
+						<div class="col-md-3 team_grid_info">
+							<img src="images/t2.jpg" alt=" " class="img-responsive">
+							<h3>Amanda Seylon </h3>
+							<p>CEO</p>
+		
+							<div class="team_icons">
+								<ul>
+									<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+		
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 team_grid_info">
+							<img src="images/t3.jpg" alt=" " class="img-responsive">
+							<h3>Laura Mark</h3>
+							<p>Project Manager</p>
+		
+							<div class="team_icons">
+								<ul>
+									<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+		
+								</ul>
+							</div>
+		
+						</div>
+						<div class="col-md-3 team_grid_info">
+							<img src="images/t4.jpg" alt=" " class="img-responsive">
+							<h3>Jane Mycle </h3>
+							<p>HR Manager</p>
+		
+							<div class="team_icons">
+								<ul>
+									<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="#" class="dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+		
+								</ul>
+							</div>
+		
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+	
+	
+		<!--//ab-->
+		</section>
+		
+	
 
 
 	<!--/testimonials-->

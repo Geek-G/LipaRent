@@ -43095,6 +43095,61 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43115,6 +43170,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    data: function data() {
+        return { msg: 'This is the message', cssString: '', upvotes: 0, clicks: 0 };
+    },
+
+    methods: (_methods = {
+        changeSomething: function changeSomething() {
+            this.msg = 'new data access';
+        }
+    }, _defineProperty(_methods, 'changeSomething', function changeSomething() {
+        this.msg = 'new data access';
+    }), _defineProperty(_methods, 'increment', function increment() {
+        this.clicks = this.clicks + 1;
+    }), _defineProperty(_methods, 'upvote', function upvote() {
+        this.upvotes++;
+    }), _methods),
+    computed: {
+        counter: function counter() {
+            return this.clicks * 2;
+        }
     }
 });
 
@@ -43126,28 +43201,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 " }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.msg) +
+                "\n                    "
+            ),
+            _c("button", { on: { click: _vm.changeSomething } }, [
+              _vm._v(" Change something ")
+            ]),
+            _vm._v(" "),
+            _c("span", { domProps: { textContent: _vm._s(_vm.msg) } }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "text" },
+              on: {
+                input: function($event) {
+                  _vm.cssString = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              class: _vm.cssString,
+              attrs: { type: "text" },
+              domProps: { value: _vm.cssString }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "panel panel-default" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _vm._v("Computed Properties")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "panel-body" }, [
+                _c("button", { on: { click: _vm.increment } }, [
+                  _vm._v("Add Click")
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Clicks: " + _vm._s(_vm.clicks))]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Counter: " + _vm._s(_vm.counter))])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("More Stuff")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("button", { on: { click: _vm.upvote } }, [
+              _vm._v(
+                "\n                    Upvote! " +
+                  _vm._s(_vm.upvotes) +
+                  "\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" })
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6 " }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "col-md-6 " }, [
+      _c("div", { staticClass: "panel panel-default" }, [
+        _c("div", { staticClass: "panel-heading" }, [_vm._v("Stuff")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel panel-default" }, [
+        _c("div", { staticClass: "panel-heading" }, [_vm._v("More Stuff")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel-body" })
       ])
     ])
   }

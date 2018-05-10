@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('landing.home');
 });
 
+Route::get('/vue', function () {
+    return view('landing.vue');
+});
+
 
 Route::get('/signup', function () {
     return view('landlord.signup');
