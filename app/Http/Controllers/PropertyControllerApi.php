@@ -34,16 +34,16 @@ class PropertyControllerApi extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   return 'string';
+    {  
         $property = new Property;
-        $property->name = $request->get('name');
-        $property->property_type_id =$request->get('type');
+        $property->name = $request->input('name');
+        $property->property_type_id =$request->input('type');
         // Auth::user()->landlord->id;
         $property->landlord_id = 1;
         $property->street_id = 1;
-        $property->description = $request->get('description');
+        $property->description = $request->input('description');
         $property->save();
-        return new PropertyResoruce($property);
+        return new PropertyResource($property);
        
     }
 
@@ -78,15 +78,17 @@ class PropertyControllerApi extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {   $property= Property::FindorFail($id);  
-        $property->name = $request->get('name');
-        $property->property_type_id =$request->get('type');
+    {    // not working for some reason
+        $property= Property::FindorFail($request->input('id'));  
+        return $property;
+        $property->name = $request->input('name');
+        $property->property_type_id =$request->input('type');
         // Auth::user()->landlord->id;
         $property->landlord_id = 1;
         $property->street_id = 1;
-        $property->description = $request->get('description');
+        $property->description = $request->input('description');
         $property->save();
-        return new PropertyResoruce($property);
+        return new PropertyResource($property);
     }
 
     /**
@@ -95,9 +97,8 @@ class PropertyControllerApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id=$request->get('id');
         $property= Property::findOrFail($id);
         $property->delete();
         return new PropertyResource($property);
