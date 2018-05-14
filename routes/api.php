@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,12 +12,19 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::resource('house','HouseController');
-Route::resource('property','PropertyController');
-Route::resource('landlord','LandlordController');
-Route::resource('tenant','TenantController');
+Route::get('/property','PropertyControllerApi@index');
+Route::get('/property/{id}','PropertyControllerApi@show');
+Route::post('/property','PropertyControllerApi@store');
+Route::put('/property','PropertyControllerApi@update');
+Route::delete('/property/{id}','PropertyControllerApi@destroy');
+
+
+//Route::resource('property','PropertyApiController');
+// Route::resource('house','HouseController');
+// Route::resource('landlord','LandlordController');
+// Route::resource('tenant','TenantController');
 
