@@ -21,6 +21,11 @@ Route::get('/vue', function () {
 });
 
 
+Route::get('/pricing', function () {
+    return view('landing.pricing');
+})->name('pricing');
+
+
 Route::get('/signup', function () {
     return view('landlord.signup');
 });

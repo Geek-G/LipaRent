@@ -45,12 +45,12 @@
 
             <div class="col-md-6 ">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Stuff</div>
+                    <div class="panel-heading">Input Binding</div>
                     <div class="panel-body">
                          <form>
                             <input type="text" placeholder="type anytything" v-model="typedData"/>
-                            {{typedData}}
-                            <input type="checkbox" v-model="checked"> {{checked}}
+                            {{typedData | uppercase}}
+                            <input type="checkbox" v-model="checked" v-on:keypress.enter="enterIsHit(event)"> {{checked}}
                             <hr/>
                             <input type="checkbox" value="name1" v-model="checkedNames">
                             <input type="checkbox" value="name2" v-model="checkedNames">
@@ -79,9 +79,21 @@
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">More Stuff</div>
-
+                    <div class="panel-heading">Animation </div>
                     <div class="panel-body">
+                        <button v-on:click="show=!show">Toggle show</button>
+                         <transition name="slide-fade">
+                        <div v-if="show" class="togg">
+                            <p>This is the toggle paragraph</p>
+                        </div>
+                        </transition>
+
+                        <animation name="bounce">
+                        <div v-if="show" class="togg">
+                            <p>This is the toggle paragraph</p>
+                        </div>
+                        </animation>
+                       
                         
 
                     </div>
@@ -91,6 +103,53 @@
         </div>
     </div>
 </template>
+
+<style>
+.togg{
+    background:coral;
+    color:blue;
+    padding: 5px;
+
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+</style>
 
 <script>
     export default {
@@ -112,17 +171,24 @@
                 {text:'two', value:'B'},
                 {text:'three', value:'C'}
             ],
-            selectedOpt:''
+            selectedOpt:'',
+            show:true
 
        }
        },
        methods: {changeSomething(){ this.msg='new data access' },
                 changeSomething(){ this.msg='new data access' },
                 increment(){this.clicks=this.clicks+1 },
-                upvote: function(){this.upvotes++;}
+                upvote: function(){this.upvotes++;},
+                enterIsHit(event){alert('enter hit')}
        },
        computed:{
            counter(){ return this.clicks*2;}
+       },
+       filters:{
+           uppercase: function(value){
+               return value.toUpperCase();
+           }
        }
     } 
 </script>

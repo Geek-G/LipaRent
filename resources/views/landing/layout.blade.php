@@ -56,7 +56,7 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
 							<li><a href="#features">Features</a></li>
-							<li><a href="#pricing">Pricing</a></li>
+							<li><a href="{{ route('pricing') }}">Pricing</a></li>
 							<li><a href="#contact">Contact</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
