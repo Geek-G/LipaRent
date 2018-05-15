@@ -237,11 +237,12 @@
 	</script>
 	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- jQuery-Photo-filter-lightbox-Gallery-plugin -->
+
+	<script src="{{asset('js/bootsrap.js')}}"></script>
     <script src="{{asset('js/jquery-1.7.2.js')}}"></script>
     <script src="{{asset('js/jquery.quicksand.js')}}"></script>
     <script src="{{asset('js/script.js')}}"></script>
 	<script src="{{asset('js/jquery.prettyPhoto.js')}}"></script>
-	<script src="{{asset('js/app.js')}}"></script>
 	<!-- //jQuery-Photo-filter-lightbox-Gallery-plugin -->
 
 </body>

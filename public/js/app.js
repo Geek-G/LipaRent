@@ -43166,13 +43166,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
     },
     data: function data() {
-        return { msg: 'This is the message', cssString: '', upvotes: 0, clicks: 0 };
+        return {
+            msg: 'This is the message',
+            typedData: '',
+            checked: false,
+            cssString: '',
+            upvotes: 0,
+            clicks: 0,
+            checkedNames: [],
+            radioName: '',
+            selected: '',
+            options: [{ text: 'one', value: 'A' }, { text: 'two', value: 'B' }, { text: 'three', value: 'C' }],
+            selectedOpt: ''
+
+        };
     },
 
     methods: (_methods = {
@@ -43271,7 +43311,390 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "col-md-6 " }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [_vm._v("Stuff")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _c("form", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.typedData,
+                    expression: "typedData"
+                  }
+                ],
+                attrs: { type: "text", placeholder: "type anytything" },
+                domProps: { value: _vm.typedData },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.typedData = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.typedData) +
+                  "\n                        "
+              ),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checked,
+                    expression: "checked"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.checked)
+                    ? _vm._i(_vm.checked, null) > -1
+                    : _vm.checked
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checked,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checked = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checked = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" " + _vm._s(_vm.checked) + "\n                        "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checkedNames,
+                    expression: "checkedNames"
+                  }
+                ],
+                attrs: { type: "checkbox", value: "name1" },
+                domProps: {
+                  checked: Array.isArray(_vm.checkedNames)
+                    ? _vm._i(_vm.checkedNames, "name1") > -1
+                    : _vm.checkedNames
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checkedNames,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "name1",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedNames = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedNames = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedNames = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checkedNames,
+                    expression: "checkedNames"
+                  }
+                ],
+                attrs: { type: "checkbox", value: "name2" },
+                domProps: {
+                  checked: Array.isArray(_vm.checkedNames)
+                    ? _vm._i(_vm.checkedNames, "name2") > -1
+                    : _vm.checkedNames
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checkedNames,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "name2",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedNames = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedNames = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedNames = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checkedNames,
+                    expression: "checkedNames"
+                  }
+                ],
+                attrs: { type: "checkbox", value: "name3" },
+                domProps: {
+                  checked: Array.isArray(_vm.checkedNames)
+                    ? _vm._i(_vm.checkedNames, "name3") > -1
+                    : _vm.checkedNames
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checkedNames,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "name3",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedNames = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedNames = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedNames = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checkedNames,
+                    expression: "checkedNames"
+                  }
+                ],
+                attrs: { type: "checkbox", value: "name4" },
+                domProps: {
+                  checked: Array.isArray(_vm.checkedNames)
+                    ? _vm._i(_vm.checkedNames, "name4") > -1
+                    : _vm.checkedNames
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.checkedNames,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = "name4",
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedNames = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedNames = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedNames = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.checkedNames))]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.radioName,
+                    expression: "radioName"
+                  }
+                ],
+                attrs: { type: "radio", value: "name1" },
+                domProps: { checked: _vm._q(_vm.radioName, "name1") },
+                on: {
+                  change: function($event) {
+                    _vm.radioName = "name1"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.radioName,
+                    expression: "radioName"
+                  }
+                ],
+                attrs: { type: "radio", value: "name2" },
+                domProps: { checked: _vm._q(_vm.radioName, "name2") },
+                on: {
+                  change: function($event) {
+                    _vm.radioName = "name2"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.radioName,
+                    expression: "radioName"
+                  }
+                ],
+                attrs: { type: "radio", value: "name3" },
+                domProps: { checked: _vm._q(_vm.radioName, "name3") },
+                on: {
+                  change: function($event) {
+                    _vm.radioName = "name3"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.radioName,
+                    expression: "radioName"
+                  }
+                ],
+                attrs: { type: "radio", value: "name4" },
+                domProps: { checked: _vm._q(_vm.radioName, "name4") },
+                on: {
+                  change: function($event) {
+                    _vm.radioName = "name4"
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.radioName))]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.selected,
+                      expression: "selected"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selected = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("1")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "3" } }, [_vm._v("3")])
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.selected))]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.selectedOpt,
+                      expression: "selectedOpt"
+                    }
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selectedOpt = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.options, function(option) {
+                  return _c("option", { domProps: { value: option.value } }, [
+                    _vm._v(_vm._s(option.text))
+                  ])
+                })
+              ),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.selectedOpt))])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
     ])
   ])
 }
@@ -43280,18 +43703,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 " }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-heading" }, [_vm._v("Stuff")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" })
-      ]),
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [_vm._v("More Stuff")]),
       _vm._v(" "),
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "panel-heading" }, [_vm._v("More Stuff")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel-body" })
-      ])
+      _c("div", { staticClass: "panel-body" })
     ])
   }
 ]
