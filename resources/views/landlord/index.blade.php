@@ -3,7 +3,8 @@
 @section('content')
 		
 		<div class="form-group">
-        	<a class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> New </a>
+					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> New </a>
+					<a class="btn btn-primary" data-toggle="modal" data-target="#vue-modal"> New Modal </a>
         </div>
 		<section class="content">
 			<div class="row">
@@ -19,8 +20,7 @@
 						{{ session('status') }}
 					</div>
 				@endif
-
-
+       <location></location>
 				<div class="box">
 				  <div class="box-header">
 					<h3 class="box-title"> {{$landlord->user->name}} Properties </h3>
@@ -108,8 +108,6 @@
                                     </select>
                                 </div>
 														</div>
-															
-
 														</div>
 
 
@@ -126,6 +124,8 @@
 																</div>
 		                        </div>
 							</div>
+
+							<location></location>
 							<div class="modal-footer">
 							  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn btn-primary">Save</button>

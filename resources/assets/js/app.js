@@ -26,6 +26,7 @@ Vue.use(VeeValidate);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('about', require('./components/About.vue'));
 Vue.component('pricing', require('./components/Pricing.vue'));
+Vue.component('location', require('./components/Location.vue'));
 
 const app = new Vue({
     el: '#app'
