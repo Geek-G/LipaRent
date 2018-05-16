@@ -4,17 +4,14 @@
 <div class="row">
 <div class="col-md-6-offset-3 text-center">
 <form>
-<div class="col-md-6 col-md-offset-3">
-
-<div class="input-group">
-  <span class="input-group-addon">KSh</span>
-        <input type="text" name="amount" placeholder="Enter amount" v-model="amount"  v-on:keyup="clearError"  v-validate="'numeric|max_value:100000'" :class="{'form-control': true, 'has-error': errors.has('amount') }">
-  <span class="input-group-addon">.00</span>
-</div>
-
-
-<span v-show="false" class="has-error alert alert-danger help-block">{{ errors.first('amount') }}</span>
-</div>
+    <div class="col-md-6 col-md-offset-3">
+    <div class="input-group">
+        <span class="input-group-addon">KSh</span>
+                <input type="text" name="amount" placeholder="Enter amount" v-model="amount"  v-on:keyup="clearError"  v-validate="'numeric|max_value:100000'" :class="{'form-control': true, 'has-error': errors.has('amount') }">
+        <span class="input-group-addon">.00</span>
+    </div>
+    <span v-show="false" class="has-error alert alert-danger help-block">{{ errors.first('amount') }}</span>
+    </div>
 </form>
 </div>
 </div>
