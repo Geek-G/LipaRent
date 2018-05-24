@@ -49933,6 +49933,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49941,7 +49947,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            status: null,
+            countyset: false,
+            townset: false,
+            countyid: null,
+            townid: null,
             counties: [],
             property_types: [],
             towns: [],
@@ -49964,15 +49973,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         loadCounties: function loadCounties() {
             var counties = this.counties;
             var hii = this;
-            axios.get('http://liparent.com/api/property').then(function (response) {
-                hii.counties = response.data.data;
-                console.log(hii.counties);
+            axios.get('http://liparent.com/api/location/county').then(function (response) {
+                hii.counties = response.data;
+                //console.log(hii.counties)
             }).catch(function (error) {
                 console.log(error);
             });
         },
         loadPropertyTypes: function loadPropertyTypes() {
-            //console.log(this.stuff) 
+            var property_types = this.property_types;
+            var hii = this;
+            axios.get('http://liparent.com/api/property/type').then(function (response) {
+                hii.property_types = response.data;
+                alert(property_types);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        loadTowns: function loadTowns(countyid) {
+            var property_types = this.property_types;
+            var hii = this;
+            axios.get('http://liparent.com/api/property/type').then(function (response) {
+                hii.property_types = response.data;
+                alert(property_types);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        loadStreets: function loadStreets() {
+            var property_types = this.property_types;
+            var hii = this;
+            axios.get('http://liparent.com/api/property/type').then(function (response) {
+                hii.property_types = response.data;
+                alert(property_types);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        gettowns: function gettowns() {
+            this.countyset = true;
+            this.countyid = 1;
+            this.gettowns(countyid);
         }
     },
     computed: {
@@ -50090,7 +50131,33 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: " control-label", attrs: { for: "type" } },
+                  [_vm._v("Property Type")]
+                ),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { id: "type", name: "type" }
+                    },
+                    _vm._l(_vm.property_types, function(property_type) {
+                      return _c(
+                        "option",
+                        {
+                          key: property_type.id,
+                          domProps: { value: property_type.id }
+                        },
+                        [_vm._v(_vm._s(property_type.name))]
+                      )
+                    })
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c(
@@ -50104,7 +50171,8 @@ var render = function() {
                     "select",
                     {
                       staticClass: "form-control",
-                      attrs: { id: "county", name: "county" }
+                      attrs: { id: "county", name: "county" },
+                      on: { blur: _vm.gettowns }
                     },
                     _vm._l(_vm.counties, function(county) {
                       return _c(
@@ -50116,6 +50184,8 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c(
@@ -50229,15 +50299,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { staticClass: " control-label", attrs: { for: "type" } }, [
-        _vm._v("Property Type")
+        _vm._v("Town")
       ]),
       _vm._v(" "),
       _c("div", {}, [
-        _c(
-          "select",
-          { staticClass: "form-control", attrs: { id: "type", name: "type" } },
-          [_c("option", { attrs: { value: "1" } }, [_vm._v("1")])]
-        )
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", name: "town", id: "town" }
+        })
       ])
     ])
   },

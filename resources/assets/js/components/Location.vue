@@ -23,17 +23,23 @@
                 <label for="type" class=" control-label">Property Type</label>
                 <div class="">
                     <select id="type" name="type" class="form-control">
-                        <option value="1">1</option>	
+                       <option v-for="property_type in property_types " :key="property_type.id" v-bind:value="property_type.id">{{property_type.name}}</option>	
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="type" class=" control-label">County</label>
+                <div class="">
+                    <select id="county" name="county" class="form-control" v-on:blur="gettowns">
+                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
                     </select>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="type" class=" control-label">County</label>
+                <label for="type" class=" control-label">Town</label>
                 <div class="">
-                    <select id="county" name="county" class="form-control">
-                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
-                    </select>
+                    <input type="text" name="town" id="town" class="form-control">
                 </div>
 			</div>
             
@@ -79,7 +85,10 @@
             this.loadPropertyTypes();
         },
        data() { return { 
-            status:null,
+            countyset:false,
+            townset:false,
+            countyid:null,
+            townid:null,
             counties:[],
             property_types:[],
             towns:[],
@@ -101,10 +110,10 @@
         loadCounties(){
             var counties=this.counties;
             var hii=this;
-            axios.get('http://liparent.com/api/property')
+            axios.get('http://liparent.com/api/location/county')
             .then((response) => {
-                    hii.counties = response.data.data;
-                    console.log(hii.counties)
+                    hii.counties = response.data;
+                    //console.log(hii.counties)
                 })
             .catch(function(error){
                console.log(error); 
@@ -112,7 +121,50 @@
         },
 
         loadPropertyTypes(){
-            //console.log(this.stuff) 
+            var property_types=this.property_types;
+            var hii=this;
+            axios.get('http://liparent.com/api/property/type')
+            .then((response) => {
+                    hii.property_types = response.data;
+                    alert(property_types)
+                })
+            .catch(function(error){
+               console.log(error); 
+            }) 
+        },
+
+        
+        loadTowns(countyid){
+            var property_types=this.property_types;
+            var hii=this;
+            axios.get('http://liparent.com/api/property/type')
+            .then((response) => {
+                    hii.property_types = response.data;
+                    alert(property_types)
+                })
+            .catch(function(error){
+               console.log(error); 
+            }) 
+        },
+
+        loadStreets(){
+            var property_types=this.property_types;
+            var hii=this;
+            axios.get('http://liparent.com/api/property/type')
+            .then((response) => {
+                    hii.property_types = response.data;
+                    alert(property_types)
+                })
+            .catch(function(error){
+               console.log(error); 
+            }) 
+        },
+
+        gettowns(){
+            this.countyset=true
+            this.countyid=1;
+            this.gettowns(countyid);
+
         }
                 
        },
