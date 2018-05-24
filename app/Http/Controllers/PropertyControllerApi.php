@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Property;
+use App\PropertyType;
 use App\Http\Requests;
 use Illuminate\Http\Response;
 use App\Http\Resources\Property as PropertyResource;
+use App\Http\Resources\PropertyType as PropertyTypeResource;
 
 
 class PropertyControllerApi extends Controller
@@ -17,6 +19,15 @@ class PropertyControllerApi extends Controller
     {
         $properties = Property::paginate(15);
         return PropertyResource::collection($properties);
+           
+         //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
+    }
+
+    public function types()
+    {
+        //$properties = Property::paginate(15);
+        $types= PropertyType::all(); 
+        return PropertyTypeResource::collection($types);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }

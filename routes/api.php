@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/property','PropertyControllerApi@index');
+Route::get('/property/type','PropertyControllerApi@types');
 Route::get('/property/{id}','PropertyControllerApi@show');
 Route::post('/property','PropertyControllerApi@store');
 Route::put('/property','PropertyControllerApi@update');
