@@ -32,7 +32,7 @@
                 <label for="type" class=" control-label">County</label>
                 <div class="">
                     <select id="county" name="county" class="form-control">
-                        <option value="1">1</option>	
+                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
                     </select>
                 </div>
 			</div>
@@ -76,14 +76,14 @@
     export default {
         mounted() {
             this.loadCounties();
-            this.printCounties();
+            this.loadPropertyTypes();
         },
        data() { return { 
-            name:'',
-            description:'',
-            status:'',
-            stuff:[]
-
+            status:null,
+            counties:[],
+            property_types:[],
+            towns:[],
+            streets:[],
        }
        },
        methods: {
@@ -99,18 +99,20 @@
         });
         },
         loadCounties(){
-            this.status='Loading...';
+            var counties=this.counties;
+            var hii=this;
             axios.get('http://liparent.com/api/property')
-            .then(function(response){
-                console.log(response.data.data[0].name); 
-            })
+            .then((response) => {
+                    hii.counties = response.data.data;
+                    console.log(hii.counties)
+                })
             .catch(function(error){
                console.log(error); 
             })
         },
 
-        printCounties(){
-            console.log(this.stuff)
+        loadPropertyTypes(){
+            //console.log(this.stuff) 
         }
                 
        },
