@@ -48752,9 +48752,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -48830,21 +48827,6 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("span", { domProps: { textContent: _vm._s(_vm.msg) } }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "text" },
-              on: {
-                input: function($event) {
-                  _vm.cssString = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              class: _vm.cssString,
-              attrs: { type: "text" },
-              domProps: { value: _vm.cssString }
-            }),
             _vm._v(" "),
             _c("div", { staticClass: "panel panel-default" }, [
               _c("div", { staticClass: "panel-heading" }, [
@@ -49263,9 +49245,11 @@ var render = function() {
                   }
                 },
                 _vm._l(_vm.options, function(option) {
-                  return _c("option", { domProps: { value: option.value } }, [
-                    _vm._v(_vm._s(option.text))
-                  ])
+                  return _c(
+                    "option",
+                    { key: option.id, domProps: { value: option.value } },
+                    [_vm._v(_vm._s(option.text))]
+                  )
                 })
               ),
               _vm._v(" "),
@@ -49939,6 +49923,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49950,6 +49944,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             countyset: false,
             townset: false,
             countyid: null,
+            town_name: null,
             townid: null,
             counties: [],
             property_types: [],
@@ -49985,21 +49980,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var hii = this;
             axios.get('http://liparent.com/api/property/type').then(function (response) {
                 hii.property_types = response.data;
-                alert(property_types);
+                //alert(property_types)
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        loadTowns: function loadTowns(countyid) {
-            var property_types = this.property_types;
+        loadTowns: function loadTowns() {
+            var towns = this.towns;
             var hii = this;
-            axios.get('http://liparent.com/api/property/type').then(function (response) {
-                hii.property_types = response.data;
-                alert(property_types);
+            axios.get('http://liparent.com/api/location/town').then(function (response) {
+                hii.towns = response.data;
+                //alert(response.data )
             }).catch(function (error) {
                 console.log(error);
             });
         },
+
+
         loadStreets: function loadStreets() {
             var property_types = this.property_types;
             var hii = this;
@@ -50010,10 +50007,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
+
         gettowns: function gettowns() {
             this.countyset = true;
-            this.countyid = 1;
-            this.gettowns(countyid);
+            this.loadTowns();
         }
     },
     computed: {
@@ -50056,6 +50053,148 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: " control-label", attrs: { for: "type" } },
+                  [_vm._v("Property")]
+                ),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c(
+                    "select",
+                    {
+                      staticClass: "form-control",
+                      attrs: { id: "type", name: "type" }
+                    },
+                    _vm._l(_vm.property_types, function(property_type) {
+                      return _c(
+                        "option",
+                        {
+                          key: property_type.id,
+                          domProps: { value: property_type.id }
+                        },
+                        [_vm._v(_vm._s(property_type.name))]
+                      )
+                    })
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  { staticClass: " control-label", attrs: { for: "type" } },
+                  [_vm._v("County")]
+                ),
+                _vm._v(" "),
+                _c("div", {}, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.countyid,
+                          expression: "countyid"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "county", name: "county" },
+                      on: {
+                        blur: _vm.gettowns,
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.countyid = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    _vm._l(_vm.counties, function(county) {
+                      return _c(
+                        "option",
+                        { key: county.id, domProps: { value: county.id } },
+                        [_vm._v(_vm._s(county.name))]
+                      )
+                    })
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.countyset
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "label",
+                      { staticClass: " control-label", attrs: { for: "type" } },
+                      [_vm._v("Town")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", {}, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.town_name,
+                            expression: "town_name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "town", id: "town" },
+                        domProps: { value: _vm.town_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.town_name = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.towns.length
+                        ? _c("div", { staticClass: "panel-footer" }, [
+                            _c(
+                              "ul",
+                              { staticClass: "list-group" },
+                              _vm._l(_vm.towns, function(town) {
+                                return _c(
+                                  "li",
+                                  {
+                                    key: town.id,
+                                    staticClass: "list-group-item"
+                                  },
+                                  [_vm._v(_vm._s(town.name))]
+                                )
+                              })
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.townset
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "label",
+                      { staticClass: " control-label", attrs: { for: "type" } },
+                      [_vm._v("Town")]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c(
                   "label",
@@ -50129,138 +50268,6 @@ var render = function() {
                     [_vm._v(_vm._s(_vm.errors.first("name")))]
                   )
                 ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  { staticClass: " control-label", attrs: { for: "type" } },
-                  [_vm._v("Property Type")]
-                ),
-                _vm._v(" "),
-                _c("div", {}, [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "form-control",
-                      attrs: { id: "type", name: "type" }
-                    },
-                    _vm._l(_vm.property_types, function(property_type) {
-                      return _c(
-                        "option",
-                        {
-                          key: property_type.id,
-                          domProps: { value: property_type.id }
-                        },
-                        [_vm._v(_vm._s(property_type.name))]
-                      )
-                    })
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  { staticClass: " control-label", attrs: { for: "type" } },
-                  [_vm._v("County")]
-                ),
-                _vm._v(" "),
-                _c("div", {}, [
-                  _c(
-                    "select",
-                    {
-                      staticClass: "form-control",
-                      attrs: { id: "county", name: "county" },
-                      on: { blur: _vm.gettowns }
-                    },
-                    _vm._l(_vm.counties, function(county) {
-                      return _c(
-                        "option",
-                        { key: county.id, domProps: { value: county.id } },
-                        [_vm._v(_vm._s(county.name))]
-                      )
-                    })
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: " control-label",
-                    attrs: { for: "description" }
-                  },
-                  [_vm._v("Description")]
-                ),
-                _vm._v(" "),
-                _c("div", {}, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.description,
-                        expression: "description"
-                      },
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:8|max:100",
-                        expression: "'required|min:8|max:100'"
-                      }
-                    ],
-                    class: {
-                      "form-control": true,
-                      "has-error": _vm.errors.has("description")
-                    },
-                    attrs: {
-                      name: "description",
-                      type: "text",
-                      placeholder: "enter description"
-                    },
-                    domProps: { value: _vm.description },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.description = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("i", {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("description"),
-                        expression: "errors.has('description')"
-                      }
-                    ],
-                    staticClass: "fa fa-warning"
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("description"),
-                          expression: "errors.has('description')"
-                        }
-                      ],
-                      staticClass: "help-block has-error"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("description")))]
-                  )
-                ])
               ])
             ]),
             _vm._v(" "),
@@ -50297,17 +50304,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: " control-label", attrs: { for: "type" } }, [
-        _vm._v("Town")
-      ]),
-      _vm._v(" "),
-      _c("div", {}, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", name: "town", id: "town" }
-        })
-      ])
+    return _c("div", {}, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", name: "town", id: "town" }
+      })
     ])
   },
   function() {

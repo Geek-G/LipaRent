@@ -10,6 +10,49 @@
 
       <form @submit.prevent="validateBeforeSubmit">
         <div class="modal-body">
+
+
+            <div class="form-group">
+                <label for="type" class=" control-label">Property</label>
+                <div class="">
+                    <select id="type" name="type" class="form-control">
+                       <option v-for="property_type in property_types " :key="property_type.id" v-bind:value="property_type.id">{{property_type.name}}</option>	
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label for="type" class=" control-label">County</label>
+                <div class="">
+                    <select id="county" name="county" class="form-control" v-model="countyid" v-on:blur="gettowns">
+                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
+                    </select>
+                </div>
+            </div>
+            
+            <div v-if="countyset" class="form-group">
+                <label for="type" class=" control-label">Town</label>
+                <div class="">
+                    <input type="text" name="town" id="town" class="form-control" v-model="town_name">
+                    <div v-if="towns.length" class="panel-footer">
+                        <ul class="list-group">
+                            <li v-for="town in towns" :key="town.id" class="list-group-item">{{town.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+			</div>
+            <div v-if="townset" class="form-group">
+                <label for="type" class=" control-label">Town</label>
+                <div class="">
+                    <input type="text" name="town" id="town" class="form-control">
+                </div>
+			</div>
+                        
+            
+            
             <div class="form-group">
                 <label for="name" class="control-label">Property Name</label>
                 <div class="">
@@ -19,39 +62,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="type" class=" control-label">Property Type</label>
-                <div class="">
-                    <select id="type" name="type" class="form-control">
-                       <option v-for="property_type in property_types " :key="property_type.id" v-bind:value="property_type.id">{{property_type.name}}</option>	
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="type" class=" control-label">County</label>
-                <div class="">
-                    <select id="county" name="county" class="form-control" v-on:blur="gettowns">
-                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="type" class=" control-label">Town</label>
-                <div class="">
-                    <input type="text" name="town" id="town" class="form-control">
-                </div>
-			</div>
-            
-		    <div class="form-group">
-		        <label for="description" class=" control-label">Description</label>
-                <div class="">
-                    <textarea name="description" v-model="description" v-validate="'required|min:8|max:100'" :class="{'form-control': true, 'has-error': errors.has('description') }" type="text" placeholder="enter description" ></textarea> 
-                    <i v-show="errors.has('description')" class="fa fa-warning"></i>
-                    <span v-show="errors.has('description')" class="help-block has-error">{{ errors.first('description') }}</span>
-       
-                </div>
-		    </div>
 
         </div>
       <div class="modal-footer">
@@ -88,6 +98,7 @@
             countyset:false,
             townset:false,
             countyid:null,
+            town_name:null,
             townid:null,
             counties:[],
             property_types:[],
@@ -126,7 +137,7 @@
             axios.get('http://liparent.com/api/property/type')
             .then((response) => {
                     hii.property_types = response.data;
-                    alert(property_types)
+                    //alert(property_types)
                 })
             .catch(function(error){
                console.log(error); 
@@ -134,36 +145,35 @@
         },
 
         
-        loadTowns(countyid){
-            var property_types=this.property_types;
+        loadTowns(){
+            var towns=this.towns;
             var hii=this;
-            axios.get('http://liparent.com/api/property/type')
+            axios.get('http://liparent.com/api/location/town')
             .then((response) => {
-                    hii.property_types = response.data;
-                    alert(property_types)
+                    hii.towns = response.data;
+                    //alert(response.data )
                 })
             .catch(function(error){
                console.log(error); 
             }) 
         },
 
-        loadStreets(){
-            var property_types=this.property_types;
-            var hii=this;
-            axios.get('http://liparent.com/api/property/type')
-            .then((response) => {
-                    hii.property_types = response.data;
-                    alert(property_types)
-                })
-            .catch(function(error){
-               console.log(error); 
-            }) 
-        },
+           loadStreets: function () {
+               var property_types = this.property_types;
+               var hii = this;
+               axios.get('http://liparent.com/api/property/type')
+                   .then((response) => {
+                       hii.property_types = response.data;
+                       alert(property_types)
+                   })
+                   .catch(function (error) {
+                       console.log(error);
+                   })
+           },
 
         gettowns(){
             this.countyset=true
-            this.countyid=1;
-            this.gettowns(countyid);
+            this.loadTowns();
 
         }
                 

@@ -1,4 +1,4 @@
-@extends('layouts.masternav')
+@extends('tenant.dash')
 
 @section('content')
 <section class="content">

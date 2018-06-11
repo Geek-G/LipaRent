@@ -21,7 +21,7 @@ Route::get('/location/county','LocationControllerApi@getCounties');
 Route::get('/location/town','LocationControllerApi@getTowns');
 Route::get('/location/street','LocationControllerApi@getStreets');
 
-Route::get('/property','PropertyControllerApi@index');
+Route::get('/property','Api\PropertyControllerApi@index');
 Route::get('/property/type','PropertyControllerApi@types');
 Route::get('/property/{id}','PropertyControllerApi@show');
 Route::post('/property','PropertyControllerApi@store');

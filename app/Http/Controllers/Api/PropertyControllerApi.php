@@ -1,50 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Property;
-use App\County;
-use App\Town;
-use App\Street;
 use App\PropertyType;
 use App\Http\Requests;
 use Illuminate\Http\Response;
-use App\Http\Resources\Street as StreetResource;
-use App\Http\Resources\Town as TownResource;
-use App\Http\Resources\County as CountyResource;
+use App\Http\Resources\Property as PropertyResource;
 use App\Http\Resources\PropertyType as PropertyTypeResource;
 
 
-class LocationControllerApi extends Controller
+class PropertyControllerApi extends Controller
 {  
     
 
-    public function getCounties()
+    public function index()
     {
-        $counties= County::all();
-        //the returned counties should be specific to landlords home country
-        return CountyResource::collection($counties);
-           
-         //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
-    }
-
-    
-    public function getTowns()
-    {
-        $towns= Town::all();
-        //the returned counties should be specific to the selected county
-        return TownResource::collection($towns);
-           
-         //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
-    }
-
-
-    public function getStreets()
-    {
-        $streets= Street::all();
-        //the returned counties should be specific to selected town
-        return StreetResource::collection($streets);
+        $properties = Property::paginate(15);
+        return PropertyResource::collection($properties);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }

@@ -9,9 +9,6 @@
                         {{msg}}
                         <button v-on:click="changeSomething"> Change something </button>
                         <span v-text="msg"></span>
-                        <input type="text" v-on:input="cssString=$event.target.value"></span>
-
-                        <input type="text"  v-bind:class="cssString" v-bind:value="cssString"></span>
                         
                         <div class="panel panel-default">
                             <div class="panel-heading">Computed Properties</div>
@@ -72,7 +69,7 @@
                             <p>{{selected}}</p>
                              <hr/>
                             <select v-model="selectedOpt">
-                                <option v-for="option in options" v-bind:value="option.value">{{option.text}}</option>
+                                <option v-for="option in options"  :key="option.id" v-bind:value="option.value">{{option.text}}</option>
                             </select>
                             <p>{{selectedOpt}}</p>
                         </form>
