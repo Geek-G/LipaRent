@@ -49,27 +49,18 @@ class LocationControllerApi extends Controller
     public function searchTown(Request $request)
     {    $query= $request->get('query');
          $county_id= $request->get('county_id');
-         //$towns= Town::all();
          $towns= DB::table('towns')->where('county_id',$county_id)->where('name','like','%'.$query.'%')->get();
-    //     $id=Input::get('countyid');
-    //     $town=$request->town;
-    //     $towns = DB::table('towns')->where('county_id', $id)->get();
-    //    // $towns = Town::where('county_id', $id)->get();
-        //$towns = Town::all();
-        //the returned counties should be specific to the selected county
         return TownResource::collection($towns);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
             
-         
     public function searchStreet(Request $request)
     {    $query= $request->get('query');
-         $county_id= $request->get('town_id');
-         //$towns= Town::all();
+         $town_id= $request->get('town_id');
          $streets= DB::table('streets')->where('town_id',$town_id)->where('name','like','%'.$query.'%')->get();
-         return Street::collection($streets);
+        return StreetResource::collection($streets);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }

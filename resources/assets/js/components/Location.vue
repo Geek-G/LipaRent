@@ -36,7 +36,7 @@
             <div v-if="countyset" class="form-group">
                 <label for="type" class=" control-label">Town</label>
                 <div class="">
-                    <input type="text" name="town" id="town" class="form-control" v-model="town_query" v-on:keyup="loadTowns">
+                    <input type="text" name="town" id="town" class="form-control" v-model="town_query" v-on:keyup="loadTowns" v-on:blur="getstreets">
                     <div v-if="towns.length" class="panel-footer">
                         <ul class="list-group" v-show="town_suggestions">
                             <li v-for="town in towns" :key="town.id" class="list-group-item" v-on:click="fillTown">{{town.name}} </li>
@@ -48,10 +48,10 @@
             <div v-if="townset" class="form-group">
                 <label for="type" class=" control-label">Street</label>
                 <div class="">
-                    <input type="text" name="town" id="town" class="form-control" v-model="street_query" v-on:keyup="loadTowns">
+                    <input type="text" name="street" id="street" class="form-control" v-model="street_query" v-on:keyup="loadStreets" >
                     <div v-if="streets.length" class="panel-footer">
-                        <ul class="list-group" v-show="street_suggestions">
-                            <li v-for="street in streets" :key="street.id" class="list-group-item" v-on:click="fillStreet">{{street.name}} </li>
+                        <ul class="list-group" v-if="street_suggestions">
+                            <li v-for="street in streets" :key="street.id" class="list-group-item">{{street.name}} </li>
                         </ul>
                     </div>
                 </div>
@@ -168,8 +168,8 @@
             var hii=this;
             axios.post('http://liparent.com/api/location/street/search',{query:hii.street_query, town_id:this.townid})
             .then((response) => {
-                    hii.towns = response.data;
-                    this.town_suggestions=true;
+                    hii.streets = response.data;
+                    hii.street_suggestions=true;
                     //console.log(response.data )
                 })
             .catch(function(error){
@@ -185,6 +185,7 @@
         },
         getstreets(){
             this.townset=true
+            this.street_suggestions=true
             this.loadStreets();
 
         },

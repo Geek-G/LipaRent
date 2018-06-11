@@ -50003,13 +50003,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         loadStreets: function loadStreets() {
-            var _this2 = this;
-
             var streets = this.streets;
             var hii = this;
             axios.post('http://liparent.com/api/location/street/search', { query: hii.street_query, town_id: this.townid }).then(function (response) {
-                hii.towns = response.data;
-                _this2.town_suggestions = true;
+                hii.streets = response.data;
+                hii.street_suggestions = true;
                 //console.log(response.data )
             }).catch(function (error) {
                 console.log(error);
@@ -50021,6 +50019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getstreets: function getstreets() {
             this.townset = true;
+            this.street_suggestions = true;
             this.loadStreets();
         },
         fillTown: function fillTown() {
@@ -50170,6 +50169,7 @@ var render = function() {
                         domProps: { value: _vm.town_query },
                         on: {
                           keyup: _vm.loadTowns,
+                          blur: _vm.getstreets,
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -50231,10 +50231,10 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", name: "town", id: "town" },
+                        attrs: { type: "text", name: "street", id: "street" },
                         domProps: { value: _vm.street_query },
                         on: {
-                          keyup: _vm.loadTowns,
+                          keyup: _vm.loadStreets,
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -50246,31 +50246,22 @@ var render = function() {
                       _vm._v(" "),
                       _vm.streets.length
                         ? _c("div", { staticClass: "panel-footer" }, [
-                            _c(
-                              "ul",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.street_suggestions,
-                                    expression: "street_suggestions"
-                                  }
-                                ],
-                                staticClass: "list-group"
-                              },
-                              _vm._l(_vm.streets, function(street) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: street.id,
-                                    staticClass: "list-group-item",
-                                    on: { click: _vm.fillStreet }
-                                  },
-                                  [_vm._v(_vm._s(street.name) + " ")]
+                            _vm.street_suggestions
+                              ? _c(
+                                  "ul",
+                                  { staticClass: "list-group" },
+                                  _vm._l(_vm.streets, function(street) {
+                                    return _c(
+                                      "li",
+                                      {
+                                        key: street.id,
+                                        staticClass: "list-group-item"
+                                      },
+                                      [_vm._v(_vm._s(street.name) + " ")]
+                                    )
+                                  })
                                 )
-                              })
-                            )
+                              : _vm._e()
                           ])
                         : _vm._e()
                     ])
