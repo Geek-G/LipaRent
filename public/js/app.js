@@ -49933,6 +49933,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49941,15 +49944,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            town_query: '',
             countyset: false,
             townset: false,
             countyid: null,
-            town_name: null,
             townid: null,
             counties: [],
             property_types: [],
             towns: [],
-            streets: []
+            streets: [],
+            suggestions: false
         };
     },
 
@@ -49986,31 +49990,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         loadTowns: function loadTowns() {
+            var _this = this;
+
             var towns = this.towns;
             var hii = this;
-            axios.get('http://liparent.com/api/location/town').then(function (response) {
+            axios.post('http://liparent.com/api/location/town/search', { query: hii.town_query, county_id: this.countyid }).then(function (response) {
                 hii.towns = response.data;
-                //alert(response.data )
+                _this.town_suggestions = true;
+                //console.log(response.data )
             }).catch(function (error) {
                 console.log(error);
             });
         },
-
-
         loadStreets: function loadStreets() {
-            var property_types = this.property_types;
+            var _this2 = this;
+
+            var streets = this.streets;
             var hii = this;
-            axios.get('http://liparent.com/api/property/type').then(function (response) {
-                hii.property_types = response.data;
-                alert(property_types);
+            axios.post('http://liparent.com/api/location/street/search', { query: hii.street_query, town_id: this.townid }).then(function (response) {
+                hii.towns = response.data;
+                _this2.town_suggestions = true;
+                //console.log(response.data )
             }).catch(function (error) {
                 console.log(error);
             });
         },
-
         gettowns: function gettowns() {
             this.countyset = true;
             this.loadTowns();
+        },
+        getstreets: function getstreets() {
+            this.townset = true;
+            this.loadStreets();
+        },
+        fillTown: function fillTown() {
+            this.town_query = this.towns[0].name;
+            this.town_suggestions = false;
         }
     },
     computed: {
@@ -50103,20 +50118,22 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: { id: "county", name: "county" },
                       on: {
-                        blur: _vm.gettowns,
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.countyid = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
+                        change: [
+                          function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.countyid = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                          _vm.gettowns
+                        ]
                       }
                     },
                     _vm._l(_vm.counties, function(county) {
@@ -50144,19 +50161,20 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.town_name,
-                            expression: "town_name"
+                            value: _vm.town_query,
+                            expression: "town_query"
                           }
                         ],
                         staticClass: "form-control",
                         attrs: { type: "text", name: "town", id: "town" },
-                        domProps: { value: _vm.town_name },
+                        domProps: { value: _vm.town_query },
                         on: {
+                          keyup: _vm.loadTowns,
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
-                            _vm.town_name = $event.target.value
+                            _vm.town_query = $event.target.value
                           }
                         }
                       }),
@@ -50165,15 +50183,26 @@ var render = function() {
                         ? _c("div", { staticClass: "panel-footer" }, [
                             _c(
                               "ul",
-                              { staticClass: "list-group" },
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.town_suggestions,
+                                    expression: "town_suggestions"
+                                  }
+                                ],
+                                staticClass: "list-group"
+                              },
                               _vm._l(_vm.towns, function(town) {
                                 return _c(
                                   "li",
                                   {
                                     key: town.id,
-                                    staticClass: "list-group-item"
+                                    staticClass: "list-group-item",
+                                    on: { click: _vm.fillTown }
                                   },
-                                  [_vm._v(_vm._s(town.name))]
+                                  [_vm._v(_vm._s(town.name) + " ")]
                                 )
                               })
                             )
@@ -50188,10 +50217,63 @@ var render = function() {
                     _c(
                       "label",
                       { staticClass: " control-label", attrs: { for: "type" } },
-                      [_vm._v("Town")]
+                      [_vm._v("Street")]
                     ),
                     _vm._v(" "),
-                    _vm._m(1)
+                    _c("div", {}, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.street_query,
+                            expression: "street_query"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", name: "town", id: "town" },
+                        domProps: { value: _vm.street_query },
+                        on: {
+                          keyup: _vm.loadTowns,
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.street_query = $event.target.value
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.streets.length
+                        ? _c("div", { staticClass: "panel-footer" }, [
+                            _c(
+                              "ul",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.street_suggestions,
+                                    expression: "street_suggestions"
+                                  }
+                                ],
+                                staticClass: "list-group"
+                              },
+                              _vm._l(_vm.streets, function(street) {
+                                return _c(
+                                  "li",
+                                  {
+                                    key: street.id,
+                                    staticClass: "list-group-item",
+                                    on: { click: _vm.fillStreet }
+                                  },
+                                  [_vm._v(_vm._s(street.name) + " ")]
+                                )
+                              })
+                            )
+                          ])
+                        : _vm._e()
+                    ])
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -50271,7 +50353,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2)
+            _vm._m(1)
           ]
         )
       ])
@@ -50298,17 +50380,6 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Add House")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "town", id: "town" }
-      })
     ])
   },
   function() {

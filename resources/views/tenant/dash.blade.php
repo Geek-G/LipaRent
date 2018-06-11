@@ -51,7 +51,7 @@
                 <img src="{{asset('images/user.jpg')}}" class="img-circle" alt="User Image">
                 <p>
                     {{ Auth::user()->name }}
-                  <small>Landlord</small>
+                  <small>Tenant</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -102,17 +102,17 @@
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="/home"><i class="fa fa-building-o"></i> <span>Properties</span></a></li>
-        <li><a href="/house"><i class="fa fa-home"></i> <span>Houses</span></a></li>
+        <li><a href="/home"><i class="fa fa-building-o"></i> <span>Pay Rent</span></a></li>
+        <li><a href="/house"><i class="fa fa-home"></i> <span>My Houses</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-bar-chart"></i> <span>Reports</span>
+          <a href="#"><i class="fa fa-bar-chart"></i> <span>More</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Payments</a></li>
-            <li><a href="#">Staticstics</a></li>
+            <li><a href="#">Search House</a></li>
+            <li><a href="#">Profile</a></li>
           </ul>
         </li>
       </ul>

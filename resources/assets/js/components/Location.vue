@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label for="type" class=" control-label">County</label>
                 <div class="">
-                    <select id="county" name="county" class="form-control" v-model="countyid" v-on:blur="gettowns">
+                    <select id="county" name="county" class="form-control" v-model="countyid" v-on:change="gettowns">
                         <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
                     </select>
                 </div>
@@ -36,22 +36,26 @@
             <div v-if="countyset" class="form-group">
                 <label for="type" class=" control-label">Town</label>
                 <div class="">
-                    <input type="text" name="town" id="town" class="form-control" v-model="town_name">
+                    <input type="text" name="town" id="town" class="form-control" v-model="town_query" v-on:keyup="loadTowns">
                     <div v-if="towns.length" class="panel-footer">
-                        <ul class="list-group">
-                            <li v-for="town in towns" :key="town.id" class="list-group-item">{{town.name}}</li>
+                        <ul class="list-group" v-show="town_suggestions">
+                            <li v-for="town in towns" :key="town.id" class="list-group-item" v-on:click="fillTown">{{town.name}} </li>
                         </ul>
                     </div>
                 </div>
-			</div>
-            <div v-if="townset" class="form-group">
-                <label for="type" class=" control-label">Town</label>
-                <div class="">
-                    <input type="text" name="town" id="town" class="form-control">
-                </div>
-			</div>
-                        
+            </div>
             
+            <div v-if="townset" class="form-group">
+                <label for="type" class=" control-label">Street</label>
+                <div class="">
+                    <input type="text" name="town" id="town" class="form-control" v-model="street_query" v-on:keyup="loadTowns">
+                    <div v-if="streets.length" class="panel-footer">
+                        <ul class="list-group" v-show="street_suggestions">
+                            <li v-for="street in streets" :key="street.id" class="list-group-item" v-on:click="fillStreet">{{street.name}} </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
             <div class="form-group">
                 <label for="name" class="control-label">Property Name</label>
@@ -61,7 +65,6 @@
                     <span v-show="errors.has('name')" class="help-block has-error">{{ errors.first('name') }}</span>
                 </div>
             </div>
-
 
         </div>
       <div class="modal-footer">
@@ -95,15 +98,16 @@
             this.loadPropertyTypes();
         },
        data() { return { 
+            town_query:'',
             countyset:false,
             townset:false,
             countyid:null,
-            town_name:null,
             townid:null,
             counties:[],
             property_types:[],
             towns:[],
             streets:[],
+            suggestions:false
        }
        },
        methods: {
@@ -148,33 +152,46 @@
         loadTowns(){
             var towns=this.towns;
             var hii=this;
-            axios.get('http://liparent.com/api/location/town')
+            axios.post('http://liparent.com/api/location/town/search',{query:hii.town_query, county_id:this.countyid})
             .then((response) => {
                     hii.towns = response.data;
-                    //alert(response.data )
+                    this.town_suggestions=true;
+                    //console.log(response.data )
                 })
             .catch(function(error){
                console.log(error); 
             }) 
         },
 
-           loadStreets: function () {
-               var property_types = this.property_types;
-               var hii = this;
-               axios.get('http://liparent.com/api/property/type')
-                   .then((response) => {
-                       hii.property_types = response.data;
-                       alert(property_types)
-                   })
-                   .catch(function (error) {
-                       console.log(error);
-                   })
-           },
+            loadStreets(){
+            var streets=this.streets;
+            var hii=this;
+            axios.post('http://liparent.com/api/location/street/search',{query:hii.street_query, town_id:this.townid})
+            .then((response) => {
+                    hii.towns = response.data;
+                    this.town_suggestions=true;
+                    //console.log(response.data )
+                })
+            .catch(function(error){
+               console.log(error); 
+            }) 
+        },
+
 
         gettowns(){
             this.countyset=true
             this.loadTowns();
 
+        },
+        getstreets(){
+            this.townset=true
+            this.loadStreets();
+
+        },
+
+        fillTown(){
+            this.town_query=this.towns[0].name;
+            this.town_suggestions=false
         }
                 
        },
