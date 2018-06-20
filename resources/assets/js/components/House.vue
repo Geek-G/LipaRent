@@ -12,8 +12,8 @@
            <div class="form-group">
                 <label for="property" class=" control-label">Property</label>
                 <div class="">
-                    <select id="property" name="property" class="form-control">
-                       <option v-for="property_type in property_types " :key="property_type.id" v-bind:value="property_type.id">{{property_type.name}}</option>	
+                    <select id="property" name="property" class="form-control" v-model="house.property_id">
+                       <option v-for="property in properties " :key="property.key" v-bind:value="property.id">{{property.name}}</option>	
                     </select>
                 </div>
             </div>
@@ -21,8 +21,8 @@
             <div class="form-group">
                 <label for="type" class=" control-label">Type</label>
                 <div class="">
-                    <select id="type" name="type" class="form-control" v-model="countyid" v-on:change="gettowns">
-                        <option v-for="county in counties" :key="county.id" v-bind:value="county.id">{{county.name}}</option>	
+                    <select id="type" name="type" class="form-control" v-model="house.housetype_id">
+                        <option v-for="housetype in housetypes" :key="housetype.key" v-bind:value="housetype.id">{{housetype.name}}</option>	
                     </select>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <div class="">
                         <div class="form-group input-group  ">
                             <span class="input-group-addon">KSh</span>
-                            <input id="price" type="text" class="form-control" name="price" required autofocus>
+                            <input id="price" type="text" class="form-control" name="price" required autofocus v-model="house.price">
                             <span class="input-group-addon">.00</span>
                         </div>
                             <span class="help-block">
@@ -45,12 +45,19 @@
 		    <div class="form-group">
 		        <label for="name" class="control-label">Name</label>
                     <div class="">
-                            <input id="name" type="text" class="form-control" name="name" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" required autofocus v-model="house.name">
                             <span class="help-block">
                                 <strong>error</strong>
                             </span>
                     </div>
             </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Multiple Units</label>
+            </div>
+
+
 
         </div>
       <div class="modal-footer">
@@ -81,39 +88,42 @@
     export default {
         props: ['properties', 'housetypes'],
         mounted() {
-            this.loadCounties();
-            this.loadHouseTypes();
+        
         },
        data() { return { 
-            town_query:''
+           house:{
+               name:'',
+               price:'',
+               property_id:'',
+               housetype_id:''
+           },
+            show_modal:true
        }
        },
        methods: {
         validateBeforeSubmit() {
             this.$validator.validateAll().then((result) => {
             if (result) {
-            // eslint-disable-next-line
-            alert('Form Submitted!');
+            this.postHouse();
+            this.closeModal();
             return;
             }
 
             alert('Correct them errors!');
         });
         },
-        loadCounties(){
-            var counties=this.counties;
-            var hii=this;
-            axios.get('http://liparent.com/api/location/county')
+        postHouse(){
+            var vm= this
+            axios.post('http://liparent.com/api/newhouse',vm.house)
             .then((response) => {
-                    hii.counties = response.data;
-                    //console.log(hii.counties)
+                    alert('house added')
                 })
             .catch(function(error){
                console.log(error); 
             })
         },
-        loadHouseTypes(){
-            console.log(this.properties)
+        closeModal(){
+            $('#modal-default').modal('hide');
         },
         
     },

@@ -50541,43 +50541,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['properties', 'housetypes'],
-    mounted: function mounted() {
-        this.loadCounties();
-        this.loadHouseTypes();
-    },
+    mounted: function mounted() {},
     data: function data() {
         return {
-            town_query: ''
+            house: {
+                name: '',
+                price: '',
+                property_id: '',
+                housetype_id: ''
+            },
+            show_modal: true
         };
     },
 
     methods: {
         validateBeforeSubmit: function validateBeforeSubmit() {
+            var _this = this;
+
             this.$validator.validateAll().then(function (result) {
                 if (result) {
-                    // eslint-disable-next-line
-                    alert('Form Submitted!');
+                    _this.postHouse();
+                    _this.closeModal();
                     return;
                 }
 
                 alert('Correct them errors!');
             });
         },
-        loadCounties: function loadCounties() {
-            var counties = this.counties;
-            var hii = this;
-            axios.get('http://liparent.com/api/location/county').then(function (response) {
-                hii.counties = response.data;
-                //console.log(hii.counties)
+        postHouse: function postHouse() {
+            var vm = this;
+            axios.post('http://liparent.com/api/newhouse', vm.house).then(function (response) {
+                alert('house added');
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        loadHouseTypes: function loadHouseTypes() {
-            console.log(this.properties);
+        closeModal: function closeModal() {
+            $('#modal-default').modal('hide');
         }
     },
     computed: {
@@ -50701,17 +50711,44 @@ var render = function() {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.house.property_id,
+                            expression: "house.property_id"
+                          }
+                        ],
                         staticClass: "form-control",
-                        attrs: { id: "property", name: "property" }
+                        attrs: { id: "property", name: "property" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.house,
+                              "property_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
                       },
-                      _vm._l(_vm.property_types, function(property_type) {
+                      _vm._l(_vm.properties, function(property) {
                         return _c(
                           "option",
                           {
-                            key: property_type.id,
-                            domProps: { value: property_type.id }
+                            key: property.key,
+                            domProps: { value: property.id }
                           },
-                          [_vm._v(_vm._s(property_type.name))]
+                          [_vm._v(_vm._s(property.name))]
                         )
                       })
                     )
@@ -50733,48 +50770,140 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.countyid,
-                            expression: "countyid"
+                            value: _vm.house.housetype_id,
+                            expression: "house.housetype_id"
                           }
                         ],
                         staticClass: "form-control",
                         attrs: { id: "type", name: "type" },
                         on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.countyid = $event.target.multiple
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.house,
+                              "housetype_id",
+                              $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
-                            },
-                            _vm.gettowns
-                          ]
+                            )
+                          }
                         }
                       },
-                      _vm._l(_vm.counties, function(county) {
+                      _vm._l(_vm.housetypes, function(housetype) {
                         return _c(
                           "option",
-                          { key: county.id, domProps: { value: county.id } },
-                          [_vm._v(_vm._s(county.name))]
+                          {
+                            key: housetype.key,
+                            domProps: { value: housetype.id }
+                          },
+                          [_vm._v(_vm._s(housetype.name))]
                         )
                       })
                     )
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "control-label", attrs: { for: "price" } },
+                    [_vm._v("Price")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", {}, [
+                    _c("div", { staticClass: "form-group input-group  " }, [
+                      _c("span", { staticClass: "input-group-addon" }, [
+                        _vm._v("KSh")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.house.price,
+                            expression: "house.price"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "price",
+                          type: "text",
+                          name: "price",
+                          required: "",
+                          autofocus: ""
+                        },
+                        domProps: { value: _vm.house.price },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.house, "price", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "input-group-addon" }, [
+                        _vm._v(".00")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
+                ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "control-label", attrs: { for: "name" } },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", {}, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.house.name,
+                          expression: "house.name"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "name",
+                        type: "text",
+                        name: "name",
+                        required: "",
+                        autofocus: ""
+                      },
+                      domProps: { value: _vm.house.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.house, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
               ]),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(4)
             ]
           )
         ])
@@ -50808,60 +50937,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "control-label", attrs: { for: "price" } }, [
-        _vm._v("Price")
-      ]),
-      _vm._v(" "),
-      _c("div", {}, [
-        _c("div", { staticClass: "form-group input-group  " }, [
-          _c("span", { staticClass: "input-group-addon" }, [_vm._v("KSh")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              id: "price",
-              type: "text",
-              name: "price",
-              required: "",
-              autofocus: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "input-group-addon" }, [_vm._v(".00")])
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "help-block" }, [
-          _c("strong", [_vm._v("error")])
-        ])
-      ])
+    return _c("span", { staticClass: "help-block" }, [
+      _c("strong", [_vm._v("error")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "control-label", attrs: { for: "name" } }, [
-        _vm._v("Name")
-      ]),
+    return _c("span", { staticClass: "help-block" }, [
+      _c("strong", [_vm._v("error")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { type: "checkbox", id: "exampleCheck1" }
+      }),
       _vm._v(" "),
-      _c("div", {}, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            id: "name",
-            type: "text",
-            name: "name",
-            required: "",
-            autofocus: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "help-block" }, [
-          _c("strong", [_vm._v("error")])
-        ])
-      ])
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "exampleCheck1" } },
+        [_vm._v("Multiple Units")]
+      )
     ])
   },
   function() {

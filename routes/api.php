@@ -32,5 +32,6 @@ Route::delete('/property/{id}','Api\PropertyControllerApi@destroy');
 
 Route::get('/house','Api\HouseControllerApi@index');
 
-Route::get('/test','Api\HouseControllerApi@test');
+
+Route::post('/newhouse','Api\HouseControllerApi@store');
 

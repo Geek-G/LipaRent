@@ -18,7 +18,7 @@ class HouseControllerApi extends Controller
 
     public function index()
     {
-        $houses = House::paginate(15);
+        $houses = House::all();
         return HouseResource::collection($houses);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
@@ -43,15 +43,14 @@ class HouseControllerApi extends Controller
      */
     public function store(Request $request)
     {  
-        $property = new Property;
-        $property->name = $request->input('name');
-        $property->property_type_id =$request->input('type');
-        // Auth::user()->landlord->id;
-        $property->landlord_id = 1;
-        $property->street_id = 1;
-        $property->description = $request->input('description');
-        $property->save();
-        return new PropertyResource($property);
+        $house = new House;
+        $house->name = $request->get('name');
+        $house->property_id = $request->get('property_id');
+        $house->house_type_id =$request->get('housetype_id');
+        $house->price = $request->get('price');
+        $house->save();
+    
+        return new HouseResource($house);
        
     }
 
