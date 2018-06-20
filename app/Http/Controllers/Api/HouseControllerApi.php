@@ -3,42 +3,33 @@
 namespace App\Http\Controllers\Api;
 
 use Auth;
+use App\House;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Property;
-use App\PropertyType;
 use App\Http\Requests;
 use Illuminate\Http\Response;
-use App\Http\Resources\Property as PropertyResource;
-use App\Http\Resources\PropertyType as PropertyTypeResource;
+use App\Http\Resources\House as HouseResource;
 
 
-class PropertyControllerApi extends Controller
+
+class HouseControllerApi extends Controller
 {  
     
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function index()
     {
-        $properties = Property::paginate(15);
-        return PropertyResource::collection($properties);
+        $houses = House::paginate(15);
+        return HouseResource::collection($houses);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
-    public function types()
+    public function test()
     {
-        //$properties = Property::paginate(15);
-        $types= PropertyType::all(); 
-        return PropertyTypeResource::collection($types);
+        echo Auth::id();
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }
-
-
     public function create()
     {
         //
@@ -56,7 +47,7 @@ class PropertyControllerApi extends Controller
         $property->name = $request->input('name');
         $property->property_type_id =$request->input('type');
         // Auth::user()->landlord->id;
-        $property->landlord_id = Auth::user()->landlord->id;
+        $property->landlord_id = 1;
         $property->street_id = 1;
         $property->description = $request->input('description');
         $property->save();

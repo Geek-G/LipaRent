@@ -46,3 +46,4 @@ Route::resource('landlord','LandlordController');
 Route::resource('tenant','TenantController');
 
 
+Route::post('/newshit','Api\PropertyControllerApi@store')->name('newshit');

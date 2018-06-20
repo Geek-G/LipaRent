@@ -30,9 +30,7 @@ Route::post('/property','Api\PropertyControllerApi@store');
 Route::put('/property','Api\PropertyControllerApi@update');
 Route::delete('/property/{id}','Api\PropertyControllerApi@destroy');
 
+Route::get('/house','Api\HouseControllerApi@index');
 
-//Route::resource('property','PropertyApiController');
-// Route::resource('house','HouseController');
-// Route::resource('landlord','LandlordController');
-// Route::resource('tenant','TenantController');
+Route::get('/test','Api\HouseControllerApi@test');
 
