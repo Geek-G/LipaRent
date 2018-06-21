@@ -12,18 +12,24 @@
            <div class="form-group">
                 <label for="property" class=" control-label">Property</label>
                 <div class="">
-                    <select id="property" name="property" class="form-control" v-model="house.property_id">
+                    <select id="property" name="property" class="form-control" v-model="house.property_id" v-validate="'required'">
                        <option v-for="property in properties " :key="property.key" v-bind:value="property.id">{{property.name}}</option>	
                     </select>
+                    <span class="help-block"  v-show="errors.has('property') " :class="{'has-error': errors.has('property') }">
+                        <strong>{{ errors.first('property')}}</strong>
+                    </span>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="type" class=" control-label">Type</label>
                 <div class="">
-                    <select id="type" name="type" class="form-control" v-model="house.housetype_id">
+                    <select id="type" name="type" class="form-control" v-model="house.housetype_id" v-validate="'required'" >
                         <option v-for="housetype in housetypes" :key="housetype.key" v-bind:value="housetype.id">{{housetype.name}}</option>	
                     </select>
+                    <span class="help-block"  v-show="errors.has('type') " :class="{'has-error': errors.has('type') }">
+                        <strong>{{ errors.first('type')}}</strong>
+                    </span>
                 </div>
             </div>
             
@@ -32,11 +38,11 @@
                     <div class="">
                         <div class="form-group input-group  ">
                             <span class="input-group-addon">KSh</span>
-                            <input id="price" type="text" class="form-control" name="price" required autofocus v-model="house.price">
+                            <input id="price" type="text"  name="price" v-validate="'numeric|max_value:1000000|min_value:100'" :class="{'form-control': true, 'has-error': errors.has('price') }" required autofocus v-model="house.price">
                             <span class="input-group-addon">.00</span>
                         </div>
-                            <span class="help-block">
-                                <strong>error</strong>
+                            <span class="help-block" v-show="errors.has('price') " :class="{'has-error': errors.has('price') }">
+                                <strong>{{ errors.first('price')}}</strong>
                             </span>
                     </div>
             </div>
@@ -45,9 +51,9 @@
 		    <div class="form-group">
 		        <label for="name" class="control-label">Name</label>
                     <div class="">
-                            <input id="name" type="text" class="form-control" name="name" required autofocus v-model="house.name">
-                            <span class="help-block">
-                                <strong>error</strong>
+                            <input id="name" type="text" v-validate="'required|max:10|min:1'" :class="{'form-control': true, 'has-error': errors.has('name') }" name="name" required autofocus v-model="house.name">
+                            <span class="help-block"  v-show="errors.has('name') " :class="{'has-error': errors.has('name') }">
+                                <strong>{{ errors.first('name')}}</strong>
                             </span>
                     </div>
             </div>
@@ -138,3 +144,5 @@
        }
     } 
 </script>
+
+
