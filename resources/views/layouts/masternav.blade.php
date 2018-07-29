@@ -9,7 +9,6 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-
 <body class="hold-transition skin-blue layout-top-nav">
         <div class="wrapper">
         
