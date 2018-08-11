@@ -52,7 +52,7 @@
 		        <label for="name" class="control-label">Name</label>
                     <div class="">
                             <input id="name" type="text" v-validate="'required|max:10|min:1'" :class="{'form-control': true, 'has-error': errors.has('name') }" name="name" required autofocus v-model="house.name">
-                            <span class="help-block"  v-show="errors.has('name') " :class="{'has-error': errors.has('name') }">
+                            <span v-show="errors.has('name') " :class="{'help-block': true, 'has-error': errors.has('name'), 'help-block': true }">
                                 <strong>{{ errors.first('name')}}</strong>
                             </span>
                     </div>

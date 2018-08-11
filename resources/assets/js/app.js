@@ -29,6 +29,8 @@ Vue.component('pricing', require('./components/Pricing.vue'));
 Vue.component('location', require('./components/Location.vue'));
 Vue.component('house', require('./components/House.vue'));
 
+Vue.component('propertiez', require('./components/property/Properties.vue'));
+
 const app = new Vue({
     el: '#app'
 });

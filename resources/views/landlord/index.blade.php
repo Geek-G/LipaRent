@@ -20,7 +20,7 @@
 						{{ session('status') }}
 					</div>
 				@endif
-       <location></location>
+
 				<div class="box">
 				  <div class="box-header">
 					<h3 class="box-title"> {{$landlord->user->name}} Properties </h3>

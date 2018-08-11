@@ -23,7 +23,7 @@ class PropertyController extends Controller
         {
             $landlord=Auth::user()->landlord; 
             $types= PropertyType::all();   
-            return view('landlord.index', [
+            return view('landlord.properties', [
                 'types' => $types,
                 'landlord' => $landlord  
             ]);
