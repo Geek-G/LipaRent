@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
+use App\Town;
+use App\Street;
 
 class Property extends Resource
 {
@@ -16,13 +18,9 @@ class Property extends Resource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->name
-            // 'landlord_id'=>$this->landlord_id,
-            // 'street_id'=>$this->street_id,
-            // 'property_type_id'=> $this->property_type_id,
-           
-            // 'description'=>$this->descripition,
-            // 'image' => $this->image
+            'name'=>$this->name,
+            'description'=>$this->description,
+             'town'=>$this->street->town->name
         ];
         
     }

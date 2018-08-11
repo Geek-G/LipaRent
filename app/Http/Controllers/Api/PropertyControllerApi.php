@@ -6,6 +6,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Property;
+use App\Landlord;
 use App\PropertyType;
 use App\Http\Requests;
 use Illuminate\Http\Response;
@@ -23,7 +24,9 @@ class PropertyControllerApi extends Controller
 
     public function index()
     {
-        $properties = Property::paginate(15);
+        $landlord=Auth::user()->landlord; 
+        //$properties = Property::paginate(15);
+        $properties= $landlord->property;
         return PropertyResource::collection($properties);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);

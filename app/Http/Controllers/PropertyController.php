@@ -7,6 +7,7 @@ use Auth;
 use App\PropertyType;
 use App\Property;
 use App\HouseType;
+use App\Http\Resources\Property as PropertyResource;
 
 class PropertyController extends Controller
 {  
@@ -22,11 +23,13 @@ class PropertyController extends Controller
         if(Auth::user()->landlord) 
         {
             $landlord=Auth::user()->landlord; 
-            $types= PropertyType::all();   
-            return view('landlord.properties', [
-                'types' => $types,
-                'landlord' => $landlord  
-            ]);
+            $landlord_properties= $landlord->property;
+            return PropertyResource::collection($landlord_properties);
+            // $types= PropertyType::all();   
+            // return view('landlord.properties', [
+            //     'types' => $types,
+            //     'landlord' => $landlord  
+            // ]);
         }
     }
 

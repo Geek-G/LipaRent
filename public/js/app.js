@@ -51155,6 +51155,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -51163,9 +51180,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            amount: ''
+            house: {
+                name: '',
+                price: '',
+                property_id: '',
+                housetype_id: ''
+            },
+            has_session: true,
+            session_status: 'the message',
+            landlord_user_name: 'Name'
         };
     },
+
 
     methods: {
         clearError: function clearError() {
@@ -51199,23 +51225,37 @@ var render = function() {
     _c("div", { staticClass: "col-xs-12" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "alert alert-success alert-dismissable" }, [
-        _c(
-          "button",
-          {
-            staticClass: "close",
-            attrs: {
-              type: "button",
-              "data-dismiss": "alert",
-              "aria-hidden": "true"
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: { has_session: _vm.has_session },
+              expression: "{has_session}"
             }
-          },
-          [_vm._v("\n                ×\n                ")]
-        ),
-        _vm._v(
-          "\n                " + _vm._s(_vm.session_status) + "\n            "
-        )
-      ]),
+          ],
+          staticClass: "alert alert-success alert-dismissable"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "close",
+              attrs: {
+                type: "button",
+                "data-dismiss": "alert",
+                "aria-hidden": "true"
+              }
+            },
+            [_vm._v("\n                ×\n                ")]
+          ),
+          _vm._v(
+            "\n                " + _vm._s(_vm.session_status) + "\n            "
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "box" }, [
         _c("div", { staticClass: "box-header" }, [
@@ -51225,7 +51265,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "box-body  no-padding" })
+      _vm._m(1)
     ])
   ])
 }
@@ -51252,6 +51292,30 @@ var staticRenderFns = [
         },
         [_vm._v(" New Modal ")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-body" }, [
+      _c("table", { staticClass: "table table-hover table-bordered " }, [
+        _c("tbody", [
+          _c("tr", [
+            _c("th", [_vm._v("Property Name")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Property Town")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Property Description")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Property Houses")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Modify Property")])
+          ]),
+          _vm._v(" "),
+          _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])
+        ])
+      ])
     ])
   }
 ]

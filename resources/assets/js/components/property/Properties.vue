@@ -6,7 +6,7 @@
                     <a class="btn btn-primary" data-toggle="modal" data-target="#vue-modal"> New Modal </a>
             </div>
             
-		    <div class="alert alert-success alert-dismissable">
+		    <div v-show="{has_session}" class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert"
                 aria-hidden="true">
                 &times;
@@ -21,7 +21,24 @@
                     </div>
                     <!-- /.box-header -->
                     
-                    <div class="box-body  no-padding">
+                    <div class="box-body">
+
+                    <table class="table table-hover table-bordered ">
+					<tbody>
+					   <tr>
+                            <th>Property Name</th>
+                            <th>Property Town</th>
+                            <th>Property Description</th>
+                            <th>Property Houses</th>
+                            <th>Modify Property</th>
+					  </tr>
+					  <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+					  </tr>
+                    </tbody>
+                    </table>
                             
                     </div>
                     <!-- /.box-body -->    
@@ -38,9 +55,18 @@
             console.log('Component mounted.')
         },
        data() { return { 
-            amount:''
+           house:{
+               name:'',
+               price:'',
+               property_id:'',
+               housetype_id:''
+           },
+            has_session:true,
+            session_status:'the message',
+            landlord_user_name:'Name'
        }
        },
+
        methods: {
                 clearError() { if(this.fields.amount.valid==false) this.amount='' },
                 
