@@ -51170,11 +51170,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['landlord_properties'],
     mounted: function mounted() {
         console.log('Component mounted.');
     },
@@ -51265,7 +51264,15 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "box-body" }, [
+        _c("table", { staticClass: "table table-hover table-bordered " }, [
+          _c("tbody", [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("tr", [_c("td", [_vm._v(_vm._s(_vm.landlord_properties))])])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -51298,24 +51305,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-body" }, [
-      _c("table", { staticClass: "table table-hover table-bordered " }, [
-        _c("tbody", [
-          _c("tr", [
-            _c("th", [_vm._v("Property Name")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Property Town")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Property Description")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Property Houses")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Modify Property")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [_c("td"), _vm._v(" "), _c("td"), _vm._v(" "), _c("td")])
-        ])
-      ])
+    return _c("tr", [
+      _c("th", [_vm._v("Property Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Property Town")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Property Description")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Property Houses")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Modify Property")])
     ])
   }
 ]

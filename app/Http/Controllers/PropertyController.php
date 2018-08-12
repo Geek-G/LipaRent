@@ -24,12 +24,12 @@ class PropertyController extends Controller
         {
             $landlord=Auth::user()->landlord; 
             $landlord_properties= $landlord->property;
-            return PropertyResource::collection($landlord_properties);
-            // $types= PropertyType::all();   
-            // return view('landlord.properties', [
-            //     'types' => $types,
-            //     'landlord' => $landlord  
-            // ]);
+           // return PropertyResource::collection($landlord_properties);
+            $types= PropertyType::all();   
+            return view('landlord.properties', [
+                'landlord_properties' => PropertyResource::collection($landlord_properties),
+                'landlord' => $landlord  
+            ]);
         }
     }
 

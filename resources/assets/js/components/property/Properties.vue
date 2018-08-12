@@ -33,9 +33,7 @@
                             <th>Modify Property</th>
 					  </tr>
 					  <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{landlord_properties}}</td>
 					  </tr>
                     </tbody>
                     </table>
@@ -51,6 +49,7 @@
 
 
     export default {
+        props: ['landlord_properties'],
         mounted() {
             console.log('Component mounted.')
         },
