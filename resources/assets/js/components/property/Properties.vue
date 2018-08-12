@@ -1,8 +1,9 @@
 <template>
+
     <div class="row">
       <div class="col-xs-12">
             <div class="form-group">
-					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-default"> New </a>
+					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-new"> New </a>
                     <a class="btn btn-primary" data-toggle="modal" data-target="#vue-modal"> New Modal </a>
             </div>
             
@@ -16,40 +17,49 @@
             
             <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title"> {{landlord_user_name}} Properties </h3>
+                      <h3 class="box-title">{{landlord_name}}Properties </h3>
                       </div>
                     </div>
                     <!-- /.box-header -->
                     
                     <div class="box-body">
 
-                    <table class="table table-hover table-bordered ">
+                    <table class="table table-hover table-bordered">
 					<tbody>
 					   <tr>
                             <th>Property Name</th>
                             <th>Property Town</th>
                             <th>Property Description</th>
-                            <th>Property Houses</th>
                             <th>Modify Property</th>
 					  </tr>
-					  <tr>
-                            <td>{{landlord_properties}}</td>
+					  <tr  v-for="property in landlord_properties" :key="property.id">
+                            <td>{{property.name}}</td>
+                            <td>{{property.town}}</td>
+                            <td>{{property.description}}</td>
+                            <td>
+                                <button class="btn btn-warning" @click="editProperty">Edit</button>
+                                <button class="btn btn-danger" @click="deleteProperty">Delete</button>
+                            </td>
 					  </tr>
                     </tbody>
+                    {{landlord}}
                     </table>
                             
                     </div>
                     <!-- /.box-body -->    
+                    <new-property></new-property>
             </div>
       </div>         
+
 </template>
 
 
 <script>
-
+import swal from 'sweetalert'
+import NewProperty from './NewProperty'
 
     export default {
-        props: ['landlord_properties'],
+        props: ['landlord_properties','landlord'],
         mounted() {
             console.log('Component mounted.')
         },
@@ -61,13 +71,35 @@
                housetype_id:''
            },
             has_session:true,
-            session_status:'the message',
-            landlord_user_name:'Name'
+            session_status:'the message'
        }
        },
 
        methods: {
-                clearError() { if(this.fields.amount.valid==false) this.amount='' },
+                clearError(){
+                     if(this.fields.amount.valid==false) this.amount='' 
+                     },
+                editProperty(){
+                        swal("Good job!", "You clicked the button!", "success");
+                },
+                deleteProperty(){
+                        swal({
+                                title: "Are you sure?",
+                                text: "Once deleted, you will not be able to recover this imaginary file!",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                                })
+                                .then((willDelete) => {
+                                if (willDelete) {
+                                    swal("Poof! Your imaginary file has been deleted!", {
+                                    icon: "success",
+                                    });
+                                } else {
+                                    swal("Your imaginary file is safe!");
+                                }
+                            });
+                }      
                 
        },
        computed:{
@@ -77,6 +109,9 @@
        filters:{
            uppercase: function(value){
                return value.toUpperCase();
+           },
+        components:{
+            'new-property': NewProperty
            }
        }
     } 
