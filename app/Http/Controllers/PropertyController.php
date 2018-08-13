@@ -9,6 +9,7 @@ use App\Property;
 use App\HouseType;
 use App\Http\Resources\Property as PropertyResource;
 use App\Http\Resources\Landlord as LandlordResource;
+use App\Http\Resources\PropertyType as PropertyTypeResource;
 
 class PropertyController extends Controller
 {  
@@ -25,12 +26,10 @@ class PropertyController extends Controller
         {
             $landlord=Auth::user()->landlord; 
             $landlord_properties= $landlord->property;
-            $the_landlord =new LandlordResource($landlord);
-           // return PropertyResource::collection($landlord_properties);
-            $types= PropertyType::all();   
+            $types= PropertyType::all(); 
             return view('landlord.properties', [
                 'landlord_properties' => PropertyResource::collection($landlord_properties),
-                'landlord'=>$the_landlord
+                'landlord'=>new LandlordResource($landlord), 'property_types'=>PropertyTypeResource::collection($types)
 
             ]);
         }

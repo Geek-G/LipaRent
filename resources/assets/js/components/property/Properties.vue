@@ -4,7 +4,6 @@
       <div class="col-xs-12">
             <div class="form-group">
 					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-new"> New </a>
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#vue-modal"> New Modal </a>
             </div>
             
 		    <div v-show="{has_session}" class="alert alert-success alert-dismissable">
@@ -17,7 +16,7 @@
             
             <div class="box">
                     <div class="box-header">
-                      <h3 class="box-title">{{landlord_name}}Properties </h3>
+                      <h3 class="box-title">{{landlord.name}}'s Properties </h3>
                       </div>
                     </div>
                     <!-- /.box-header -->
@@ -29,12 +28,14 @@
 					   <tr>
                             <th>Property Name</th>
                             <th>Property Town</th>
+                            <th>Property Type</th>
                             <th>Property Description</th>
                             <th>Modify Property</th>
 					  </tr>
-					  <tr  v-for="property in landlord_properties" :key="property.id">
+					  <tr  v-for="property in landlord_properties" :key="property.key">
                             <td>{{property.name}}</td>
                             <td>{{property.town}}</td>
+                            <td>{{property.type}}</td>
                             <td>{{property.description}}</td>
                             <td>
                                 <button class="btn btn-warning" @click="editProperty">Edit</button>
@@ -42,12 +43,11 @@
                             </td>
 					  </tr>
                     </tbody>
-                    {{landlord}}
                     </table>
                             
                     </div>
                     <!-- /.box-body -->    
-                    <new-property></new-property>
+                    <new-property :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
             </div>
       </div>         
 
@@ -59,7 +59,7 @@ import swal from 'sweetalert'
 import NewProperty from './NewProperty'
 
     export default {
-        props: ['landlord_properties','landlord'],
+        props: ['landlord_properties','landlord','property_types'],
         mounted() {
             console.log('Component mounted.')
         },

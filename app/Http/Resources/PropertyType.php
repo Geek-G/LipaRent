@@ -16,7 +16,7 @@ class PropertyType extends Resource
     {
         return [
             'id'=>$this->id,
-            'name'=>$this->name
+            'name'=>$this->name,
             // 'landlord_id'=>$this->landlord_id,
             // 'street_id'=>$this->street_id,
             // 'property_type_id'=> $this->property_type_id,
