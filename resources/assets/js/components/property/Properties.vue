@@ -14,16 +14,16 @@
                 {{session_status}}
             </div>
             
-            <div class="box">
-                    <div class="box-header">
-                      <h3 class="box-title">{{landlord.name}}'s Properties </h3>
+            <div class="box mb-1">
+                    <div class="box-header mb-1">
+                      <h3 class="box-title ">{{landlord.name}}'s Properties </h3>
                       </div>
                     </div>
                     <!-- /.box-header -->
                     
-                    <div class="box-body">
+                    <div class="box-body mb-1">
 
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-striped">
 					<tbody>
 					   <tr>
                             <th>Property Name</th>

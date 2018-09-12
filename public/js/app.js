@@ -51413,118 +51413,269 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['landlord', 'landlord_property', 'property_types'],
-    mounted: function mounted() {
-        this.loadCounties();
-        this.loadPropertyTypes();
-    },
-    data: function data() {
-        return {
-            new_property: {
-                name: '',
-                location: {
-                    town: '',
-                    street: ''
-                }
-            },
-            town_query: '',
-            countyset: false,
-            townset: false,
-            countyid: null,
-            townid: null,
-            counties: [],
-            property_types: [],
-            towns: [],
-            streets: [],
-            suggestions: false
-        };
-    },
+				props: ['landlord', 'landlord_property', 'property_types'],
+				mounted: function mounted() {
+								this.loadCounties();
+								this.loadPropertyTypes();
+				},
+				data: function data() {
+								return {
+												new_property: {
+																name: '',
+																type_id: null,
+																location: {
+																				county_id: '',
+																				town_id: '',
+																				street_id: ''
+																}
+												},
+												town_query: '',
+												countyset: false,
+												townset: false,
+												counties: [],
+												property_types: [],
+												towns: [],
+												streets: [],
+												suggestions: false
+								};
+				},
 
-    methods: {
-        validateBeforeSubmit: function validateBeforeSubmit() {
-            this.$validator.validateAll().then(function (result) {
-                if (result) {
-                    // eslint-disable-next-line
-                    alert('Form Submitted!');
-                    return;
-                }
+				methods: {
+								autocomplete: function autocomplete(inp, arr) {
+												/*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+												var currentFocus;
+												/*execute a function when someone writes in the text field:*/
+												inp.addEventListener("input", function (e) {
+																var a,
+																    b,
+																    i,
+																    val = this.value;
+																/*close any already open lists of autocompleted values*/
+																closeAllLists();
+																if (!val) {
+																				return false;
+																}
+																currentFocus = -1;
+																/*create a DIV element that will contain the items (values):*/
+																a = document.createElement("DIV");
+																a.setAttribute("id", this.id + "autocomplete-list");
+																a.setAttribute("class", "autocomplete-items");
+																/*append the DIV element as a child of the autocomplete container:*/
+																this.parentNode.appendChild(a);
+																/*for each item in the array...*/
+																for (i = 0; i < arr.length; i++) {
+																				/*check if the item starts with the same letters as the text field value:*/
+																				if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+																								/*create a DIV element for each matching element:*/
+																								b = document.createElement("DIV");
+																								/*make the matching letters bold:*/
+																								b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+																								b.innerHTML += arr[i].substr(val.length);
+																								/*insert a input field that will hold the current array item's value:*/
+																								b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+																								/*execute a function when someone clicks on the item value (DIV element):*/
+																								b.addEventListener("click", function (e) {
+																												/*insert the value for the autocomplete text field:*/
+																												inp.value = this.getElementsByTagName("input")[0].value;
+																												/*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+																												closeAllLists();
+																								});
+																								a.appendChild(b);
+																				}
+																}
+												});
+												/*execute a function presses a key on the keyboard:*/
+												inp.addEventListener("keydown", function (e) {
+																var x = document.getElementById(this.id + "autocomplete-list");
+																if (x) x = x.getElementsByTagName("div");
+																if (e.keyCode == 40) {
+																				/*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+																				currentFocus++;
+																				/*and and make the current item more visible:*/
+																				addActive(x);
+																} else if (e.keyCode == 38) {
+																				//up
+																				/*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+																				currentFocus--;
+																				/*and and make the current item more visible:*/
+																				addActive(x);
+																} else if (e.keyCode == 13) {
+																				/*If the ENTER key is pressed, prevent the form from being submitted,*/
+																				e.preventDefault();
+																				if (currentFocus > -1) {
+																								/*and simulate a click on the "active" item:*/
+																								if (x) x[currentFocus].click();
+																				}
+																}
+												});
+												function addActive(x) {
+																/*a function to classify an item as "active":*/
+																if (!x) return false;
+																/*start by removing the "active" class on all items:*/
+																removeActive(x);
+																if (currentFocus >= x.length) currentFocus = 0;
+																if (currentFocus < 0) currentFocus = x.length - 1;
+																/*add class "autocomplete-active":*/
+																x[currentFocus].classList.add("autocomplete-active");
+												}
+												function removeActive(x) {
+																/*a function to remove the "active" class from all autocomplete items:*/
+																for (var i = 0; i < x.length; i++) {
+																				x[i].classList.remove("autocomplete-active");
+																}
+												}
+												function closeAllLists(elmnt) {
+																/*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+																var x = document.getElementsByClassName("autocomplete-items");
+																for (var i = 0; i < x.length; i++) {
+																				if (elmnt != x[i] && elmnt != inp) {
+																								x[i].parentNode.removeChild(x[i]);
+																				}
+																}
+												}
+												/*execute a function when someone clicks in the document:*/
+												document.addEventListener("click", function (e) {
+																closeAllLists(e.target);
+												});
+								},
+								validateBeforeSubmit: function validateBeforeSubmit() {
+												this.$validator.validateAll().then(function (result) {
+																if (result) {
+																				// eslint-disable-next-line
+																				alert('Form Submitted!');
+																				return;
+																}
 
-                alert('Correct them errors!');
-            });
-        },
-        loadCounties: function loadCounties() {
-            var counties = this.counties;
-            var hii = this;
-            axios.get('http://liparent.com/api/location/county').then(function (response) {
-                hii.counties = response.data;
-                //console.log(hii.counties)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        loadPropertyTypes: function loadPropertyTypes() {
-            var property_types = this.property_types;
-            var hii = this;
-            axios.get('http://liparent.com/api/property/type').then(function (response) {
-                hii.property_types = response.data;
-                //alert(property_types)
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        loadTowns: function loadTowns() {
-            var _this = this;
+																alert('Correct them errors!');
+												});
+								},
+								loadCounties: function loadCounties() {
+												var counties = this.counties;
+												var hii = this;
+												axios.get('http://liparent.com/api/location/county').then(function (response) {
+																hii.counties = response.data;
+																//console.log(hii.counties)
+												}).catch(function (error) {
+																console.log(error);
+												});
+								},
+								loadPropertyTypes: function loadPropertyTypes() {
+												var property_types = this.property_types;
+												var hii = this;
+												axios.get('http://liparent.com/api/property/type').then(function (response) {
+																hii.property_types = response.data;
+																//alert(property_types)
+												}).catch(function (error) {
+																console.log(error);
+												});
+								},
+								loadTowns: function loadTowns() {
+												var _this = this;
 
-            var towns = this.towns;
-            var hii = this;
-            axios.post('http://liparent.com/api/location/town/search', { query: hii.town_query, county_id: this.countyid }).then(function (response) {
-                hii.towns = response.data;
-                _this.town_suggestions = true;
-                //console.log(response.data )
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        loadStreets: function loadStreets() {
-            var streets = this.streets;
-            var hii = this;
-            axios.post('http://liparent.com/api/location/street/search', { query: hii.street_query, town_id: this.townid }).then(function (response) {
-                hii.streets = response.data;
-                hii.street_suggestions = true;
-                //console.log(response.data )
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        gettowns: function gettowns() {
-            this.countyset = true;
-            this.loadTowns();
-        },
-        getstreets: function getstreets() {
-            this.townset = true;
-            this.street_suggestions = true;
-            this.loadStreets();
-        },
-        fillTown: function fillTown() {
-            this.town_query = this.towns[0].name;
-            this.town_suggestions = false;
-        }
-    },
-    computed: {
-        rate: function rate() {
-            if (this.amount <= 100) return 0;else return 1;
-        },
-        cost: function cost() {
-            return this.amount * this.rate / 100;
-        }
-    },
-    filters: {
-        uppercase: function uppercase(value) {
-            return value.toUpperCase();
-        }
-    }
+												var towns = this.towns;
+												var hii = this;
+												axios.post('http://liparent.com/api/location/town/search', { query: hii.town_query, county_id: this.new_property.location.county_id }).then(function (response) {
+																hii.towns = response.data;
+																_this.town_suggestions = true;
+																//console.log(response.data )
+												}).catch(function (error) {
+																console.log(error);
+												});
+								},
+								loadStreets: function loadStreets() {
+												var streets = this.streets;
+												var hii = this;
+												axios.post('http://liparent.com/api/location/street/search', { query: hii.street_query, town_id: this.townid }).then(function (response) {
+																hii.streets = response.data;
+																hii.street_suggestions = true;
+																//console.log(response.data )
+												}).catch(function (error) {
+																console.log(error);
+												});
+								},
+								gettowns: function gettowns() {
+												this.countyset = true;
+												this.loadTowns();
+												this.autocomplete(document.getElementById("myInput"), this.towns);
+								},
+								getstreets: function getstreets() {
+												this.townset = true;
+												this.street_suggestions = true;
+												this.loadStreets();
+								},
+								fillTown: function fillTown() {
+												this.town_query = this.towns[0].name;
+												this.town_suggestions = false;
+								}
+				},
+				computed: {
+								rate: function rate() {
+												if (this.amount <= 100) return 0;else return 1;
+								},
+								cost: function cost() {
+												return this.amount * this.rate / 100;
+								}
+				},
+				filters: {
+								uppercase: function uppercase(value) {
+												return value.toUpperCase();
+								}
+				}
 });
 
 /***/ }),
@@ -51577,16 +51728,16 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "box" }, [
-          _c("div", { staticClass: "box-header" }, [
-            _c("h3", { staticClass: "box-title" }, [
+        _c("div", { staticClass: "box mb-1" }, [
+          _c("div", { staticClass: "box-header mb-1" }, [
+            _c("h3", { staticClass: "box-title " }, [
               _vm._v(_vm._s(_vm.landlord.name) + "'s Properties ")
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "box-body" }, [
-          _c("table", { staticClass: "table table-hover table-bordered" }, [
+        _c("div", { staticClass: "box-body mb-1" }, [
+          _c("table", { staticClass: "table table-hover table-striped" }, [
             _c(
               "tbody",
               [
@@ -51741,7 +51892,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\n.autocomplete[data-v-5724acc5] {\r\n  /*the container must be positioned relative:*/\r\n  position: relative;\r\n  display: inline-block;\n}\ninput[data-v-5724acc5] {\r\n  border: 1px solid transparent;\r\n  background-color: #f1f1f1;\r\n  padding: 10px;\r\n  font-size: 16px;\n}\ninput[type=text][data-v-5724acc5] {\r\n  background-color: #f1f1f1;\r\n  width: 100%;\n}\ninput[type=submit][data-v-5724acc5] {\r\n  background-color: DodgerBlue;\r\n  color: #fff;\n}\n.autocomplete-items[data-v-5724acc5] {\r\n  position: absolute;\r\n  border: 1px solid #d4d4d4;\r\n  border-bottom: none;\r\n  border-top: none;\r\n  z-index: 99;\r\n  /*position the autocomplete items to be the same width as the container:*/\r\n  top: 100%;\r\n  left: 0;\r\n  right: 0;\n}\n.autocomplete-items div[data-v-5724acc5] {\r\n  padding: 10px;\r\n  cursor: pointer;\r\n  background-color: #fff; \r\n  border-bottom: 1px solid #d4d4d4;\n}\n.autocomplete-items div[data-v-5724acc5]:hover {\r\n  /*when hovering an item:*/\r\n  background-color: #e9e9e9;\n}\n.autocomplete-active[data-v-5724acc5] {\r\n  /*when navigating through the items using the arrow keys:*/\r\n  background-color: DodgerBlue !important; \r\n  color: #ffffff;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -51787,8 +51938,35 @@ var render = function() {
                     _c(
                       "select",
                       {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_property.type_id,
+                            expression: "new_property.type_id"
+                          }
+                        ],
                         staticClass: "form-control",
-                        attrs: { id: "type", name: "type" }
+                        attrs: { id: "type", name: "type" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.new_property,
+                              "type_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
                       },
                       _vm._l(_vm.property_types, function(property_type) {
                         return _c(
@@ -51819,8 +51997,8 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.countyid,
-                            expression: "countyid"
+                            value: _vm.new_property.county_id,
+                            expression: "new_property.county_id"
                           }
                         ],
                         staticClass: "form-control",
@@ -51836,9 +52014,13 @@ var render = function() {
                                   var val = "_value" in o ? o._value : o.value
                                   return val
                                 })
-                              _vm.countyid = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                              _vm.$set(
+                                _vm.new_property,
+                                "county_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
                             },
                             _vm.gettowns
                           ]
@@ -51890,6 +52072,8 @@ var render = function() {
                             }
                           }
                         }),
+                        _vm._v(" "),
+                        _vm._m(0),
                         _vm._v(" "),
                         _vm.towns.length
                           ? _c("div", { staticClass: "panel-footer" }, [
@@ -52058,7 +52242,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0)
+                _vm._m(1)
               ]
             )
           ])
@@ -52068,6 +52252,25 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "autocomplete", staticStyle: { width: "300px" } },
+      [
+        _c("input", {
+          attrs: {
+            id: "myInput",
+            type: "text",
+            name: "myCountry",
+            placeholder: "Country"
+          }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -124,14 +124,8 @@
 																</div>
 		                        </div>
 							</div>
-
-
-
-
 							
 							<location></location>
-
-
 
 
 							<div class="modal-footer">
