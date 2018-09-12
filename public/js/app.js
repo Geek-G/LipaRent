@@ -51338,7 +51338,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\n.autocomplete[data-v-5724acc5] {\r\n    position: relative;\r\n    width: 130px;\n}\n.autocomplete-results[data-v-5724acc5] {\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 1px solid #eeeeee;\r\n    height: 120px;\r\n    overflow: auto;\n}\n.autocomplete-result[data-v-5724acc5] {\r\n    list-style: none;\r\n    text-align: left;\r\n    padding: 4px 2px;\r\n    cursor: pointer;\n}\n.autocomplete-result[data-v-5724acc5]:hover {\r\n    background-color: #4AAE9B;\r\n    color: white;\n}\r\n", ""]);
 
 // exports
 
@@ -51349,6 +51349,32 @@ exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51476,7 +51502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			towns: [],
 			town_names: ["name one", "name two"],
 			streets: [],
-			suggestions: false
+			town_suggestions: true
 		};
 	},
 
@@ -51538,10 +51564,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		getTowns: function getTowns() {
 			this.countyset = true;
 			this.loadTowns(this.town_query, this.new_property.location.county_id);
+		},
+		setTown: function setTown(town) {
+			$("#townInput").val(town.name);
+			this.new_property.location.town_id = town.id;
+			//this.town_suggestions=false
+			$("#town_results").hide();
 		}
 	},
 	watch: {
 		town_query: function town_query(val, oldVal) {
+			$("#town_results").show();
 			_.debounce(this.loadTowns(val, this.new_property.location.county_id), 500);
 		},
 
@@ -51742,13 +51775,23 @@ var render = function() {
                                 _vm.towns
                                   ? _c(
                                       "ul",
-                                      { staticClass: "list-group" },
+                                      {
+                                        staticClass:
+                                          "list-group autocomplete-results",
+                                        attrs: { id: "town_results" }
+                                      },
                                       _vm._l(_vm.towns, function(town) {
                                         return _c(
                                           "li",
                                           {
                                             key: town.id,
-                                            staticClass: "list-group-item"
+                                            staticClass:
+                                              "list-group-item autocomplete-result",
+                                            on: {
+                                              click: function($event) {
+                                                _vm.setTown(town)
+                                              }
+                                            }
                                           },
                                           [_vm._v(_vm._s(town.name) + " ")]
                                         )

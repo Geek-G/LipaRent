@@ -36,8 +36,8 @@
 						<div style="width:500px;">
 							<input class="form-control"  v-model="town_query" id="townInput" type="text" name="Town" placeholder="Town">
 							<div v-if="towns.length" class="panel-footer">
-								<ul class="list-group" v-if="towns">
-									<li v-for="town in towns" :key="town.id" class="list-group-item">{{town.name}} </li>
+								<ul class="list-group autocomplete-results" id="town_results" v-if="towns">
+									<li v-for="town in towns" :key="town.id" class="list-group-item autocomplete-result" v-on:click="setTown(town)">{{town.name}} </li>
 								</ul>
 						    </div>
 						</div>
@@ -94,6 +94,32 @@
 .has-error{
     color: red;
 }
+.autocomplete {
+    position: relative;
+    width: 130px;
+  }
+
+  .autocomplete-results {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #eeeeee;
+    height: 120px;
+    overflow: auto;
+  }
+
+  .autocomplete-result {
+    list-style: none;
+    text-align: left;
+    padding: 4px 2px;
+    cursor: pointer;
+  }
+
+  .autocomplete-result:hover {
+    background-color: #4AAE9B;
+    color: white;
+  }
+</style>
+
 
 </style>
 
@@ -124,7 +150,7 @@
 			towns:[],
 			town_names:["name one","name two"],
             streets:[],
-            suggestions:false
+            town_suggestions:true
        }
        },
        methods: {
@@ -198,10 +224,18 @@
 				this.countyset=true
 				this.loadTowns(this.town_query,this.new_property.location.county_id);
 
-			}             
+			},
+			setTown(town){
+				$("#townInput").val(town.name);
+				this.new_property.location.town_id=town.id
+				//this.town_suggestions=false
+				$("#town_results").hide();
+
+			}               
 	   },
 		watch: {
 			town_query: function(val, oldVal) {
+				$("#town_results").show();
 				_.debounce(this.loadTowns(val,this.new_property.location.county_id), 500)
 			},
 			
