@@ -23,28 +23,23 @@
                     
                     <div class="box-body mb-1">
 
-                    <table class="table table-hover table-striped">
-					<tbody>
-					   <tr>
-                            <th>Property Name</th>
-                            <th>Property Town</th>
-                            <th>Property Type</th>
-                            <th>Property Description</th>
-                            <th>Modify Property</th>
-					  </tr>
-					  <tr  v-for="property in landlord_properties" :key="property.key">
-                            <td>{{property.name}}</td>
-                            <td>{{property.town}}</td>
-                            <td>{{property.type}}</td>
-                            <td>{{property.description}}</td>
-                            <td>
-                                <button class="btn btn-warning" @click="editProperty">Edit</button>
-                                <button class="btn btn-danger" @click="deleteProperty">Delete</button>
-                            </td>
-					  </tr>
-                    </tbody>
-                    </table>
-                            
+                        <!-- /.box.house -->
+                        <div v-for="property in landlord_properties" :key="property.key" class="box box-solid">
+                            <div class="box-body text-left">
+                                <div>
+                                    <div> <h4>{{property.name}}</h4></div>
+                                    <div><p><span class="fa fa-folder">  </span>{{property.type}}</p></div>
+                                    <div><p><span class="fa fa-location-arrow">   </span>{{property.town}}</p></div>
+                                    <div><p><span class="fa fa-building">    </span>{{property.description}}</p></div>                                  
+                                </div>    
+                                 <div class="pull-right">
+                                    <button class="btn btn-warning" @click="editProperty">Edit</button>
+                                    <button class="btn btn-danger" @click="deleteProperty">Delete</button>
+                                </div>
+                            </div>
+                            <!-- /.box.house-body -->
+                        </div>
+                         <!-- /.box.house -->     
                     </div>
                     <!-- /.box-body -->    
                     <new-property :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
@@ -71,7 +66,7 @@ import NewProperty from './NewProperty'
                housetype_id:''
            },
             has_session:true,
-            session_status:'the message'
+            session_status:''
        }
        },
 
