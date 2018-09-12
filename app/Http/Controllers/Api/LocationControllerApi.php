@@ -49,8 +49,12 @@ class LocationControllerApi extends Controller
     public function searchTown(Request $request)
     {    $query= $request->get('query');
          $county_id= $request->get('county_id');
+         if ($query==''){
+            $towns= DB::table('towns')->where('county_id',$county_id)->get();
+            return TownResource::collection($towns);
+         }
          $towns= DB::table('towns')->where('county_id',$county_id)->where('name','like','%'.$query.'%')->get();
-        return TownResource::collection($towns);
+         return TownResource::collection($towns);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }
