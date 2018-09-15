@@ -6,7 +6,7 @@
 					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-new"> New </a>
             </div>
             
-		    <div v-show="{has_session}" class="alert alert-success alert-dismissable">
+		    <div v-show="false" class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert"
                 aria-hidden="true">
                 &times;
@@ -24,7 +24,7 @@
                     <div class="box-body mb-1">
 
                         <!-- /.box.house -->
-                        <div v-for="property in landlord_properties" :key="property.key" class="box box-solid">
+                        <div v-for="property in the_landlord_properties" :key="property.key" class="box box-solid">
                             <div class="box-body text-left">
                                 <div>
                                     <div> <h4>{{property.name}}</h4></div>
@@ -42,7 +42,7 @@
                          <!-- /.box.house -->     
                     </div>
                     <!-- /.box-body -->    
-                    <new-property :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
+                    <new-property  v-on:propertyAdded="pushProperty(data)" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
             </div>
       </div>         
 
@@ -77,29 +77,33 @@ import NewProperty from './NewProperty'
                 editProperty(){
                         swal("Good job!", "You clicked the button!", "success");
                 },
+                pushProperty(data){
+                        //this.landlord_properties.push(data);
+                        Vue.set(this.the_landlord_properties, this.the_landlord_properties.length, data);
+                        this.$forceUpdate();
+                },
                 deleteProperty(){
                         swal({
-                                title: "Are you sure?",
-                                text: "Once deleted, you will not be able to recover this imaginary file!",
-                                icon: "warning",
-                                buttons: true,
-                                dangerMode: true,
-                                })
-                                .then((willDelete) => {
-                                if (willDelete) {
-                                    swal("Poof! Your imaginary file has been deleted!", {
-                                    icon: "success",
-                                    });
-                                } else {
-                                    swal("Your imaginary file is safe!");
-                                }
+                            title: "Are you sure?",
+                            text: "Once deleted, you will not be able to recover this imaginary file!",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                            if (willDelete) {
+                                swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                                });
+                            } else {
+                                swal("Your imaginary file is safe!");
+                            }
                             });
                 }      
                 
        },
        computed:{
-           rate(){  if(this.amount<=100)return 0; else return 1 },
-           cost(){ return this.amount*this.rate/100 }
+           the_landlord_properties(){ return this.landlord_properties }
        },
        filters:{
            uppercase: function(value){

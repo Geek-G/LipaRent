@@ -104,15 +104,16 @@
         <li class="active"><a href="/dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href="/home"><i class="fa fa-building-o"></i> <span>Properties</span></a></li>
         <li><a href="/house"><i class="fa fa-home"></i> <span>Houses</span></a></li>
+        <li><a href="/house"><i class="fa fa-bar-chart"></i> <span>Reports</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-bar-chart"></i> <span>Reports</span>
+          <a href="#"><i class="fa fa-gears"></i> <span>Settings</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Payments</a></li>
-            <li><a href="#">Staticstics</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Application</a></li>
           </ul>
         </li>
       </ul>

@@ -4,7 +4,7 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
                             <div class="modal-header">
-                                   Title Here
+                                   New Property
                             </div>
                             
                             <div class="modal-body">
@@ -61,7 +61,7 @@
 					<div class="form-group">
 						<label for="name" class="control-label">Property Name</label>
 						<div class="">
-						<input  style="width:500px;" v-model="name" v-validate="'required|min:3|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
+						<input  style="width:500px;" v-model="new_property.name" v-validate="'required|min:3|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
 						<i v-show="errors.has('name')" class="fa fa-warning"></i>
 						<span v-show="errors.has('name')" class="help-block has-error">{{ errors.first('name') }}</span>
 						</div>
@@ -243,9 +243,10 @@
 					$("#street_results").hide();
 				},
 				postProperty(){
-					axios.post('/api/property',this.new_property.location)
+					axios.post('/api/property',this.new_property)
 					.then((response) => {
-							alert('Property added')
+							$('#modal-new').modal('hide');
+							this.$emit('propertyAdded',response.data)
 						})
 					.catch(function(error){
 					console.log(error); 

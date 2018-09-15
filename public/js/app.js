@@ -51260,6 +51260,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         editProperty: function editProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", "You clicked the button!", "success");
         },
+        pushProperty: function pushProperty(data) {
+            //this.landlord_properties.push(data);
+            Vue.set(this.the_landlord_properties, this.the_landlord_properties.length, data);
+            this.$forceUpdate();
+        },
         deleteProperty: function deleteProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
                 title: "Are you sure?",
@@ -51279,11 +51284,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     computed: {
-        rate: function rate() {
-            if (this.amount <= 100) return 0;else return 1;
-        },
-        cost: function cost() {
-            return this.amount * this.rate / 100;
+        the_landlord_properties: function the_landlord_properties() {
+            return this.landlord_properties;
         }
     },
     filters: {
@@ -51583,8 +51585,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			$("#street_results").hide();
 		},
 		postProperty: function postProperty() {
-			axios.post('/api/property', this.new_property.location).then(function (response) {
-				alert('Property added');
+			var _this2 = this;
+
+			axios.post('/api/property', this.new_property).then(function (response) {
+				$('#modal-new').modal('hide');
+				_this2.$emit('propertyAdded', response.data);
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -51631,7 +51636,7 @@ var render = function() {
         _c("div", { staticClass: "modal-content" }, [
           _c("div", { staticClass: "modal-header" }, [
             _vm._v(
-              "\n                                   Title Here\n                            "
+              "\n                                   New Property\n                            "
             )
           ]),
           _vm._v(" "),
@@ -51936,8 +51941,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.name,
-                          expression: "name"
+                          value: _vm.new_property.name,
+                          expression: "new_property.name"
                         },
                         {
                           name: "validate",
@@ -51958,13 +51963,17 @@ var render = function() {
                         required: "",
                         autofocus: ""
                       },
-                      domProps: { value: _vm.name },
+                      domProps: { value: _vm.new_property.name },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.name = $event.target.value
+                          _vm.$set(
+                            _vm.new_property,
+                            "name",
+                            $event.target.value
+                          )
                         }
                       }
                     }),
@@ -52062,8 +52071,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: { has_session: _vm.has_session },
-                expression: "{has_session}"
+                value: false,
+                expression: "false"
               }
             ],
             staticClass: "alert alert-success alert-dismissable"
@@ -52100,7 +52109,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "box-body mb-1" },
-          _vm._l(_vm.landlord_properties, function(property) {
+          _vm._l(_vm.the_landlord_properties, function(property) {
             return _c(
               "div",
               { key: property.key, staticClass: "box box-solid" },
@@ -52161,6 +52170,11 @@ var render = function() {
             landlord: _vm.landlord,
             landlord_property: _vm.landlord_property,
             property_types: _vm.property_types
+          },
+          on: {
+            propertyAdded: function($event) {
+              _vm.pushProperty(_vm.data)
+            }
           }
         })
       ],

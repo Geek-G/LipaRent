@@ -19,7 +19,7 @@ class PropertyControllerApi extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -56,12 +56,13 @@ class PropertyControllerApi extends Controller
     public function store(Request $request)
     {  
         $property = new Property;
-        $property->name = $request->input('name');
-        $property->property_type_id =$request->input('type');
+        $data = $request->json()->all();
+        $property->name = $data['name'];
+        $property->property_type_id = $data['type_id'];
         // Auth::user()->landlord->id;
-        $property->landlord_id = Auth::user()->landlord->id;
-        $property->street_id = 1;
-        $property->description = $request->input('description');
+        $property->landlord_id = $data['landlord_id'];
+        $property->street_id = $data['location']['street_id']; 
+        //$property->description = $data['description'];
         $property->save();
         return new PropertyResource($property);
        
