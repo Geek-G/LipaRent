@@ -51338,7 +51338,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\n.autocomplete[data-v-5724acc5] {\r\n    position: relative;\r\n    width: 130px;\n}\n.autocomplete-results[data-v-5724acc5] {\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 1px solid #eeeeee;\r\n    height: 120px;\r\n    overflow: auto;\n}\n.autocomplete-result[data-v-5724acc5] {\r\n    list-style: none;\r\n    text-align: left;\r\n    padding: 4px 2px;\r\n    cursor: pointer;\n}\n.autocomplete-result[data-v-5724acc5]:hover {\r\n    background-color: #4AAE9B;\r\n    color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.help-block[data-v-5724acc5] {\r\n    display: block;\n}\n.has-error[data-v-5724acc5]{\r\n    color: red;\n}\n.autocomplete[data-v-5724acc5] {\r\n    position: relative;\r\n\tmargin:0;\r\n\tpadding: 0;\r\n    width: 130px;\n}\n.autocomplete-results[data-v-5724acc5] {\r\n    padding: 0;\r\n\tposition: relative;\r\n    margin: 0;\r\n    border: 1px solid #eeeeee;\r\n    height: 100px;\r\n    overflow: auto;\n}\n.autocomplete-result[data-v-5724acc5] {\r\n    list-style: none;\r\n    text-align: left;\r\n    padding: 4px 2px;\r\n    cursor: pointer;\n}\n.autocomplete-result[data-v-5724acc5]:hover {\r\n    background-color: #4AAE9B;\r\n    color: white;\n}\r\n", ""]);
 
 // exports
 
@@ -51476,18 +51476,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['landlord', 'landlord_property', 'property_types'],
 	mounted: function mounted() {
 		this.loadCounties();
 		this.loadPropertyTypes();
+		this.new_property.landlord_id = this.landlord.id;
 	},
 	data: function data() {
 		return {
 			new_property: {
 				name: '',
 				type_id: null,
+				landlord_id: null,
 				location: {
 					county_id: '',
 					town_id: '',
@@ -51495,23 +51498,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			},
 			town_query: '',
+			street_query: '',
 			countyset: false,
 			townset: false,
 			counties: [],
 			property_types: [],
 			towns: [],
-			town_names: ["name one", "name two"],
-			streets: [],
-			town_suggestions: true
+			streets: []
 		};
 	},
 
 	methods: {
 		validateBeforeSubmit: function validateBeforeSubmit() {
+			var _this = this;
+
 			this.$validator.validateAll().then(function (result) {
 				if (result) {
 					// eslint-disable-next-line
-					alert('Form Submitted!');
+					_this.postProperty();
+					//alert('Form Submitted!');
 					return;
 				}
 
@@ -51539,24 +51544,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		loadTowns: function loadTowns(q, i) {
-			var _this = this;
-
 			var hii = this;
 			axios.post('/api/location/town/search', { query: q, county_id: i }).then(function (response) {
 				hii.towns = response.data;
-				_this.town_suggestions = true;
-				//console.log(response.data )
-			}).catch(function (error) {
-				console.log(error);
-			});
-		},
-		loadStreets: function loadStreets() {
-			var streets = this.streets;
-			var hii = this;
-			axios.post('/api/location/street/search', { query: hii.street_query, town_id: this.townid }).then(function (response) {
-				hii.streets = response.data;
-				hii.street_suggestions = true;
-				//console.log(response.data )
 			}).catch(function (error) {
 				console.log(error);
 			});
@@ -51566,10 +51556,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.loadTowns(this.town_query, this.new_property.location.county_id);
 		},
 		setTown: function setTown(town) {
-			$("#townInput").val(town.name);
 			this.new_property.location.town_id = town.id;
-			//this.town_suggestions=false
+			this.town_query = town.name;
+			//$("#townInput").val(town.name);
 			$("#town_results").hide();
+			this.townset = true;
+		},
+		loadStreets: function loadStreets(q, i) {
+			var streets = this.streets;
+			var hii = this;
+			axios.post('/api/location/street/search', { query: q, town_id: i }).then(function (response) {
+				hii.streets = response.data;
+			}).catch(function (error) {
+				console.log(error);
+			});
+		},
+		getStreets: function getStreets() {
+			this.townset = true;
+			this.new_property.location.town_id = null;
+			this.loadStreets(this.street_query, this.new_property.location.town_id);
+		},
+		setStreet: function setStreet(street) {
+			this.street_query = street.name;
+			$("#streetInput").val(street.name);
+			this.new_property.location.street_id = street.id;
+			$("#street_results").hide();
+		},
+		postProperty: function postProperty() {
+			axios.post('/api/property', this.new_property.location).then(function (response) {
+				alert('Property added');
+			}).catch(function (error) {
+				console.log(error);
+			});
 		}
 	},
 	watch: {
@@ -51579,7 +51597,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 		'new_property.location.county_id': function new_propertyLocationCounty_id(val, oldVal) {
+			$("#town_results").show();
 			this.loadTowns(this.town_query, val);
+		},
+		street_query: function street_query(val, oldVal) {
+			$("#street_results").show();
+			_.debounce(this.loadStreets(val, this.new_property.location.town_id), 500);
+		},
+
+		'new_property.location.town_id': function new_propertyLocationTown_id(val, oldVal) {
+			$("#street_results").show();
+			this.loadStreets(this.street_query, val);
 		}
 	},
 	filters: {
@@ -51761,44 +51789,53 @@ var render = function() {
                             },
                             domProps: { value: _vm.town_query },
                             on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.town_query = $event.target.value
-                              }
+                              input: [
+                                function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.town_query = $event.target.value
+                                },
+                                _vm.getStreets
+                              ]
                             }
                           }),
                           _vm._v(" "),
                           _vm.towns.length
-                            ? _c("div", { staticClass: "panel-footer" }, [
-                                _vm.towns
-                                  ? _c(
-                                      "ul",
-                                      {
-                                        staticClass:
-                                          "list-group autocomplete-results",
-                                        attrs: { id: "town_results" }
-                                      },
-                                      _vm._l(_vm.towns, function(town) {
-                                        return _c(
-                                          "li",
-                                          {
-                                            key: town.id,
-                                            staticClass:
-                                              "list-group-item autocomplete-result",
-                                            on: {
-                                              click: function($event) {
-                                                _vm.setTown(town)
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "panel-footer",
+                                  attrs: { id: "town_results" }
+                                },
+                                [
+                                  _vm.towns && _vm.town_query
+                                    ? _c(
+                                        "ul",
+                                        {
+                                          staticClass:
+                                            "list-group autocomplete-results"
+                                        },
+                                        _vm._l(_vm.towns, function(town) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: town.id,
+                                              staticClass:
+                                                "list-group-item autocomplete-result",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.setTown(town)
+                                                }
                                               }
-                                            }
-                                          },
-                                          [_vm._v(_vm._s(town.name) + " ")]
-                                        )
-                                      })
-                                    )
-                                  : _vm._e()
-                              ])
+                                            },
+                                            [_vm._v(_vm._s(town.name) + " ")]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e()
+                                ]
+                              )
                             : _vm._e()
                         ])
                       ])
@@ -51817,49 +51854,71 @@ var render = function() {
                       ),
                       _vm._v(" "),
                       _c("div", {}, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.street_query,
-                              expression: "street_query"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", name: "street", id: "street" },
-                          domProps: { value: _vm.street_query },
-                          on: {
-                            keyup: _vm.loadStreets,
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c("div", { staticStyle: { width: "500px" } }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.street_query,
+                                expression: "street_query"
                               }
-                              _vm.street_query = $event.target.value
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              id: "streetInput",
+                              type: "text",
+                              name: "Street",
+                              placeholder: "Street"
+                            },
+                            domProps: { value: _vm.street_query },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.street_query = $event.target.value
+                              }
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.streets.length
-                          ? _c("div", { staticClass: "panel-footer" }, [
-                              _vm.street_suggestions
-                                ? _c(
-                                    "ul",
-                                    { staticClass: "list-group" },
-                                    _vm._l(_vm.streets, function(street) {
-                                      return _c(
-                                        "li",
+                          }),
+                          _vm._v(" "),
+                          _vm.streets.length
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "panel-footer",
+                                  attrs: { id: "street_results" }
+                                },
+                                [
+                                  _vm.streets && _vm.street_query
+                                    ? _c(
+                                        "ul",
                                         {
-                                          key: street.id,
-                                          staticClass: "list-group-item"
+                                          staticClass:
+                                            "list-group autocomplete-results"
                                         },
-                                        [_vm._v(_vm._s(street.name) + " ")]
+                                        _vm._l(_vm.streets, function(street) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: street.id,
+                                              staticClass:
+                                                "list-group-item autocomplete-result",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.setStreet(street)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(street.name) + " ")]
+                                          )
+                                        })
                                       )
-                                    })
-                                  )
-                                : _vm._e()
-                            ])
-                          : _vm._e()
+                                    : _vm._e()
+                                ]
+                              )
+                            : _vm._e()
+                        ])
                       ])
                     ])
                   : _vm._e(),
@@ -51891,6 +51950,7 @@ var render = function() {
                         "form-control": true,
                         "has-error": _vm.errors.has("name")
                       },
+                      staticStyle: { width: "500px" },
                       attrs: {
                         type: "text",
                         placeholder: "property name",

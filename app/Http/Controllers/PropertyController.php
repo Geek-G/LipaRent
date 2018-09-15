@@ -51,10 +51,9 @@ class PropertyController extends Controller
     {
         $property = new Property;
         $property->name = $request->get('name');
-        $property->property_type_id =$request->get('type');
-        $property->landlord_id = Auth::user()->landlord->id;
+        $property->property_type_id =$request->get('type_id');
+        $property->landlord_id =  $request->get('landlord_id');
         $property->street_id = 1;
-        $property->description = $request->get('description');
         $property->save();
         return redirect()->route('property.index')->with('status', 'property Added!');
     }

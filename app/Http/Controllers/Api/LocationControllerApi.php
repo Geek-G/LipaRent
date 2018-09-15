@@ -63,8 +63,12 @@ class LocationControllerApi extends Controller
     public function searchStreet(Request $request)
     {    $query= $request->get('query');
          $town_id= $request->get('town_id');
+         if ($query==''){
+            $streets= DB::table('streets')->where('town_id',$town_id)->get();
+            return StreetResource::collection($streets);
+         }   
          $streets= DB::table('streets')->where('town_id',$town_id)->where('name','like','%'.$query.'%')->get();
-        return StreetResource::collection($streets);
+         return StreetResource::collection($streets);
            
          //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
     }

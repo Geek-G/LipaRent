@@ -24,7 +24,7 @@
 					<div class="form-group">
 						<label for="type" class=" control-label">County</label>
 						<div style="width:500px;">
-						<select id="county" name="county" class="form-control"  v-on:change="getTowns" v-model="new_property.location.county_id">
+						<select id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
 							<option v-for="county in counties" :key="county.id"  v-bind:value="county.id">{{county.name}}</option>	
 						</select>
 						</div>
@@ -34,9 +34,9 @@
 						<label for="type" class=" control-label">Town</label>
 						<div class="">
 						<div style="width:500px;">
-							<input class="form-control"  v-model="town_query" id="townInput" type="text" name="Town" placeholder="Town">
-							<div v-if="towns.length" class="panel-footer">
-								<ul class="list-group autocomplete-results" id="town_results" v-if="towns">
+							<input class="form-control"  v-model="town_query"  v-on:input="getStreets"  id="townInput" type="text" name="Town" placeholder="Town">
+							<div v-if="towns.length" id="town_results" class="panel-footer">
+								<ul class="list-group autocomplete-results"  v-if="towns && town_query">
 									<li v-for="town in towns" :key="town.id" class="list-group-item autocomplete-result" v-on:click="setTown(town)">{{town.name}} </li>
 								</ul>
 						    </div>
@@ -47,11 +47,13 @@
 					<div v-if="townset" class="form-group">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
-						<input type="text" name="street" id="street" class="form-control" v-model="street_query" v-on:keyup="loadStreets" >
-						<div v-if="streets.length" class="panel-footer">
-							<ul class="list-group" v-if="street_suggestions">
-							<li v-for="street in streets" :key="street.id" class="list-group-item">{{street.name}} </li>
-							</ul>
+						<div style="width:500px;">
+							<input class="form-control"  v-model="street_query" id="streetInput" type="text" name="Street" placeholder="Street">
+							<div v-if="streets.length" id="street_results"  class="panel-footer">
+								<ul class="list-group autocomplete-results" v-if="streets && street_query">
+									<li v-for="street in streets" :key="street.id" class="list-group-item autocomplete-result" v-on:click="setStreet(street)">{{street.name}} </li>
+								</ul>
+						    </div>
 						</div>
 						</div>
 					</div>
@@ -59,7 +61,7 @@
 					<div class="form-group">
 						<label for="name" class="control-label">Property Name</label>
 						<div class="">
-						<input v-model="name" v-validate="'required|min:3|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
+						<input  style="width:500px;" v-model="name" v-validate="'required|min:3|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
 						<i v-show="errors.has('name')" class="fa fa-warning"></i>
 						<span v-show="errors.has('name')" class="help-block has-error">{{ errors.first('name') }}</span>
 						</div>
@@ -96,14 +98,17 @@
 }
 .autocomplete {
     position: relative;
+	margin:0;
+	padding: 0;
     width: 130px;
   }
 
   .autocomplete-results {
     padding: 0;
+	position: relative;
     margin: 0;
     border: 1px solid #eeeeee;
-    height: 120px;
+    height: 100px;
     overflow: auto;
   }
 
@@ -121,36 +126,33 @@
 </style>
 
 
-</style>
-
-
-
 <script>
     export default {
 	props: ['landlord','landlord_property','property_types'],	    
         mounted() {
         this.loadCounties();
 		this.loadPropertyTypes();
+		this.new_property.landlord_id=this.landlord.id
         },
        data() { return {
 	    new_property:{
 		    name:'',
-		    type_id:null,
+			type_id:null,
+			landlord_id:null,
 		    location:{
 			    county_id:'',
 			    town_id:'',
 			    street_id:''
 		    }
 	    },    
-            town_query:'',
+			town_query:'',
+			street_query:'',
             countyset:false,
             townset:false,
             counties:[],
             property_types:[],
 			towns:[],
-			town_names:["name one","name two"],
             streets:[],
-            town_suggestions:true
        }
        },
        methods: {
@@ -159,7 +161,8 @@
 					this.$validator.validateAll().then((result) => {
 					if (result) {
 					// eslint-disable-next-line
-					alert('Form Submitted!');
+					this.postProperty()
+					//alert('Form Submitted!');
 					return;
 					}
 
@@ -192,47 +195,63 @@
 					}) 
 				},
 
-				
 				loadTowns(q,i){
 					var hii=this;
 					axios.post('/api/location/town/search',{query:q, county_id:i})
 					.then((response) => {
 							hii.towns = response.data;
-							this.town_suggestions=true;
-							//console.log(response.data )
 						})
 					.catch(function(error){
 					console.log(error); 
 					}) 
 				},
 
-				loadStreets(){
-				var streets=this.streets;
-				var hii=this;
-				axios.post('/api/location/street/search',{query:hii.street_query, town_id:this.townid})
-				.then((response) => {
-						hii.streets = response.data;
-						hii.street_suggestions=true;
-						//console.log(response.data )
+				getTowns(){
+					this.countyset=true;
+					this.loadTowns(this.town_query,this.new_property.location.county_id)
+				},
+
+				setTown(town){
+					this.new_property.location.town_id=town.id
+					this.town_query=town.name
+					//$("#townInput").val(town.name);
+					$("#town_results").hide();
+					this.townset=true;
+				},
+
+				loadStreets(q,i){
+					var streets=this.streets;
+					var hii=this;
+					axios.post('/api/location/street/search',{query:q, town_id:i})
+					.then((response) => {
+							hii.streets = response.data;
+						})
+					.catch(function(error){
+					console.log(error); 
+					}) 
+				},
+				getStreets(){
+					this.townset=true;
+					this.new_property.location.town_id=null;
+					this.loadStreets(this.street_query,this.new_property.location.town_id)
+				},
+
+				setStreet(street){
+					this.street_query=street.name
+					$("#streetInput").val(street.name);
+					this.new_property.location.street_id=street.id
+					$("#street_results").hide();
+				},
+				postProperty(){
+					axios.post('/api/property',this.new_property.location)
+					.then((response) => {
+							alert('Property added')
+						})
+					.catch(function(error){
+					console.log(error); 
 					})
-				.catch(function(error){
-				console.log(error); 
-				}) 
-			},
-
-			getTowns(){
-				this.countyset=true
-				this.loadTowns(this.town_query,this.new_property.location.county_id);
-
-			},
-			setTown(town){
-				$("#townInput").val(town.name);
-				this.new_property.location.town_id=town.id
-				//this.town_suggestions=false
-				$("#town_results").hide();
-
-			}               
-	   },
+				}              
+		},
 		watch: {
 			town_query: function(val, oldVal) {
 				$("#town_results").show();
@@ -240,10 +259,20 @@
 			},
 			
 			'new_property.location.county_id': function(val, oldVal) {
+				$("#town_results").show();
 				this.loadTowns(this.town_query,val)
+			},
+			street_query: function(val, oldVal) {
+				$("#street_results").show();
+				_.debounce(this.loadStreets(val,this.new_property.location.town_id), 500)
+			},
+			
+			'new_property.location.town_id': function(val, oldVal) {
+				$("#street_results").show();
+				this.loadStreets(this.street_query,val)
 			}
 		},
-       filters:{
+        filters:{
            uppercase: function(value){
                return value.toUpperCase();
            }
