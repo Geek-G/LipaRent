@@ -50679,7 +50679,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         postHouse: function postHouse() {
             var vm = this;
-            axios.post('http://liparent.com/api/newhouse', vm.house).then(function (response) {
+            axios.post('/api/newhouse', vm.house).then(function (response) {
                 alert('house added');
             }).catch(function (error) {
                 console.log(error);
@@ -51237,7 +51237,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['landlord_properties', 'landlord', 'property_types'],
     mounted: function mounted() {
-        console.log('Component mounted.');
+        assignData();
     },
     data: function data() {
         return {
@@ -51248,22 +51248,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 housetype_id: ''
             },
             has_session: true,
-            session_status: ''
+            session_status: '',
+            the_landlord_properties: this.landlord_properties
         };
     },
 
 
     methods: {
-        clearError: function clearError() {
-            if (this.fields.amount.valid == false) this.amount = '';
-        },
         editProperty: function editProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", "You clicked the button!", "success");
         },
         pushProperty: function pushProperty(data) {
-            //this.landlord_properties.push(data);
-            Vue.set(this.the_landlord_properties, this.the_landlord_properties.length, data);
-            this.$forceUpdate();
+            this.the_landlord_properties.push(data);
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", JSON.stringify(data), "success");
+            //this.set(this.landlord_properties, this.landlord_properties.length, data);
+            //this.$forceUpdate();
         },
         deleteProperty: function deleteProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
@@ -51283,18 +51282,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
-    computed: {
-        the_landlord_properties: function the_landlord_properties() {
-            return this.landlord_properties;
-        }
-    },
-    filters: {
-        uppercase: function uppercase(value) {
-            return value.toUpperCase();
-        },
-        components: {
-            'new-property': __WEBPACK_IMPORTED_MODULE_1__NewProperty___default.a
-        }
+    computed: {},
+    components: {
+        'new-property': __WEBPACK_IMPORTED_MODULE_1__NewProperty___default.a
     }
 });
 
@@ -52116,7 +52106,9 @@ var render = function() {
               [
                 _c("div", { staticClass: "box-body text-left" }, [
                   _c("div", [
-                    _c("div", [_c("h4", [_vm._v(_vm._s(property.name))])]),
+                    _c("a", { attrs: { href: "/house" } }, [
+                      _c("div", [_c("h4", [_vm._v(_vm._s(property.name))])])
+                    ]),
                     _vm._v(" "),
                     _c("div", [
                       _c("p", [
@@ -52173,7 +52165,7 @@ var render = function() {
           },
           on: {
             propertyAdded: function($event) {
-              _vm.pushProperty(_vm.data)
+              _vm.pushProperty()
             }
           }
         })

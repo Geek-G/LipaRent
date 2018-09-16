@@ -27,7 +27,7 @@
                         <div v-for="property in the_landlord_properties" :key="property.key" class="box box-solid">
                             <div class="box-body text-left">
                                 <div>
-                                    <div> <h4>{{property.name}}</h4></div>
+                                    <a href="/house"><div> <h4>{{property.name}}</h4></div></a>
                                     <div><p><span class="fa fa-folder">  </span>{{property.type}}</p></div>
                                     <div><p><span class="fa fa-location-arrow">   </span>{{property.town}}</p></div>
                                     <div><p><span class="fa fa-building">    </span>{{property.description}}</p></div>                                  
@@ -42,7 +42,7 @@
                          <!-- /.box.house -->     
                     </div>
                     <!-- /.box-body -->    
-                    <new-property  v-on:propertyAdded="pushProperty(data)" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
+                    <new-property  v-on:propertyAdded="pushProperty()" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
             </div>
       </div>         
 
@@ -56,7 +56,7 @@ import NewProperty from './NewProperty'
     export default {
         props: ['landlord_properties','landlord','property_types'],
         mounted() {
-            console.log('Component mounted.')
+            assignData()
         },
        data() { return { 
            house:{
@@ -66,21 +66,21 @@ import NewProperty from './NewProperty'
                housetype_id:''
            },
             has_session:true,
-            session_status:''
+            session_status:'',
+            the_landlord_properties:this.landlord_properties
        }
        },
 
        methods: {
-                clearError(){
-                     if(this.fields.amount.valid==false) this.amount='' 
-                     },
+
                 editProperty(){
                         swal("Good job!", "You clicked the button!", "success");
                 },
                 pushProperty(data){
-                        //this.landlord_properties.push(data);
-                        Vue.set(this.the_landlord_properties, this.the_landlord_properties.length, data);
-                        this.$forceUpdate();
+                        this.the_landlord_properties.push(data);
+                        swal("Good job!", JSON.stringify(data), "success");
+                        //this.set(this.landlord_properties, this.landlord_properties.length, data);
+                        //this.$forceUpdate();
                 },
                 deleteProperty(){
                         swal({
@@ -103,15 +103,11 @@ import NewProperty from './NewProperty'
                 
        },
        computed:{
-           the_landlord_properties(){ return this.landlord_properties }
+           
        },
-       filters:{
-           uppercase: function(value){
-               return value.toUpperCase();
-           },
         components:{
             'new-property': NewProperty
            }
        }
-    } 
+    
 </script>

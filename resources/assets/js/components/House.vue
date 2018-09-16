@@ -120,7 +120,7 @@
         },
         postHouse(){
             var vm= this
-            axios.post('http://liparent.com/api/newhouse',vm.house)
+            axios.post('/api/newhouse',vm.house)
             .then((response) => {
                     alert('house added')
                 })
