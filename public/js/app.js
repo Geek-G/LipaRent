@@ -51258,9 +51258,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         editProperty: function editProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", "You clicked the button!", "success");
         },
-        pushProperty: function pushProperty(data) {
-            this.the_landlord_properties.push(data);
-            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", JSON.stringify(data), "success");
+        pushProperty: function pushProperty(event) {
+            this.the_landlord_properties.push(event);
+            __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", JSON.stringify(event.name) + " has been added!", "success");
             //this.set(this.landlord_properties, this.landlord_properties.length, data);
             //this.$forceUpdate();
         },
@@ -52165,7 +52165,7 @@ var render = function() {
           },
           on: {
             propertyAdded: function($event) {
-              _vm.pushProperty()
+              _vm.pushProperty($event)
             }
           }
         })

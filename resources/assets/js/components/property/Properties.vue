@@ -42,7 +42,7 @@
                          <!-- /.box.house -->     
                     </div>
                     <!-- /.box-body -->    
-                    <new-property  v-on:propertyAdded="pushProperty()" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
+                    <new-property  v-on:propertyAdded="pushProperty($event)" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
             </div>
       </div>         
 
@@ -76,9 +76,9 @@ import NewProperty from './NewProperty'
                 editProperty(){
                         swal("Good job!", "You clicked the button!", "success");
                 },
-                pushProperty(data){
-                        this.the_landlord_properties.push(data);
-                        swal("Good job!", JSON.stringify(data), "success");
+                pushProperty(event){
+                        this.the_landlord_properties.push(event);
+                        swal("Good job!", JSON.stringify(event.name)+" has been added!", "success");
                         //this.set(this.landlord_properties, this.landlord_properties.length, data);
                         //this.$forceUpdate();
                 },
