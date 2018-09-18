@@ -8,19 +8,20 @@
                             </div>
                             
                             <div class="modal-body">
-                <form autocomplete="off" @submit.prevent="validateBeforeSubmit">
+                <form autocomplete="off" >
 					
 
-					<div :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('name') }">
+					<div :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.name }">
 						<label for="name" class="control-label">Property Name</label>
 						<div>
 						<input  v-model="new_property.name" v-validate="'required|min:2|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
-						<span v-show="errors.has('name')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('name') }}</small></span>
+						<span v-if="errors.has('name')" class="help-block"> <i class="fa fa-warning"></i><small>{{errors.first('name') }}</small></span>
+						<span v-if="backend_errors.name" class="help-block"> <i class="fa fa-warning"></i><small>{{backend_errors.name }}</small></span>
 						</div>
 					</div>
 
 
-					<div :class="{'form-group': true,'col-xs-10': true, 'has-error': errors.has('type') }">
+					<div :class="{'form-group': true,'col-xs-10': true, 'has-error': backend_errors.type }">
 						<label for="type" class=" control-label">Property</label>
 						<div>
 						<select  v-validate="'required'" id="type" name="type" class="form-control" v-model="new_property.type_id">
@@ -33,7 +34,7 @@
 
 
 
-					<div :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('county') }">
+					<div :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.county }">
 						<label for="type" class=" control-label">County</label>
 						<div>
 						<select v-validate="'required'" id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
@@ -43,7 +44,7 @@
 						</div>
 					</div>
 					
-					<div v-if="countyset" :class="{'form-group': true,'col-xs-10': true, 'has-error': errors.has('Town') }">
+					<div v-if="countyset" :class="{'form-group': true,'col-xs-10': true, 'has-error': backend_errors.town }">
 						<label for="type" class=" control-label">Town</label>
 						<div class="">
 						<div>
@@ -58,7 +59,7 @@
 						</div>
 					</div>
 					
-					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('Street') }">
+					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.street }">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
 						<div>
@@ -82,7 +83,7 @@
 					<div class="col-xs-10">
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"> <span class="fa fa-close"></span>Close</button>
-						<button type="submit" class="btn btn-primary">  <span class="fa fa-save"></span> Save</button>
+						<button @click="validateBeforeSubmit"  class="btn btn-primary">  <span class="fa fa-save"></span> Save</button>
 					</div>
 					</div>
 
@@ -246,7 +247,7 @@
 					$("#street_results").hide();
 				},
 				postProperty(){
-					$('#modal-new').modal('hide');
+					$('#modal-new').modal('hide')
 					axios.post('/api/property',this.new_property)
 					.then((response) => {
 							//$('#modal-new').modal('hide');
@@ -256,6 +257,7 @@
 					console.log(error);
 					if (error.response.status = 422) {
 							this.backend_errors=error.response.data.errors
+							//$('#modal-new').modal('show')
 							swal("Validation Error!", JSON.stringify(this.backend_errors), "warning");
 						} 
 					})

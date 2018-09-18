@@ -51470,6 +51470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['landlord', 'landlord_property', 'property_types'],
@@ -51587,6 +51588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				console.log(error);
 				if (error.response.status = 422) {
 					_this2.backend_errors = error.response.data.errors;
+					//$('#modal-new').modal('show')
 					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
 				}
 			});
@@ -51638,139 +51640,214 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
-            _c(
-              "form",
-              {
-                attrs: { autocomplete: "off" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.validateBeforeSubmit($event)
+            _c("form", { attrs: { autocomplete: "off" } }, [
+              _c(
+                "div",
+                {
+                  class: {
+                    "form-group": true,
+                    "col-xs-10": true,
+                    "has-error": _vm.backend_errors.name
                   }
-                }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    class: {
-                      "form-group": true,
-                      "col-xs-10": true,
-                      "has-error": _vm.errors.has("name")
-                    }
-                  },
-                  [
-                    _c(
-                      "label",
-                      { staticClass: "control-label", attrs: { for: "name" } },
-                      [_vm._v("Property Name")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.new_property.name,
-                            expression: "new_property.name"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required|min:2|max:20",
-                            expression: "'required|min:2|max:20'"
-                          }
-                        ],
-                        class: {
-                          "form-control": true,
-                          "has-error": _vm.errors.has("name")
-                        },
-                        attrs: {
-                          type: "text",
-                          placeholder: "property name",
-                          name: "name",
-                          required: "",
-                          autofocus: ""
-                        },
-                        domProps: { value: _vm.new_property.name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.new_property,
-                              "name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
+                },
+                [
+                  _c(
+                    "label",
+                    { staticClass: "control-label", attrs: { for: "name" } },
+                    [_vm._v("Property Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("input", {
+                      directives: [
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("name"),
-                              expression: "errors.has('name')"
-                            }
-                          ],
-                          staticClass: "help-block"
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.new_property.name,
+                          expression: "new_property.name"
                         },
-                        [
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|min:2|max:20",
+                          expression: "'required|min:2|max:20'"
+                        }
+                      ],
+                      class: {
+                        "form-control": true,
+                        "has-error": _vm.errors.has("name")
+                      },
+                      attrs: {
+                        type: "text",
+                        placeholder: "property name",
+                        name: "name",
+                        required: "",
+                        autofocus: ""
+                      },
+                      domProps: { value: _vm.new_property.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.new_property,
+                            "name",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.has("name")
+                      ? _c("span", { staticClass: "help-block" }, [
                           _c("i", { staticClass: "fa fa-warning" }),
-                          _vm._v(" "),
                           _c("small", [
                             _vm._v(_vm._s(_vm.errors.first("name")))
                           ])
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    class: {
-                      "form-group": true,
-                      "col-xs-10": true,
-                      "has-error": _vm.errors.has("type")
-                    }
-                  },
-                  [
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.backend_errors.name
+                      ? _c("span", { staticClass: "help-block" }, [
+                          _c("i", { staticClass: "fa fa-warning" }),
+                          _c("small", [_vm._v(_vm._s(_vm.backend_errors.name))])
+                        ])
+                      : _vm._e()
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: {
+                    "form-group": true,
+                    "col-xs-10": true,
+                    "has-error": _vm.backend_errors.type
+                  }
+                },
+                [
+                  _c(
+                    "label",
+                    { staticClass: " control-label", attrs: { for: "type" } },
+                    [_vm._v("Property")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
                     _c(
-                      "label",
-                      { staticClass: " control-label", attrs: { for: "type" } },
-                      [_vm._v("Property")]
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_property.type_id,
+                            expression: "new_property.type_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "type", name: "type" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.new_property,
+                              "type_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      _vm._l(_vm.property_types, function(property_type) {
+                        return _c(
+                          "option",
+                          {
+                            key: property_type.id,
+                            domProps: { value: property_type.id }
+                          },
+                          [_vm._v(_vm._s(property_type.name))]
+                        )
+                      })
                     ),
                     _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "validate",
-                              rawName: "v-validate",
-                              value: "required",
-                              expression: "'required'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.new_property.type_id,
-                              expression: "new_property.type_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { id: "type", name: "type" },
-                          on: {
-                            change: function($event) {
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("type"),
+                            expression: "errors.has('type')"
+                          }
+                        ],
+                        staticClass: "help-block"
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-warning" }),
+                        _vm._v(" "),
+                        _c("small", [_vm._v(_vm._s(_vm.errors.first("type")))])
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: {
+                    "form-group": true,
+                    "col-xs-10": true,
+                    "has-error": _vm.backend_errors.county
+                  }
+                },
+                [
+                  _c(
+                    "label",
+                    { staticClass: " control-label", attrs: { for: "type" } },
+                    [_vm._v("County")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
+                          },
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.new_property.location.county_id,
+                            expression: "new_property.location.county_id"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "county", name: "county" },
+                        on: {
+                          change: [
+                            function($event) {
                               var $$selectedVal = Array.prototype.filter
                                 .call($event.target.options, function(o) {
                                   return o.selected
@@ -51780,394 +51857,308 @@ var render = function() {
                                   return val
                                 })
                               _vm.$set(
-                                _vm.new_property,
-                                "type_id",
+                                _vm.new_property.location,
+                                "county_id",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
                               )
-                            }
-                          }
-                        },
-                        _vm._l(_vm.property_types, function(property_type) {
-                          return _c(
-                            "option",
-                            {
-                              key: property_type.id,
-                              domProps: { value: property_type.id }
                             },
-                            [_vm._v(_vm._s(property_type.name))]
-                          )
-                        })
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("type"),
-                              expression: "errors.has('type')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-warning" }),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v(_vm._s(_vm.errors.first("type")))
-                          ])
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    class: {
-                      "form-group": true,
-                      "col-xs-10": true,
-                      "has-error": _vm.errors.has("county")
-                    }
-                  },
-                  [
-                    _c(
-                      "label",
-                      { staticClass: " control-label", attrs: { for: "type" } },
-                      [_vm._v("County")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "validate",
-                              rawName: "v-validate",
-                              value: "required",
-                              expression: "'required'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.new_property.location.county_id,
-                              expression: "new_property.location.county_id"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { id: "county", name: "county" },
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.new_property.location,
-                                  "county_id",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              _vm.getTowns
-                            ]
-                          }
-                        },
-                        _vm._l(_vm.counties, function(county) {
-                          return _c(
-                            "option",
-                            { key: county.id, domProps: { value: county.id } },
-                            [_vm._v(_vm._s(county.name))]
-                          )
-                        })
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.errors.has("county"),
-                              expression: "errors.has('county')"
-                            }
-                          ],
-                          staticClass: "help-block"
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-warning" }),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v(_vm._s(_vm.errors.first("county")))
-                          ])
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.countyset
-                  ? _c(
-                      "div",
-                      {
-                        class: {
-                          "form-group": true,
-                          "col-xs-10": true,
-                          "has-error": _vm.errors.has("Town")
+                            _vm.getTowns
+                          ]
                         }
                       },
-                      [
-                        _c(
-                          "label",
+                      _vm._l(_vm.counties, function(county) {
+                        return _c(
+                          "option",
+                          { key: county.id, domProps: { value: county.id } },
+                          [_vm._v(_vm._s(county.name))]
+                        )
+                      })
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
                           {
-                            staticClass: " control-label",
-                            attrs: { for: "type" }
-                          },
-                          [_vm._v("Town")]
-                        ),
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("county"),
+                            expression: "errors.has('county')"
+                          }
+                        ],
+                        staticClass: "help-block"
+                      },
+                      [
+                        _c("i", { staticClass: "fa fa-warning" }),
                         _vm._v(" "),
-                        _c("div", {}, [
-                          _c("div", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "required|max:20",
-                                  expression: "'required|max:20'"
-                                },
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.town_query,
-                                  expression: "town_query"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                id: "townInput",
-                                type: "text",
-                                name: "Town",
-                                placeholder: "Town"
-                              },
-                              domProps: { value: _vm.town_query },
-                              on: {
-                                input: [
-                                  function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.town_query = $event.target.value
-                                  },
-                                  _vm.getStreets
-                                ]
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("Town"),
-                                    expression: "errors.has('Town')"
-                                  }
-                                ],
-                                staticClass: "help-block"
-                              },
-                              [
-                                _c("i", { staticClass: "fa fa-warning" }),
-                                _vm._v(" "),
-                                _c("small", [
-                                  _vm._v(_vm._s(_vm.errors.first("Town")))
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm.towns.length
-                              ? _c(
-                                  "div",
-                                  {
-                                    staticClass: "panel-footer",
-                                    attrs: { id: "town_results" }
-                                  },
-                                  [
-                                    _vm.towns && _vm.town_query
-                                      ? _c(
-                                          "ul",
-                                          {
-                                            staticClass:
-                                              "list-group autocomplete-results"
-                                          },
-                                          _vm._l(_vm.towns, function(town) {
-                                            return _c(
-                                              "li",
-                                              {
-                                                key: town.id,
-                                                staticClass:
-                                                  "list-group-item autocomplete-result",
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.setTown(town)
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v(_vm._s(town.name) + " ")]
-                                            )
-                                          })
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              : _vm._e()
-                          ])
+                        _c("small", [
+                          _vm._v(_vm._s(_vm.errors.first("county")))
                         ])
                       ]
                     )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.townset
-                  ? _c(
-                      "div",
-                      {
-                        class: {
-                          "form-group": true,
-                          "col-xs-10": true,
-                          "has-error": _vm.errors.has("Street")
-                        }
-                      },
-                      [
-                        _c(
-                          "label",
-                          {
-                            staticClass: " control-label",
-                            attrs: { for: "type" }
-                          },
-                          [_vm._v("Street")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", {}, [
-                          _c("div", [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "validate",
-                                  rawName: "v-validate",
-                                  value: "required|max:20",
-                                  expression: "'required|max:20'"
-                                },
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.street_query,
-                                  expression: "street_query"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                id: "streetInput",
-                                type: "text",
-                                name: "Street",
-                                placeholder: "Street"
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm.countyset
+                ? _c(
+                    "div",
+                    {
+                      class: {
+                        "form-group": true,
+                        "col-xs-10": true,
+                        "has-error": _vm.backend_errors.town
+                      }
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: " control-label",
+                          attrs: { for: "type" }
+                        },
+                        [_vm._v("Town")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", {}, [
+                        _c("div", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required|max:20",
+                                expression: "'required|max:20'"
                               },
-                              domProps: { value: _vm.street_query },
-                              on: {
-                                input: function($event) {
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.town_query,
+                                expression: "town_query"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              id: "townInput",
+                              type: "text",
+                              name: "Town",
+                              placeholder: "Town"
+                            },
+                            domProps: { value: _vm.town_query },
+                            on: {
+                              input: [
+                                function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
-                                  _vm.street_query = $event.target.value
-                                }
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                directives: [
-                                  {
-                                    name: "show",
-                                    rawName: "v-show",
-                                    value: _vm.errors.has("Street"),
-                                    expression: "errors.has('Street')"
-                                  }
-                                ],
-                                staticClass: "help-block"
-                              },
-                              [
-                                _c("i", { staticClass: "fa fa-warning" }),
-                                _vm._v(" "),
-                                _c("small", [
-                                  _vm._v(_vm._s(_vm.errors.first("Street")))
-                                ])
+                                  _vm.town_query = $event.target.value
+                                },
+                                _vm.getStreets
                               ]
-                            ),
-                            _vm._v(" "),
-                            _vm.streets.length
-                              ? _c(
-                                  "div",
-                                  {
-                                    staticClass: "panel-footer",
-                                    attrs: { id: "street_results" }
-                                  },
-                                  [
-                                    _vm.streets && _vm.street_query
-                                      ? _c(
-                                          "ul",
-                                          {
-                                            staticClass:
-                                              "list-group autocomplete-results"
-                                          },
-                                          _vm._l(_vm.streets, function(street) {
-                                            return _c(
-                                              "li",
-                                              {
-                                                key: street.id,
-                                                staticClass:
-                                                  "list-group-item autocomplete-result",
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.setStreet(street)
-                                                  }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.errors.has("Town"),
+                                  expression: "errors.has('Town')"
+                                }
+                              ],
+                              staticClass: "help-block"
+                            },
+                            [
+                              _c("i", { staticClass: "fa fa-warning" }),
+                              _vm._v(" "),
+                              _c("small", [
+                                _vm._v(_vm._s(_vm.errors.first("Town")))
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.towns.length
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "panel-footer",
+                                  attrs: { id: "town_results" }
+                                },
+                                [
+                                  _vm.towns && _vm.town_query
+                                    ? _c(
+                                        "ul",
+                                        {
+                                          staticClass:
+                                            "list-group autocomplete-results"
+                                        },
+                                        _vm._l(_vm.towns, function(town) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: town.id,
+                                              staticClass:
+                                                "list-group-item autocomplete-result",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.setTown(town)
                                                 }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  _vm._s(street.name) + " "
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              : _vm._e()
-                          ])
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(town.name) + " ")]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e()
+                                ]
+                              )
+                            : _vm._e()
                         ])
-                      ]
-                    )
-                  : _vm._e()
-              ]
-            )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.townset
+                ? _c(
+                    "div",
+                    {
+                      class: {
+                        "form-group": true,
+                        "col-xs-10": true,
+                        "has-error": _vm.backend_errors.street
+                      }
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: " control-label",
+                          attrs: { for: "type" }
+                        },
+                        [_vm._v("Street")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", {}, [
+                        _c("div", [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required|max:20",
+                                expression: "'required|max:20'"
+                              },
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.street_query,
+                                expression: "street_query"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              id: "streetInput",
+                              type: "text",
+                              name: "Street",
+                              placeholder: "Street"
+                            },
+                            domProps: { value: _vm.street_query },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.street_query = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.errors.has("Street"),
+                                  expression: "errors.has('Street')"
+                                }
+                              ],
+                              staticClass: "help-block"
+                            },
+                            [
+                              _c("i", { staticClass: "fa fa-warning" }),
+                              _vm._v(" "),
+                              _c("small", [
+                                _vm._v(_vm._s(_vm.errors.first("Street")))
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.streets.length
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "panel-footer",
+                                  attrs: { id: "street_results" }
+                                },
+                                [
+                                  _vm.streets && _vm.street_query
+                                    ? _c(
+                                        "ul",
+                                        {
+                                          staticClass:
+                                            "list-group autocomplete-results"
+                                        },
+                                        _vm._l(_vm.streets, function(street) {
+                                          return _c(
+                                            "li",
+                                            {
+                                              key: street.id,
+                                              staticClass:
+                                                "list-group-item autocomplete-result",
+                                              on: {
+                                                click: function($event) {
+                                                  _vm.setStreet(street)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(_vm._s(street.name) + " ")]
+                                          )
+                                        })
+                                      )
+                                    : _vm._e()
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      ])
+                    ]
+                  )
+                : _vm._e()
+            ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "col-xs-10" }, [
+            _c("div", { staticClass: "modal-footer" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.validateBeforeSubmit }
+                },
+                [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
+              )
+            ])
+          ])
         ])
       ])
     ])
@@ -52178,24 +52169,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-10" }, [
-      _c("div", { staticClass: "modal-footer" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: { type: "button", "data-dismiss": "modal" }
-          },
-          [_c("span", { staticClass: "fa fa-close" }), _vm._v("Close")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
-        )
-      ])
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-default",
+        attrs: { type: "button", "data-dismiss": "modal" }
+      },
+      [_c("span", { staticClass: "fa fa-close" }), _vm._v("Close")]
+    )
   }
 ]
 render._withStripped = true
