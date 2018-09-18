@@ -151,7 +151,8 @@
             counties:[],
             property_types:[],
 			towns:[],
-            streets:[],
+			streets:[],
+			backend_errors:[]
        }
        },
        methods: {
@@ -247,8 +248,12 @@
 							$('#modal-new').modal('hide');
 							this.$emit('propertyAdded',response.data)
 						})
-					.catch(function(error){
-					console.log(error); 
+					.catch((error)=>{
+					console.log(error);
+					if (error.response.status = 422) {
+							this.backend_errors=error.response.data.errors
+							swal("Validation Error!", JSON.stringify(this.backend_errors), "warning");
+						} 
 					})
 				}              
 		},

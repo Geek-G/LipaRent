@@ -77,7 +77,8 @@ import NewProperty from './NewProperty'
                         swal("Good job!", "You clicked the button!", "success");
                 },
                 pushProperty(event){
-                        this.the_landlord_properties.push(event);
+                        //this.the_landlord_properties.push(event);
+                        this.the_landlord_properties.splice(0, 0, event);
                         swal("Good job!", JSON.stringify(event.name)+" has been added!", "success");
                         //this.set(this.landlord_properties, this.landlord_properties.length, data);
                         //this.$forceUpdate();

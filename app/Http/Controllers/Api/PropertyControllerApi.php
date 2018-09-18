@@ -22,15 +22,6 @@ class PropertyControllerApi extends Controller
         //$this->middleware('auth');
     }
 
-    public function index()
-    {
-        $landlord=Auth::user()->landlord; 
-        //$properties = Property::paginate(15);
-        $properties= $landlord->property;
-        return PropertyResource::collection($properties);
-           
-         //return response(Property::all()->jsonSerialize(), Response::HTTP_OK);
-    }
 
     public function types()
     {
@@ -42,11 +33,6 @@ class PropertyControllerApi extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -55,6 +41,12 @@ class PropertyControllerApi extends Controller
      */
     public function store(Request $request)
     {  
+
+        $request->validate([
+            'name' => 'required|alpha_num|max:20',
+            'type_id' => 'required|integer',
+            'landlord_id' => 'required|integer',
+        ]);
         $property = new Property;
         $data = $request->json()->all();
         $property->name = $data['name'];

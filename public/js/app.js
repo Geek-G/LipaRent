@@ -51257,7 +51257,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", "You clicked the button!", "success");
         },
         pushProperty: function pushProperty(event) {
-            this.the_landlord_properties.push(event);
+            //this.the_landlord_properties.push(event);
+            this.the_landlord_properties.splice(0, 0, event);
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Good job!", JSON.stringify(event.name) + " has been added!", "success");
             //this.set(this.landlord_properties, this.landlord_properties.length, data);
             //this.$forceUpdate();
@@ -51493,7 +51494,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			counties: [],
 			property_types: [],
 			towns: [],
-			streets: []
+			streets: [],
+			backend_errors: []
 		};
 	},
 
@@ -51579,6 +51581,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				_this2.$emit('propertyAdded', response.data);
 			}).catch(function (error) {
 				console.log(error);
+				if (error.response.status = 422) {
+					_this2.backend_errors = error.response.data.errors;
+					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
+				}
 			});
 		}
 	},
