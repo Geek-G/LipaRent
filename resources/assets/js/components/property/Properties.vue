@@ -6,20 +6,20 @@
 					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-new"> New </a>
             </div>
             
-		    <div v-show="false" class="alert alert-success alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert"
-                aria-hidden="true">
-                &times;
-                </button>
-                {{session_status}}
-            </div>
-            
+
             <div class="box mb-1">
                     <div class="box-header mb-1">
                       <h3 class="box-title ">{{landlord.name}}'s Properties </h3>
                       </div>
                     </div>
                     <!-- /.box-header -->
+                    <div v-show="the_landlord_properties.length<1" class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                        &times;
+                        </button>
+                        You do not have any proprties yet
+                    </div>
                     
                     <div class="box-body mb-1">
 

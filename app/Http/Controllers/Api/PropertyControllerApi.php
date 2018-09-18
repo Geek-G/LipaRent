@@ -43,7 +43,7 @@ class PropertyControllerApi extends Controller
     {  
 
         $request->validate([
-            'name' => 'required|alpha_num|max:20',
+            'name' => 'required|string|max:20',
             'type_id' => 'required|integer',
             'landlord_id' => 'required|integer',
         ]);
