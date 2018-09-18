@@ -9,32 +9,46 @@
                             
                             <div class="modal-body">
                 <form autocomplete="off" @submit.prevent="validateBeforeSubmit">
-					<div class="form-group">
+					
+
+					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('name') }">
+						<label for="name" class="control-label">Property Name</label>
+						<div>
+						<input  v-model="new_property.name" v-validate="'required|min:2|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
+						<span v-show="errors.has('name')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('name') }}</small></span>
+						</div>
+					</div>
+
+
+					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('type') }">
 						<label for="type" class=" control-label">Property</label>
-						<div style="width:500px;">
-						<select id="type" name="type" class="form-control" v-model="new_property.type_id">
+						<div>
+						<select  v-validate="'required'" id="type" name="type" class="form-control" v-model="new_property.type_id">
 						<option v-for="property_type in property_types " :key="property_type.id" v-bind:value="property_type.id">{{property_type.name}}</option>	
 						</select>
+						<span v-show="errors.has('type')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('type') }}</small></span>
 						</div>
 					</div>
 
 
 
 
-					<div class="form-group">
+					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('county') }">
 						<label for="type" class=" control-label">County</label>
-						<div style="width:500px;">
-						<select id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
+						<div>
+						<select v-validate="'required'" id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
 							<option v-for="county in counties" :key="county.id"  v-bind:value="county.id">{{county.name}}</option>	
 						</select>
+						<span v-show="errors.has('county')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('county') }}</small></span>
 						</div>
 					</div>
 					
-					<div v-if="countyset" class="form-group">
+					<div v-if="countyset" :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('Town') }">
 						<label for="type" class=" control-label">Town</label>
 						<div class="">
-						<div style="width:500px;">
-							<input class="form-control"  v-model="town_query"  v-on:input="getStreets"  id="townInput" type="text" name="Town" placeholder="Town">
+						<div>
+							<input v-validate="'required|max:20'" class="form-control"  v-model="town_query"  v-on:input="getStreets"  id="townInput" type="text" name="Town" placeholder="Town">
+							<span v-show="errors.has('Town')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('Town') }}</small></span>
 							<div v-if="towns.length" id="town_results" class="panel-footer">
 								<ul class="list-group autocomplete-results"  v-if="towns && town_query">
 									<li v-for="town in towns" :key="town.id" class="list-group-item autocomplete-result" v-on:click="setTown(town)">{{town.name}} </li>
@@ -44,11 +58,12 @@
 						</div>
 					</div>
 					
-					<div v-if="townset" class="form-group">
+					<div v-if="townset" :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('Street') }">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
-						<div style="width:500px;">
-							<input class="form-control"  v-model="street_query" id="streetInput" type="text" name="Street" placeholder="Street">
+						<div>
+							<input v-validate="'required|max:20'" class="form-control"  v-model="street_query" id="streetInput" type="text" name="Street" placeholder="Street">
+							<span v-show="errors.has('Street')" class="help-block"> <i class="fa fa-warning"></i> <small>{{ errors.first('Street') }}</small></span>
 							<div v-if="streets.length" id="street_results"  class="panel-footer">
 								<ul class="list-group autocomplete-results" v-if="streets && street_query">
 									<li v-for="street in streets" :key="street.id" class="list-group-item autocomplete-result" v-on:click="setStreet(street)">{{street.name}} </li>
@@ -58,15 +73,6 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
-						<label for="name" class="control-label">Property Name</label>
-						<div class="">
-						<input  style="width:500px;" v-model="new_property.name" v-validate="'required|min:3|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
-						<i v-show="errors.has('name')" class="fa fa-warning"></i>
-						<span v-show="errors.has('name')" class="help-block has-error">{{ errors.first('name') }}</span>
-						</div>
-					</div>
-
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"> <span class="fa fa-close"></span>Close</button>
@@ -89,13 +95,6 @@
 </template>
 
 <style scoped>
-.help-block {
-    display: block;
-}
-
-.has-error{
-    color: red;
-}
 .autocomplete {
     position: relative;
 	margin:0;
