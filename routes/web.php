@@ -40,19 +40,11 @@ Auth::routes();
 
 Route::get('/home','HomeController@index')->name('home');
 
-Route::resource('house','HouseController');
-Route::resource('property','PropertyController');
-Route::resource('landlord','LandlordController');
-Route::resource('tenant','TenantController');
-
-
-
-
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| Property Routes
 |--------------------------------------------------------------------------
-|Routes for Vue XHR
-|
 */
+Route::get('property','PropertyController@index');
+
 
