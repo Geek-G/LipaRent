@@ -51611,6 +51611,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
 				}
 			});
+		},
+		print_backend_errors: function print_backend_errors() {
+			return this.backend_errors.name[0];
 		}
 	},
 	watch: {
@@ -51730,7 +51733,9 @@ var render = function() {
                     _vm.backend_errors.name
                       ? _c("span", { staticClass: "help-block" }, [
                           _c("i", { staticClass: "fa fa-warning" }),
-                          _c("small", [_vm._v(_vm._s(_vm.backend_errors.name))])
+                          _c("small", [
+                            _vm._v(_vm._s(_vm.print_backend_errors()))
+                          ])
                         ])
                       : _vm._e()
                   ])

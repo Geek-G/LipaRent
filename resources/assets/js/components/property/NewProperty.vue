@@ -16,7 +16,7 @@
 						<div>
 						<input  v-model="new_property.name" v-validate="'required|min:2|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
 						<span v-if="errors.has('name')" class="help-block"> <i class="fa fa-warning"></i><small>{{errors.first('name') }}</small></span>
-						<span v-if="backend_errors.name" class="help-block"> <i class="fa fa-warning"></i><small>{{backend_errors.name }}</small></span>
+						<span v-if="backend_errors.name" class="help-block"> <i class="fa fa-warning"></i><small>{{print_backend_errors() }}</small></span>
 						</div>
 					</div>
 
@@ -280,6 +280,9 @@
 							swal("Validation Error!", JSON.stringify(this.backend_errors), "warning");
 						} 
 					})
+				},
+				print_backend_errors(){
+					return this.backend_errors.name[0]
 				}              
 		},
 		watch: {
