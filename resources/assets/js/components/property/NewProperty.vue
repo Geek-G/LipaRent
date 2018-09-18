@@ -252,7 +252,26 @@
 					.then((response) => {
 							//$('#modal-new').modal('hide');
 							this.$emit('propertyAdded',response.data)
-						})
+							this.new_property={
+										name:'',
+										type_id:null,
+										landlord_id:null,
+										new_town:'',
+										new_street:'',
+										location:{
+											county_id:'',
+											town_id:'',
+											street_id:''
+										}}
+							this.street_query=''
+							this.town_query=''	
+							this.backend_errors=[]
+						}).then(() => {
+										this.$nextTick().then(() => {
+										this.$validator.reset()
+										//this.errors.clear();
+										})
+									})
 					.catch((error)=>{
 					console.log(error);
 					if (error.response.status = 422) {

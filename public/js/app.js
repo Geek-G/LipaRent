@@ -51584,6 +51584,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			axios.post('/api/property', this.new_property).then(function (response) {
 				//$('#modal-new').modal('hide');
 				_this2.$emit('propertyAdded', response.data);
+				_this2.new_property = {
+					name: '',
+					type_id: null,
+					landlord_id: null,
+					new_town: '',
+					new_street: '',
+					location: {
+						county_id: '',
+						town_id: '',
+						street_id: ''
+					} };
+				_this2.street_query = '';
+				_this2.town_query = '';
+				_this2.backend_errors = [];
+			}).then(function () {
+				_this2.$nextTick().then(function () {
+					_this2.$validator.reset();
+					//this.errors.clear();
+				});
 			}).catch(function (error) {
 				console.log(error);
 				if (error.response.status = 422) {
