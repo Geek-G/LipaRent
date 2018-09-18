@@ -56,7 +56,7 @@ import NewProperty from './NewProperty'
     export default {
         props: ['landlord_properties','landlord','property_types'],
         mounted() {
-            assignData()
+            
         },
        data() { return { 
            house:{
