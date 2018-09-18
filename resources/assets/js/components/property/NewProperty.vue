@@ -1,8 +1,8 @@
 <template>
-    	<div col-md-10>
+    	<div class="col-xs-12">
 			<div class="modal fade" id="modal-new">
 					<div class="modal-dialog">
-						<div class="modal-content">
+						<div class="modal-content row">
                             <div class="modal-header">
                                    New Property
                             </div>
@@ -11,7 +11,7 @@
                 <form autocomplete="off" @submit.prevent="validateBeforeSubmit">
 					
 
-					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('name') }">
+					<div :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('name') }">
 						<label for="name" class="control-label">Property Name</label>
 						<div>
 						<input  v-model="new_property.name" v-validate="'required|min:2|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
@@ -20,7 +20,7 @@
 					</div>
 
 
-					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('type') }">
+					<div :class="{'form-group': true,'col-xs-10': true, 'has-error': errors.has('type') }">
 						<label for="type" class=" control-label">Property</label>
 						<div>
 						<select  v-validate="'required'" id="type" name="type" class="form-control" v-model="new_property.type_id">
@@ -33,7 +33,7 @@
 
 
 
-					<div :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('county') }">
+					<div :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('county') }">
 						<label for="type" class=" control-label">County</label>
 						<div>
 						<select v-validate="'required'" id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
@@ -43,7 +43,7 @@
 						</div>
 					</div>
 					
-					<div v-if="countyset" :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('Town') }">
+					<div v-if="countyset" :class="{'form-group': true,'col-xs-10': true, 'has-error': errors.has('Town') }">
 						<label for="type" class=" control-label">Town</label>
 						<div class="">
 						<div>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					
-					<div v-if="townset" :class="{'form-group': true,'col-md-10': true,'col-md-offset-1': true, 'has-error': errors.has('Street') }">
+					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true,'has-error': errors.has('Street') }">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
 						<div>
@@ -74,18 +74,21 @@
 					</div>
 					
 
-					<div class="form-group modal-footer">
+            </form>	    
+			    </div>
+				<!-- /.modal-body -->
+				
+
+					<div class="col-xs-10">
+					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal"> <span class="fa fa-close"></span>Close</button>
 						<button type="submit" class="btn btn-primary">  <span class="fa fa-save"></span> Save</button>
 					</div>
-
-            </form>	    
-			    </div>
-			    <!-- /.modal-body -->
-                            
+					</div>
 
 						</div>
 						<!-- /.modal-content -->
+				
 					</div>
 					<!-- /.modal-dialog -->
 			</div>
@@ -166,7 +169,7 @@
 					return;
 					}
 
-					alert('Correct them errors!');
+					swal("Correct Errors!", "Make sure all form fields are correct", "warning");
 				});
 				},
 				loadCounties(){
@@ -243,9 +246,10 @@
 					$("#street_results").hide();
 				},
 				postProperty(){
+					$('#modal-new').modal('hide');
 					axios.post('/api/property',this.new_property)
 					.then((response) => {
-							$('#modal-new').modal('hide');
+							//$('#modal-new').modal('hide');
 							this.$emit('propertyAdded',response.data)
 						})
 					.catch((error)=>{

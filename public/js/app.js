@@ -51467,6 +51467,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['landlord', 'landlord_property', 'property_types'],
@@ -51511,7 +51514,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					return;
 				}
 
-				alert('Correct them errors!');
+				swal("Correct Errors!", "Make sure all form fields are correct", "warning");
 			});
 		},
 		loadCounties: function loadCounties() {
@@ -51576,8 +51579,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		postProperty: function postProperty() {
 			var _this2 = this;
 
+			$('#modal-new').modal('hide');
 			axios.post('/api/property', this.new_property).then(function (response) {
-				$('#modal-new').modal('hide');
+				//$('#modal-new').modal('hide');
 				_this2.$emit('propertyAdded', response.data);
 			}).catch(function (error) {
 				console.log(error);
@@ -51623,10 +51627,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { "col-md-10": "" } }, [
+  return _c("div", { staticClass: "col-xs-12" }, [
     _c("div", { staticClass: "modal fade", attrs: { id: "modal-new" } }, [
       _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
+        _c("div", { staticClass: "modal-content row" }, [
           _c("div", { staticClass: "modal-header" }, [
             _vm._v(
               "\n                                   New Property\n                            "
@@ -51651,8 +51655,7 @@ var render = function() {
                   {
                     class: {
                       "form-group": true,
-                      "col-md-10": true,
-                      "col-md-offset-1": true,
+                      "col-xs-10": true,
                       "has-error": _vm.errors.has("name")
                     }
                   },
@@ -51735,8 +51738,7 @@ var render = function() {
                   {
                     class: {
                       "form-group": true,
-                      "col-md-10": true,
-                      "col-md-offset-1": true,
+                      "col-xs-10": true,
                       "has-error": _vm.errors.has("type")
                     }
                   },
@@ -51829,8 +51831,7 @@ var render = function() {
                   {
                     class: {
                       "form-group": true,
-                      "col-md-10": true,
-                      "col-md-offset-1": true,
+                      "col-xs-10": true,
                       "has-error": _vm.errors.has("county")
                     }
                   },
@@ -51924,8 +51925,7 @@ var render = function() {
                       {
                         class: {
                           "form-group": true,
-                          "col-md-10": true,
-                          "col-md-offset-1": true,
+                          "col-xs-10": true,
                           "has-error": _vm.errors.has("Town")
                         }
                       },
@@ -52047,8 +52047,7 @@ var render = function() {
                       {
                         class: {
                           "form-group": true,
-                          "col-md-10": true,
-                          "col-md-offset-1": true,
+                          "col-xs-10": true,
                           "has-error": _vm.errors.has("Street")
                         }
                       },
@@ -52163,12 +52162,12 @@ var render = function() {
                         ])
                       ]
                     )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm._m(0)
+                  : _vm._e()
               ]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ])
       ])
     ])
@@ -52179,21 +52178,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-default",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_c("span", { staticClass: "fa fa-close" }), _vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
-      )
+    return _c("div", { staticClass: "col-xs-10" }, [
+      _c("div", { staticClass: "modal-footer" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default",
+            attrs: { type: "button", "data-dismiss": "modal" }
+          },
+          [_c("span", { staticClass: "fa fa-close" }), _vm._v("Close")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
+        )
+      ])
     ])
   }
 ]
@@ -52221,6 +52222,14 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
+        _c("div", { staticClass: "box mb-1" }, [
+          _c("div", { staticClass: "box-header mb-1" }, [
+            _c("h3", { staticClass: "box-title " }, [
+              _vm._v(_vm._s(_vm.landlord.name) + "'s Properties ")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           {
@@ -52228,8 +52237,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: false,
-                expression: "false"
+                value: _vm.the_landlord_properties.length < 1,
+                expression: "the_landlord_properties.length<1"
               }
             ],
             staticClass: "alert alert-success alert-dismissable"
@@ -52245,23 +52254,13 @@ var render = function() {
                   "aria-hidden": "true"
                 }
               },
-              [_vm._v("\n                ×\n                ")]
+              [_vm._v("\n                        ×\n                        ")]
             ),
             _vm._v(
-              "\n                " +
-                _vm._s(_vm.session_status) +
-                "\n            "
+              "\n                        You do not have any proprties yet\n                    "
             )
           ]
         ),
-        _vm._v(" "),
-        _c("div", { staticClass: "box mb-1" }, [
-          _c("div", { staticClass: "box-header mb-1" }, [
-            _c("h3", { staticClass: "box-title " }, [
-              _vm._v(_vm._s(_vm.landlord.name) + "'s Properties ")
-            ])
-          ])
-        ]),
         _vm._v(" "),
         _c(
           "div",
