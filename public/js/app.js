@@ -51669,6 +51669,7 @@ var render = function() {
                   class: {
                     "form-group": true,
                     "col-xs-10": true,
+                    "col-xs-offset-1": true,
                     "has-error": _vm.backend_errors.name
                   }
                 },
@@ -51748,6 +51749,7 @@ var render = function() {
                   class: {
                     "form-group": true,
                     "col-xs-10": true,
+                    "col-xs-offset-1": true,
                     "has-error": _vm.backend_errors.type
                   }
                 },
@@ -51839,6 +51841,7 @@ var render = function() {
                   class: {
                     "form-group": true,
                     "col-xs-10": true,
+                    "col-xs-offset-1": true,
                     "has-error": _vm.backend_errors.county
                   }
                 },
@@ -51933,6 +51936,7 @@ var render = function() {
                       class: {
                         "form-group": true,
                         "col-xs-10": true,
+                        "col-xs-offset-1": true,
                         "has-error": _vm.backend_errors.town
                       }
                     },
@@ -52055,6 +52059,7 @@ var render = function() {
                       class: {
                         "form-group": true,
                         "col-xs-10": true,
+                        "col-xs-offset-1": true,
                         "has-error": _vm.backend_errors.street
                       }
                     },

@@ -11,7 +11,7 @@
                 <form autocomplete="off" >
 					
 
-					<div :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.name }">
+					<div :class="{'form-group': true,'col-xs-10': true,'col-xs-offset-1': true,'has-error': backend_errors.name }">
 						<label for="name" class="control-label">Property Name</label>
 						<div>
 						<input  v-model="new_property.name" v-validate="'required|min:2|max:20'" :class="{'form-control': true, 'has-error': errors.has('name') }" type="text" placeholder="property name" name="name" required autofocus>
@@ -21,7 +21,7 @@
 					</div>
 
 
-					<div :class="{'form-group': true,'col-xs-10': true, 'has-error': backend_errors.type }">
+					<div :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true, 'has-error': backend_errors.type }">
 						<label for="type" class=" control-label">Property</label>
 						<div>
 						<select  v-validate="'required'" id="type" name="type" class="form-control" v-model="new_property.type_id">
@@ -34,7 +34,7 @@
 
 
 
-					<div :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.county }">
+					<div :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true,'has-error': backend_errors.county }">
 						<label for="type" class=" control-label">County</label>
 						<div>
 						<select v-validate="'required'" id="county" name="county" class="form-control" v-on:change="getTowns" v-model="new_property.location.county_id">
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 					
-					<div v-if="countyset" :class="{'form-group': true,'col-xs-10': true, 'has-error': backend_errors.town }">
+					<div v-if="countyset" :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true, 'has-error': backend_errors.town }">
 						<label for="type" class=" control-label">Town</label>
 						<div class="">
 						<div>
@@ -59,7 +59,7 @@
 						</div>
 					</div>
 					
-					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true,'has-error': backend_errors.street }">
+					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true,'has-error': backend_errors.street }">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
 						<div>

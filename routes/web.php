@@ -47,7 +47,7 @@ Route::get('/home','HomeController@index')->name('home');
 | Property Routes
 |--------------------------------------------------------------------------
 */
-Route::get('property','PropertyController@index');
+Route::get('property','PropertyController@index')->name('property.index');
 
 /*
 |--------------------------------------------------------------------------
