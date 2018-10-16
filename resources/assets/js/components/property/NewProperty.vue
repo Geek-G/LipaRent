@@ -59,6 +59,7 @@
 						</div>
 					</div>
 					
+					
 					<div v-if="townset" :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true,'has-error': backend_errors.street }">
 						<label for="type" class=" control-label">Street</label>
 						<div class="">
@@ -74,6 +75,10 @@
 						</div>
 					</div>
 					
+					<div  :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true, 'has-error': backend_errors.description}" rows="3" placeholder="Short details ...">
+						<label>Description</label>
+						<textarea v-model="new_property.description" class="form-control"></textarea>
+					</div>
 
             </form>	    
 			    </div>
@@ -139,7 +144,8 @@
         },
        data() { return {
 	    new_property:{
-		    name:'',
+			name:'',
+			description:'',
 			type_id:null,
 			landlord_id:null,
 		    location:{
@@ -253,6 +259,7 @@
 				clearForm(){
 					this.new_property={
 						name:'',
+						description:'',
 						type_id:null,
 						landlord_id:null,
 						new_town:'',
@@ -290,7 +297,9 @@
 					})
 					.then((response) => {
 							//$('#modal-new').modal('hide');
+						if(response.status==201){
 							this.$emit('propertyAdded',response.data);
+						}	
 					})
 					.then(() => { 
 						this.clearForm()

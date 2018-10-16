@@ -51472,6 +51472,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['landlord', 'landlord_property', 'property_types'],
@@ -51484,6 +51489,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			new_property: {
 				name: '',
+				description: '',
 				type_id: null,
 				landlord_id: null,
 				location: {
@@ -51585,6 +51591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		clearForm: function clearForm() {
 			this.new_property = {
 				name: '',
+				description: '',
 				type_id: null,
 				landlord_id: null,
 				new_town: '',
@@ -51620,7 +51627,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			}).then(function (response) {
 				//$('#modal-new').modal('hide');
-				_this2.$emit('propertyAdded', response.data);
+				if (response.status == 201) {
+					_this2.$emit('propertyAdded', response.data);
+				}
 			}).then(function () {
 				_this2.clearForm();
 				_this2.$nextTick().then(function () {
@@ -52187,7 +52196,48 @@ var render = function() {
                       ])
                     ]
                   )
-                : _vm._e()
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  class: {
+                    "form-group": true,
+                    "col-xs-10": true,
+                    "col-xs-offset-1": true,
+                    "has-error": _vm.backend_errors.description
+                  },
+                  attrs: { rows: "3", placeholder: "Short details ..." }
+                },
+                [
+                  _c("label", [_vm._v("Description")]),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.new_property.description,
+                        expression: "new_property.description"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    domProps: { value: _vm.new_property.description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.new_property,
+                          "description",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]
+              )
             ])
           ]),
           _vm._v(" "),

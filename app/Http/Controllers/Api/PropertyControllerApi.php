@@ -52,6 +52,8 @@ class PropertyControllerApi extends Controller
         $data = $request->json()->all();
         $property->name = $data['name'];
         $property->property_type_id = $data['type_id'];
+        
+        $property->description = $data['description'];
         // Auth::user()->landlord->id;
         $property->landlord_id = $data['landlord_id'];
 
