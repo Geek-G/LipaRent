@@ -42,10 +42,11 @@ class PropertyControllerApi extends Controller
     public function store(Request $request)
     {  
 
+
         $request->validate([
             'name' => 'required|string|max:20|min:3',
             'type_id' => 'required|integer',
-            'landlord_id' => 'required|integer',
+            'landlord_id' => 'required|integer'
         ]);
         $property = new Property;
         $data = $request->json()->all();
@@ -53,6 +54,9 @@ class PropertyControllerApi extends Controller
         $property->property_type_id = $data['type_id'];
         // Auth::user()->landlord->id;
         $property->landlord_id = $data['landlord_id'];
+
+        // location-- allow new, check id existence
+
         $property->street_id = $data['location']['street_id']; 
         //$property->description = $data['description'];
         $property->save();

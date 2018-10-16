@@ -51266,17 +51266,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         deleteProperty: function deleteProperty() {
             __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()({
                 title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
+                text: "Once deleted, you will not be able to recover this property!",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true
             }).then(function (willDelete) {
                 if (willDelete) {
-                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Poof! Your imaginary file has been deleted!", {
-                        icon: "success"
-                    });
+
+                    // swal("Poof! Your imaginary file has been deleted!", {
+                    // icon: "success",
+                    // });
                 } else {
-                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Your imaginary file is safe!");
+                    __WEBPACK_IMPORTED_MODULE_0_sweetalert___default()("Property Safe!");
                 }
             });
         }
@@ -51489,6 +51490,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					county_id: '',
 					town_id: '',
 					street_id: ''
+				},
+				new_location: {
+					town_name: '',
+					street_name: ''
 				}
 			},
 			town_query: '',
@@ -51577,39 +51582,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.new_property.location.street_id = street.id;
 			$("#street_results").hide();
 		},
+		clearForm: function clearForm() {
+			this.new_property = {
+				name: '',
+				type_id: null,
+				landlord_id: null,
+				new_town: '',
+				new_street: '',
+				location: {
+					county_id: '',
+					town_id: '',
+					street_id: ''
+				} };
+			this.street_query = '';
+			this.town_query = '';
+			this.backend_errors = [];
+		},
 		postProperty: function postProperty() {
 			var _this2 = this;
 
 			$('#modal-new').modal('hide');
-			axios.post('/api/property', this.new_property).then(function (response) {
+			this.new_property.landlord_id = this.landlord.id;
+			axios.post('/api/property', this.new_property).catch(function (error) {
+				console.log(error);
+				//swal(" Server Error!", "warning");
+				if (error.response.status == 422) {
+					_this2.backend_errors = error.response.data.errors;
+					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
+					return;
+				} else if (error.response.status == 500) {
+					//this.backend_errors=error.response.data
+					swal("Internal Server Error!", "warning");
+					return;
+				} else {
+					swal("Unknown Error!", "warning");
+					return;
+				}
+			}).then(function (response) {
 				//$('#modal-new').modal('hide');
 				_this2.$emit('propertyAdded', response.data);
-				_this2.new_property = {
-					name: '',
-					type_id: null,
-					landlord_id: null,
-					new_town: '',
-					new_street: '',
-					location: {
-						county_id: '',
-						town_id: '',
-						street_id: ''
-					} };
-				_this2.street_query = '';
-				_this2.town_query = '';
-				_this2.backend_errors = [];
 			}).then(function () {
+				_this2.clearForm();
 				_this2.$nextTick().then(function () {
 					_this2.$validator.reset();
 					//this.errors.clear();
 				});
-			}).catch(function (error) {
-				console.log(error);
-				if (error.response.status = 422) {
-					_this2.backend_errors = error.response.data.errors;
-					//$('#modal-new').modal('show')
-					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
-				}
 			});
 		},
 		print_backend_errors: function print_backend_errors() {
@@ -51619,7 +51636,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	watch: {
 		town_query: function town_query(val, oldVal) {
 			$("#town_results").show();
-			_.debounce(this.loadTowns(val, this.new_property.location.county_id), 500);
+			_.debounce(this.loadTowns(val, this.new_property.location.county_id), 2000);
 		},
 
 		'new_property.location.county_id': function new_propertyLocationCounty_id(val, oldVal) {
@@ -51628,7 +51645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		street_query: function street_query(val, oldVal) {
 			$("#street_results").show();
-			_.debounce(this.loadStreets(val, this.new_property.location.town_id), 500);
+			_.debounce(this.loadStreets(val, this.new_property.location.town_id), 2000);
 		},
 
 		'new_property.location.town_id': function new_propertyLocationTown_id(val, oldVal) {

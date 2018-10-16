@@ -146,6 +146,10 @@
 			    county_id:'',
 			    town_id:'',
 			    street_id:''
+			},
+			new_location:{
+			    town_name:'',
+			    street_name:''
 		    }
 	    },    
 			town_query:'',
@@ -246,40 +250,55 @@
 					this.new_property.location.street_id=street.id
 					$("#street_results").hide();
 				},
+				clearForm(){
+					this.new_property={
+						name:'',
+						type_id:null,
+						landlord_id:null,
+						new_town:'',
+						new_street:'',
+						location:{
+							county_id:'',
+							town_id:'',
+							street_id:''
+					}   }
+					this.street_query=''
+					this.town_query=''	
+					this.backend_errors=[]
+				},
 				postProperty(){
 					$('#modal-new').modal('hide')
+					this.new_property.landlord_id=this.landlord.id
 					axios.post('/api/property',this.new_property)
+					.catch((error)=>{
+						console.log(error);
+						//swal(" Server Error!", "warning");
+						if (error.response.status == 422) {
+								this.backend_errors=error.response.data.errors
+								swal("Validation Error!", JSON.stringify(this.backend_errors), "warning");
+								return
+							} 
+						else if (error.response.status == 500) {
+								//this.backend_errors=error.response.data
+								swal("Internal Server Error!", "warning");
+								return
+							} 
+						else   {
+								swal("Unknown Error!", "warning");
+								return
+							} 		
+					})
 					.then((response) => {
 							//$('#modal-new').modal('hide');
-							this.$emit('propertyAdded',response.data)
-							this.new_property={
-										name:'',
-										type_id:null,
-										landlord_id:null,
-										new_town:'',
-										new_street:'',
-										location:{
-											county_id:'',
-											town_id:'',
-											street_id:''
-										}}
-							this.street_query=''
-							this.town_query=''	
-							this.backend_errors=[]
-						}).then(() => {
-										this.$nextTick().then(() => {
-										this.$validator.reset()
-										//this.errors.clear();
-										})
-									})
-					.catch((error)=>{
-					console.log(error);
-					if (error.response.status = 422) {
-							this.backend_errors=error.response.data.errors
-							//$('#modal-new').modal('show')
-							swal("Validation Error!", JSON.stringify(this.backend_errors), "warning");
-						} 
+							this.$emit('propertyAdded',response.data);
 					})
+					.then(() => { 
+						this.clearForm()
+						this.$nextTick().then(() => {
+						this.$validator.reset()
+						//this.errors.clear();
+						})
+					})	
 				},
 				print_backend_errors(){
 					return this.backend_errors.name[0]
@@ -288,7 +307,7 @@
 		watch: {
 			town_query: function(val, oldVal) {
 				$("#town_results").show();
-				_.debounce(this.loadTowns(val,this.new_property.location.county_id), 500)
+				_.debounce(this.loadTowns(val,this.new_property.location.county_id), 2000)
 			},
 			
 			'new_property.location.county_id': function(val, oldVal) {
@@ -297,7 +316,7 @@
 			},
 			street_query: function(val, oldVal) {
 				$("#street_results").show();
-				_.debounce(this.loadStreets(val,this.new_property.location.town_id), 500)
+				_.debounce(this.loadStreets(val,this.new_property.location.town_id), 2000)
 			},
 			
 			'new_property.location.town_id': function(val, oldVal) {

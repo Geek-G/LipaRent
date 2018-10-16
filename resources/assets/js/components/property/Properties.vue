@@ -86,18 +86,19 @@ import NewProperty from './NewProperty'
                 deleteProperty(){
                         swal({
                             title: "Are you sure?",
-                            text: "Once deleted, you will not be able to recover this imaginary file!",
+                            text: "Once deleted, you will not be able to recover this property!",
                             icon: "warning",
                             buttons: true,
                             dangerMode: true,
                             })
                             .then((willDelete) => {
                             if (willDelete) {
-                                swal("Poof! Your imaginary file has been deleted!", {
-                                icon: "success",
-                                });
+                                
+                                // swal("Poof! Your imaginary file has been deleted!", {
+                                // icon: "success",
+                                // });
                             } else {
-                                swal("Your imaginary file is safe!");
+                                swal("Property Safe!");
                             }
                             });
                 }      

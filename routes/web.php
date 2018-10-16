@@ -51,7 +51,7 @@ Route::get('property','PropertyController@index')->name('property.index');
 
 /*
 |--------------------------------------------------------------------------
-| Property Routes
+| House Routes
 |--------------------------------------------------------------------------
 */
 Route::get('house','HouseController@index');

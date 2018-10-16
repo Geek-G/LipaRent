@@ -27,7 +27,7 @@ class PropertyController extends Controller
             $landlord=Auth::user()->landlord; 
             //$landlord_properties= $landlord->property;
             $landlord_properties= Property::where('landlord_id', $landlord->id)
-            ->orderBy('name', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
             $types= PropertyType::all(); 
             return view('landlord.properties', [
