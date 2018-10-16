@@ -77,7 +77,7 @@
 					
 					<div  :class="{'form-group': true,'col-xs-10': true ,'col-xs-offset-1': true, 'has-error': backend_errors.description}" rows="3" placeholder="Short details ...">
 						<label>Description</label>
-						<textarea v-model="new_property.description" class="form-control"></textarea>
+						<textarea v-model="new_property.description" class="form-control" placeholder="Short description here.."></textarea>
 					</div>
 
             </form>	    

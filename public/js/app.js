@@ -52224,6 +52224,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
+                    attrs: { placeholder: "Short description here.." },
                     domProps: { value: _vm.new_property.description },
                     on: {
                       input: function($event) {
