@@ -6,6 +6,8 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Property;
+use App\Town;
+use App\Street;
 use App\Landlord;
 use App\PropertyType;
 use App\Http\Requests;
@@ -56,10 +58,28 @@ class PropertyControllerApi extends Controller
         $property->description = $data['description'];
         // Auth::user()->landlord->id;
         $property->landlord_id = $data['landlord_id'];
-
-        // location-- allow new, check id existence
-
-        $property->street_id = $data['location']['street_id']; 
+        if($data['location']['street_id']!=null&&$data['location']['street_id']!=null)
+        {
+            $property->street_id = $data['location']['street_id'];
+        }    
+        else{
+            $town_name=$data['new_location']['town_name']; 
+            $street_name=$data['new_location']['street_name']; 
+            if($town_name!=''&& $street_name!=''){
+                $town= new Town;
+                $town->name=$town_name;
+                $town->county_id = $data['location']['county_id'];
+                $town->save(); 
+                $the_town = Town::where('name', $town_name)->firstOrFail();
+                $street= new Street;
+                $street->name=$street_name;
+                $street->town_id = $the_town->id;
+                $street->save();
+                $the_street = Street::where('name', $street_name)->firstOrFail();
+                
+                $property->street_id = $the_street->id;
+            }
+        }
         //$property->description = $data['description'];
         $property->save();
         return new PropertyResource($property);

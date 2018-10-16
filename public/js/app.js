@@ -51610,6 +51610,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			$('#modal-new').modal('hide');
 			this.new_property.landlord_id = this.landlord.id;
+			this.new_property.new_location.town_name = this.town_query;
+			this.new_property.new_location.street_name = this.street_query;
 			axios.post('/api/property', this.new_property).catch(function (error) {
 				console.log(error);
 				//swal(" Server Error!", "warning");
