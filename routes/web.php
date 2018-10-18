@@ -55,7 +55,7 @@ Route::get('property/{id}','PropertyController@show')->name('property.show');
 | House Routes
 |--------------------------------------------------------------------------
 */
-Route::get('house','HouseController@index');
+Route::get('house/{id}','HouseController@houses')->name('houses');
 
 
 

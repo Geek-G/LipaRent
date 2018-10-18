@@ -27,13 +27,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('about', require('./components/About.vue'));
 Vue.component('pricing', require('./components/Pricing.vue'));
 Vue.component('location', require('./components/Location.vue'));
-Vue.component('house', require('./components/House.vue'));
 
 Vue.component('propertiez', require('./components/property/Properties.vue'));
 Vue.component('new-property', require('./components/property/NewProperty.vue'));
 Vue.component('show-property', require('./components/property/ShowProperty.vue'));
 Vue.component('edit-property', require('./components/property/EditProperty.vue'));
 
+Vue.component('houses', require('./components/house/Houses.vue'));
+Vue.component('new-house', require('./components/house/NewHouse.vue'));
 const app = new Vue({
     el: '#app'
 });

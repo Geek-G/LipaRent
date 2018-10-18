@@ -20,15 +20,15 @@ class HouseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
+    public function houses($id)
+    {      
         $landlord= Auth::user()->landlord;
-        $properties= $landlord->property; 
-       
-        $housetypes=HouseType::all();
+        $houses= House::where('property_id', $id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+        //$houses=House::all(); 
         return view('house.index', [
-            'housetypes' => $housetypes,
-            'properties' => $properties  
+            'units' => $houses  
         ]);
     }
 

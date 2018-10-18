@@ -1506,22 +1506,17 @@ module.exports = Component.exports
 /* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(76)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(78)
+var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(79)
+var __vue_template__ = null
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-368b7a02"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -1533,22 +1528,6 @@ var Component = normalizeComponent(
   __vue_module_identifier__
 )
 Component.options.__file = "resources\\assets\\js\\components\\property\\EditProperty.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-368b7a02", Component.options)
-  } else {
-    hotAPI.reload("data-v-368b7a02", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
 
 module.exports = Component.exports
 
@@ -1597,13 +1576,14 @@ Vue.component('example-component', __webpack_require__(46));
 Vue.component('about', __webpack_require__(52));
 Vue.component('pricing', __webpack_require__(54));
 Vue.component('location', __webpack_require__(57));
-Vue.component('house', __webpack_require__(62));
 
 Vue.component('propertiez', __webpack_require__(67));
 Vue.component('new-property', __webpack_require__(14));
 Vue.component('show-property', __webpack_require__(74));
 Vue.component('edit-property', __webpack_require__(15));
 
+Vue.component('houses', __webpack_require__(99));
+Vue.component('new-house', __webpack_require__(100));
 var app = new Vue({
   el: '#app'
 });
@@ -50519,670 +50499,11 @@ if (false) {
 }
 
 /***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(63)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(65)
-/* template */
-var __vue_template__ = __webpack_require__(66)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-b401cb8e"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\House.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b401cb8e", Component.options)
-  } else {
-    hotAPI.reload("data-v-b401cb8e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(64);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("e1e97f92", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b401cb8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./House.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b401cb8e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./House.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.help-block[data-v-b401cb8e] {\r\n    display: block;\n}\n.has-error[data-v-b401cb8e]{\r\n    color: red;\n}\r\n\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['properties', 'housetypes'],
-    mounted: function mounted() {},
-    data: function data() {
-        return {
-            house: {
-                name: '',
-                price: '',
-                property_id: '',
-                housetype_id: ''
-            },
-            show_modal: true
-        };
-    },
-
-    methods: {
-        validateBeforeSubmit: function validateBeforeSubmit() {
-            var _this = this;
-
-            this.$validator.validateAll().then(function (result) {
-                if (result) {
-                    _this.postHouse();
-                    _this.closeModal();
-                    return;
-                }
-
-                alert('Correct them errors!');
-            });
-        },
-        postHouse: function postHouse() {
-            var vm = this;
-            axios.post('/api/newhouse', vm.house).then(function (response) {
-                alert('house added');
-            }).catch(function (error) {
-                console.log(error);
-            });
-        },
-        closeModal: function closeModal() {
-            $('#modal-default').modal('hide');
-        }
-    },
-    computed: {
-        rate: function rate() {
-            if (this.amount <= 100) return 0;else return 1;
-        },
-        cost: function cost() {
-            return this.amount * this.rate / 100;
-        }
-    },
-    filters: {
-        uppercase: function uppercase(value) {
-            return value.toUpperCase();
-        }
-    }
-});
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "modal fade", attrs: { id: "modal-default" } },
-    [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  _vm.validateBeforeSubmit($event)
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: " control-label",
-                      attrs: { for: "property" }
-                    },
-                    [_vm._v("Property")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", {}, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.house.property_id,
-                            expression: "house.property_id"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "property", name: "property" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.house,
-                              "property_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.properties, function(property) {
-                        return _c(
-                          "option",
-                          {
-                            key: property.key,
-                            domProps: { value: property.id }
-                          },
-                          [_vm._v(_vm._s(property.name))]
-                        )
-                      })
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("property"),
-                            expression: "errors.has('property') "
-                          }
-                        ],
-                        staticClass: "help-block",
-                        class: { "has-error": _vm.errors.has("property") }
-                      },
-                      [
-                        _c("strong", [
-                          _vm._v(_vm._s(_vm.errors.first("property")))
-                        ])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: " control-label", attrs: { for: "type" } },
-                    [_vm._v("Type")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", {}, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.house.housetype_id,
-                            expression: "house.housetype_id"
-                          },
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { id: "type", name: "type" },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.house,
-                              "housetype_id",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.housetypes, function(housetype) {
-                        return _c(
-                          "option",
-                          {
-                            key: housetype.key,
-                            domProps: { value: housetype.id }
-                          },
-                          [_vm._v(_vm._s(housetype.name))]
-                        )
-                      })
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("type"),
-                            expression: "errors.has('type') "
-                          }
-                        ],
-                        staticClass: "help-block",
-                        class: { "has-error": _vm.errors.has("type") }
-                      },
-                      [_c("strong", [_vm._v(_vm._s(_vm.errors.first("type")))])]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "control-label", attrs: { for: "price" } },
-                    [_vm._v("Price")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", {}, [
-                    _c("div", { staticClass: "form-group input-group  " }, [
-                      _c("span", { staticClass: "input-group-addon" }, [
-                        _vm._v("KSh")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "validate",
-                            rawName: "v-validate",
-                            value: "numeric|max_value:1000000|min_value:100",
-                            expression:
-                              "'numeric|max_value:1000000|min_value:100'"
-                          },
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.house.price,
-                            expression: "house.price"
-                          }
-                        ],
-                        class: {
-                          "form-control": true,
-                          "has-error": _vm.errors.has("price")
-                        },
-                        attrs: {
-                          id: "price",
-                          type: "text",
-                          name: "price",
-                          required: "",
-                          autofocus: ""
-                        },
-                        domProps: { value: _vm.house.price },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.house, "price", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "input-group-addon" }, [
-                        _vm._v(".00")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("price"),
-                            expression: "errors.has('price') "
-                          }
-                        ],
-                        staticClass: "help-block",
-                        class: { "has-error": _vm.errors.has("price") }
-                      },
-                      [
-                        _c("strong", [
-                          _vm._v(_vm._s(_vm.errors.first("price")))
-                        ])
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "control-label", attrs: { for: "name" } },
-                    [_vm._v("Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", {}, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|max:10|min:1",
-                          expression: "'required|max:10|min:1'"
-                        },
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.house.name,
-                          expression: "house.name"
-                        }
-                      ],
-                      class: {
-                        "form-control": true,
-                        "has-error": _vm.errors.has("name")
-                      },
-                      attrs: {
-                        id: "name",
-                        type: "text",
-                        name: "name",
-                        required: "",
-                        autofocus: ""
-                      },
-                      domProps: { value: _vm.house.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.house, "name", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("name"),
-                            expression: "errors.has('name') "
-                          }
-                        ],
-                        class: {
-                          "help-block": true,
-                          "has-error": _vm.errors.has("name"),
-                          "help-block": true
-                        }
-                      },
-                      [_c("strong", [_vm._v(_vm._s(_vm.errors.first("name")))])]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(1)
-              ]),
-              _vm._v(" "),
-              _vm._m(2)
-            ]
-          )
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-hidden": "true"
-          }
-        },
-        [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [_vm._v("Add House")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-check" }, [
-      _c("input", {
-        staticClass: "form-check-input",
-        attrs: { type: "checkbox", id: "exampleCheck1" }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "form-check-label", attrs: { for: "exampleCheck1" } },
-        [_vm._v("Multiple Units")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-default",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Save changes")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b401cb8e", module.exports)
-  }
-}
-
-/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52411,7 +51732,7 @@ var render = function() {
               [
                 _c("div", { staticClass: "box-body text-left" }, [
                   _c("div", [
-                    _c("a", { attrs: { href: "/house" } }, [
+                    _c("a", { attrs: { href: "/house/" + aproperty.id } }, [
                       _c("div", [_c("h4", [_vm._v(_vm._s(aproperty.name))])])
                     ]),
                     _vm._v(" "),
@@ -52616,23 +51937,210 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 76 */
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+    _c("div", { staticClass: "box box-solid" }, [
+      _c("div", { staticClass: "box-header with-border" }, [
+        _c("i", { staticClass: "fa fa-building" }),
+        _vm._v(" "),
+        _c("h3", { staticClass: "box-title" }, [
+          _vm._v(_vm._s(_vm.property.name))
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-body" }, [
+        _c("p", { staticClass: "text-orange" }, [
+          _c("strong", [_vm._v("Type:")]),
+          _vm._v(" " + _vm._s(_vm.property.type))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-green" }, [
+          _c("strong", [_vm._v(" Description: ")]),
+          _vm._v(" " + _vm._s(_vm.property.description))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-blue" }, [
+          _c("strong", [_vm._v(" Town: ")]),
+          _vm._v(" " + _vm._s(_vm.property.town) + " ")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-aqua" }, [
+          _c("strong", [_vm._v(" Street:")]),
+          _vm._v(" " + _vm._s(_vm.property.street))
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-footer" }, [
+        _c("div", { staticClass: "form-group pull-right" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-warning", on: { click: _vm.editProperty } },
+            [_vm._v("Edit")]
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-8e44491c", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(105)
+/* template */
+var __vue_template__ = __webpack_require__(106)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\house\\Houses.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-14c495f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-14c495f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(101)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(103)
+/* template */
+var __vue_template__ = __webpack_require__(104)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-509abfd3"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\house\\NewHouse.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-509abfd3", Component.options)
+  } else {
+    hotAPI.reload("data-v-509abfd3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(77);
+var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("24e99ab7", content, false, {});
+var update = __webpack_require__(3)("30443119", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-368b7a02\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditProperty.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-368b7a02\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditProperty.vue");
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-509abfd3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHouse.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-509abfd3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHouse.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -52642,7 +52150,7 @@ if(false) {
 }
 
 /***/ }),
-/* 77 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -52650,13 +52158,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.autocomplete[data-v-368b7a02] {\r\n    position: relative;\r\n\tmargin:0;\r\n\tpadding: 0;\r\n    width: 130px;\n}\n.autocomplete-results[data-v-368b7a02] {\r\n    padding: 0;\r\n\tposition: relative;\r\n    margin: 0;\r\n    border: 1px solid #eeeeee;\r\n    height: 100px;\r\n    overflow: auto;\n}\n.autocomplete-result[data-v-368b7a02] {\r\n    list-style: none;\r\n    text-align: left;\r\n    padding: 4px 2px;\r\n    cursor: pointer;\n}\n.autocomplete-result[data-v-368b7a02]:hover {\r\n    background-color: #4AAE9B;\r\n    color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.help-block[data-v-509abfd3] {\r\n    display: block;\n}\n.has-error[data-v-509abfd3]{\r\n    color: red;\n}\r\n\r\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 78 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52753,377 +52261,199 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['landlord', 'property_types'],
-	mounted: function mounted() {
-		this.loadCounties();
-		this.loadPropertyTypes();
-		this.new_property.landlord_id = this.landlord.id;
-	},
-	data: function data() {
-		return {
-			new_property: {
-				name: '',
-				description: '',
-				type_id: null,
-				landlord_id: null,
-				location: {
-					county_id: '',
-					town_id: '',
-					street_id: ''
-				},
-				new_location: {
-					town_name: '',
-					street_name: ''
-				}
-			},
-			town_query: '',
-			street_query: '',
-			countyset: false,
-			townset: false,
-			counties: [],
-			property_types: [],
-			towns: [],
-			streets: [],
-			backend_errors: []
-		};
-	},
+    props: ['properties', 'housetypes'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            house: {
+                name: '',
+                price: '',
+                property_id: '',
+                housetype_id: ''
+            },
+            show_modal: true
+        };
+    },
 
-	methods: {
-		validateBeforeSubmit: function validateBeforeSubmit() {
-			var _this = this;
+    methods: {
+        validateBeforeSubmit: function validateBeforeSubmit() {
+            var _this = this;
 
-			this.$validator.validateAll().then(function (result) {
-				if (result) {
-					// eslint-disable-next-line
-					_this.postProperty();
-					//alert('Form Submitted!');
-					return;
-				}
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    _this.postHouse();
+                    _this.closeModal();
+                    return;
+                }
 
-				swal("Correct Errors!", "Make sure all form fields are correct", "warning");
-			});
-		},
-		loadCounties: function loadCounties() {
-			var counties = this.counties;
-			var hii = this;
-			axios.get('/api/location/county').then(function (response) {
-				hii.counties = response.data;
-				//console.log(hii.counties)
-			}).catch(function (error) {
-				console.log(error);
-			});
-		},
-		loadPropertyTypes: function loadPropertyTypes() {
-			var property_types = this.property_types;
-			var hii = this;
-			axios.get('/api/property/type').then(function (response) {
-				hii.property_types = response.data;
-				//alert(property_types)
-			}).catch(function (error) {
-				console.log(error);
-			});
-		},
-		loadTowns: function loadTowns(q, i) {
-			var hii = this;
-			axios.post('/api/location/town/search', { query: q, county_id: i }).then(function (response) {
-				hii.towns = response.data;
-			}).catch(function (error) {
-				console.log(error);
-			});
-		},
-		getTowns: function getTowns() {
-			this.countyset = true;
-			this.loadTowns(this.town_query, this.new_property.location.county_id);
-		},
-		setTown: function setTown(town) {
-			this.new_property.location.town_id = town.id;
-			this.town_query = town.name;
-			//$("#townInput").val(town.name);
-			$("#town_results").hide();
-			this.townset = true;
-		},
-		loadStreets: function loadStreets(q, i) {
-			var streets = this.streets;
-			var hii = this;
-			axios.post('/api/location/street/search', { query: q, town_id: i }).then(function (response) {
-				hii.streets = response.data;
-			}).catch(function (error) {
-				console.log(error);
-			});
-		},
-		getStreets: function getStreets() {
-			this.townset = true;
-			this.new_property.location.town_id = null;
-			this.loadStreets(this.street_query, this.new_property.location.town_id);
-		},
-		setStreet: function setStreet(street) {
-			this.street_query = street.name;
-			$("#streetInput").val(street.name);
-			this.new_property.location.street_id = street.id;
-			$("#street_results").hide();
-		},
-		clearForm: function clearForm() {
-			this.new_property = {
-				name: '',
-				description: '',
-				type_id: null,
-				landlord_id: null,
-				new_town: '',
-				new_street: '',
-				location: {
-					county_id: '',
-					town_id: '',
-					street_id: ''
-				} };
-			this.street_query = '';
-			this.town_query = '';
-			this.backend_errors = [];
-		},
-		postProperty: function postProperty() {
-			var _this2 = this;
-
-			$('#modal-new').modal('hide');
-			this.new_property.landlord_id = this.landlord.id;
-			this.new_property.new_location.town_name = this.town_query;
-			this.new_property.new_location.street_name = this.street_query;
-			axios.post('/api/property', this.new_property).catch(function (error) {
-				console.log(error);
-				//swal(" Server Error!", "warning");
-				if (error.response.status == 422) {
-					_this2.backend_errors = error.response.data.errors;
-					swal("Validation Error!", JSON.stringify(_this2.backend_errors), "warning");
-					return;
-				} else if (error.response.status == 500) {
-					//this.backend_errors=error.response.data
-					swal("Internal Server Error!", "warning");
-					return;
-				} else {
-					swal("Unknown Error!", "warning");
-					return;
-				}
-			}).then(function (response) {
-				//$('#modal-new').modal('hide');
-				if (response.status == 201) {
-					_this2.$emit('propertyAdded', response.data);
-				}
-			}).then(function () {
-				_this2.clearForm();
-				_this2.$nextTick().then(function () {
-					_this2.$validator.reset();
-					//this.errors.clear();
-				});
-			});
-		},
-		print_backend_errors: function print_backend_errors() {
-			return this.backend_errors.name[0];
-		}
-	},
-	watch: {
-		town_query: function town_query(val, oldVal) {
-			$("#town_results").show();
-			_.debounce(this.loadTowns(val, this.new_property.location.county_id), 2000);
-		},
-
-		'new_property.location.county_id': function new_propertyLocationCounty_id(val, oldVal) {
-			$("#town_results").show();
-			this.loadTowns(this.town_query, val);
-		},
-		street_query: function street_query(val, oldVal) {
-			$("#street_results").show();
-			_.debounce(this.loadStreets(val, this.new_property.location.town_id), 2000);
-		},
-
-		'new_property.location.town_id': function new_propertyLocationTown_id(val, oldVal) {
-			$("#street_results").show();
-			this.loadStreets(this.street_query, val);
-		}
-	},
-	filters: {
-		uppercase: function uppercase(value) {
-			return value.toUpperCase();
-		}
-	}
+                alert('Correct them errors!');
+            });
+        },
+        postHouse: function postHouse() {
+            var vm = this;
+            axios.post('/api/newhouse', vm.house).then(function (response) {
+                alert('house added');
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        closeModal: function closeModal() {
+            $('#modal-default').modal('hide');
+        }
+    },
+    computed: {
+        rate: function rate() {
+            if (this.amount <= 100) return 0;else return 1;
+        },
+        cost: function cost() {
+            return this.amount * this.rate / 100;
+        }
+    },
+    filters: {
+        uppercase: function uppercase(value) {
+            return value.toUpperCase();
+        }
+    }
 });
 
 /***/ }),
-/* 79 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-xs-12" }, [
-    _c("div", { staticClass: "modal fade", attrs: { id: "modal-new" } }, [
+  return _c(
+    "div",
+    { staticClass: "modal fade", attrs: { id: "modal-default" } },
+    [
       _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content row" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _vm._v(
-              "\n                                   Edit Property\n                            "
-            )
-          ]),
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
           _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("form", { attrs: { autocomplete: "off" } }, [
-              _c(
-                "div",
-                {
-                  class: {
-                    "form-group": true,
-                    "col-xs-10": true,
-                    "col-xs-offset-1": true,
-                    "has-error": _vm.backend_errors.name
-                  }
-                },
-                [
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.validateBeforeSubmit($event)
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "form-group" }, [
                   _c(
                     "label",
-                    { staticClass: "control-label", attrs: { for: "name" } },
-                    [_vm._v("Property Name")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.new_property.name,
-                          expression: "new_property.name"
-                        },
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required|min:2|max:20",
-                          expression: "'required|min:2|max:20'"
-                        }
-                      ],
-                      class: {
-                        "form-control": true,
-                        "has-error": _vm.errors.has("name")
-                      },
-                      attrs: {
-                        type: "text",
-                        placeholder: "property name",
-                        name: "name",
-                        required: "",
-                        autofocus: ""
-                      },
-                      domProps: { value: _vm.new_property.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.new_property,
-                            "name",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors.has("name")
-                      ? _c("span", { staticClass: "help-block" }, [
-                          _c("i", { staticClass: "fa fa-warning" }),
-                          _c("small", [
-                            _vm._v(_vm._s(_vm.errors.first("name")))
-                          ])
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.backend_errors.name
-                      ? _c("span", { staticClass: "help-block" }, [
-                          _c("i", { staticClass: "fa fa-warning" }),
-                          _c("small", [
-                            _vm._v(_vm._s(_vm.print_backend_errors()))
-                          ])
-                        ])
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  class: {
-                    "form-group": true,
-                    "col-xs-10": true,
-                    "col-xs-offset-1": true,
-                    "has-error": _vm.backend_errors.type
-                  }
-                },
-                [
-                  _c(
-                    "label",
-                    { staticClass: " control-label", attrs: { for: "type" } },
+                    {
+                      staticClass: " control-label",
+                      attrs: { for: "property" }
+                    },
                     [_vm._v("Property")]
                   ),
                   _vm._v(" "),
-                  _c("div", [
+                  _c("div", {}, [
                     _c(
                       "select",
                       {
                         directives: [
                           {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.house.property_id,
+                            expression: "house.property_id"
+                          },
+                          {
                             name: "validate",
                             rawName: "v-validate",
                             value: "required",
                             expression: "'required'"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "property", name: "property" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.house,
+                              "property_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      _vm._l(_vm.properties, function(property) {
+                        return _c(
+                          "option",
+                          {
+                            key: property.key,
+                            domProps: { value: property.id }
                           },
+                          [_vm._v(_vm._s(property.name))]
+                        )
+                      })
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("property"),
+                            expression: "errors.has('property') "
+                          }
+                        ],
+                        staticClass: "help-block",
+                        class: { "has-error": _vm.errors.has("property") }
+                      },
+                      [
+                        _c("strong", [
+                          _vm._v(_vm._s(_vm.errors.first("property")))
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: " control-label", attrs: { for: "type" } },
+                    [_vm._v("Type")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", {}, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.new_property.type_id,
-                            expression: "new_property.type_id"
+                            value: _vm.house.housetype_id,
+                            expression: "house.housetype_id"
+                          },
+                          {
+                            name: "validate",
+                            rawName: "v-validate",
+                            value: "required",
+                            expression: "'required'"
                           }
                         ],
                         staticClass: "form-control",
@@ -53139,8 +52469,8 @@ var render = function() {
                                 return val
                               })
                             _vm.$set(
-                              _vm.new_property,
-                              "type_id",
+                              _vm.house,
+                              "housetype_id",
                               $event.target.multiple
                                 ? $$selectedVal
                                 : $$selectedVal[0]
@@ -53148,14 +52478,14 @@ var render = function() {
                           }
                         }
                       },
-                      _vm._l(_vm.property_types, function(property_type) {
+                      _vm._l(_vm.housetypes, function(housetype) {
                         return _c(
                           "option",
                           {
-                            key: property_type.id,
-                            domProps: { value: property_type.id }
+                            key: housetype.key,
+                            domProps: { value: housetype.id }
                           },
-                          [_vm._v(_vm._s(property_type.name))]
+                          [_vm._v(_vm._s(housetype.name))]
                         )
                       })
                     ),
@@ -53168,89 +52498,72 @@ var render = function() {
                             name: "show",
                             rawName: "v-show",
                             value: _vm.errors.has("type"),
-                            expression: "errors.has('type')"
+                            expression: "errors.has('type') "
                           }
                         ],
-                        staticClass: "help-block"
+                        staticClass: "help-block",
+                        class: { "has-error": _vm.errors.has("type") }
                       },
-                      [
-                        _c("i", { staticClass: "fa fa-warning" }),
-                        _vm._v(" "),
-                        _c("small", [_vm._v(_vm._s(_vm.errors.first("type")))])
-                      ]
+                      [_c("strong", [_vm._v(_vm._s(_vm.errors.first("type")))])]
                     )
                   ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  class: {
-                    "form-group": true,
-                    "col-xs-10": true,
-                    "col-xs-offset-1": true,
-                    "has-error": _vm.backend_errors.county
-                  }
-                },
-                [
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
                   _c(
                     "label",
-                    { staticClass: " control-label", attrs: { for: "type" } },
-                    [_vm._v("County")]
+                    { staticClass: "control-label", attrs: { for: "price" } },
+                    [_vm._v("Price")]
                   ),
                   _vm._v(" "),
-                  _c("div", [
-                    _c(
-                      "select",
-                      {
+                  _c("div", {}, [
+                    _c("div", { staticClass: "form-group input-group  " }, [
+                      _c("span", { staticClass: "input-group-addon" }, [
+                        _vm._v("KSh")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
                         directives: [
                           {
                             name: "validate",
                             rawName: "v-validate",
-                            value: "required",
-                            expression: "'required'"
+                            value: "numeric|max_value:1000000|min_value:100",
+                            expression:
+                              "'numeric|max_value:1000000|min_value:100'"
                           },
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.new_property.location.county_id,
-                            expression: "new_property.location.county_id"
+                            value: _vm.house.price,
+                            expression: "house.price"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: { id: "county", name: "county" },
+                        class: {
+                          "form-control": true,
+                          "has-error": _vm.errors.has("price")
+                        },
+                        attrs: {
+                          id: "price",
+                          type: "text",
+                          name: "price",
+                          required: "",
+                          autofocus: ""
+                        },
+                        domProps: { value: _vm.house.price },
                         on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.new_property.location,
-                                "county_id",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                            _vm.getTowns
-                          ]
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.house, "price", $event.target.value)
+                          }
                         }
-                      },
-                      _vm._l(_vm.counties, function(county) {
-                        return _c(
-                          "option",
-                          { key: county.id, domProps: { value: county.id } },
-                          [_vm._v(_vm._s(county.name))]
-                        )
-                      })
-                    ),
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "input-group-addon" }, [
+                        _vm._v(".00")
+                      ])
+                    ]),
                     _vm._v(" "),
                     _c(
                       "span",
@@ -53259,343 +52572,159 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.errors.has("county"),
-                            expression: "errors.has('county')"
+                            value: _vm.errors.has("price"),
+                            expression: "errors.has('price') "
                           }
                         ],
-                        staticClass: "help-block"
+                        staticClass: "help-block",
+                        class: { "has-error": _vm.errors.has("price") }
                       },
                       [
-                        _c("i", { staticClass: "fa fa-warning" }),
-                        _vm._v(" "),
-                        _c("small", [
-                          _vm._v(_vm._s(_vm.errors.first("county")))
+                        _c("strong", [
+                          _vm._v(_vm._s(_vm.errors.first("price")))
                         ])
                       ]
                     )
                   ])
-                ]
-              ),
-              _vm._v(" "),
-              _vm.countyset
-                ? _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "col-xs-10": true,
-                        "col-xs-offset-1": true,
-                        "has-error": _vm.backend_errors.town
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: " control-label",
-                          attrs: { for: "type" }
-                        },
-                        [_vm._v("Town")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", {}, [
-                        _c("div", [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required|max:20",
-                                expression: "'required|max:20'"
-                              },
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.town_query,
-                                expression: "town_query"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              id: "townInput",
-                              type: "text",
-                              name: "Town",
-                              placeholder: "Town"
-                            },
-                            domProps: { value: _vm.town_query },
-                            on: {
-                              input: [
-                                function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.town_query = $event.target.value
-                                },
-                                _vm.getStreets
-                              ]
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.errors.has("Town"),
-                                  expression: "errors.has('Town')"
-                                }
-                              ],
-                              staticClass: "help-block"
-                            },
-                            [
-                              _c("i", { staticClass: "fa fa-warning" }),
-                              _vm._v(" "),
-                              _c("small", [
-                                _vm._v(_vm._s(_vm.errors.first("Town")))
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.towns.length
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass: "panel-footer",
-                                  attrs: { id: "town_results" }
-                                },
-                                [
-                                  _vm.towns && _vm.town_query
-                                    ? _c(
-                                        "ul",
-                                        {
-                                          staticClass:
-                                            "list-group autocomplete-results"
-                                        },
-                                        _vm._l(_vm.towns, function(town) {
-                                          return _c(
-                                            "li",
-                                            {
-                                              key: town.id,
-                                              staticClass:
-                                                "list-group-item autocomplete-result",
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.setTown(town)
-                                                }
-                                              }
-                                            },
-                                            [_vm._v(_vm._s(town.name) + " ")]
-                                          )
-                                        })
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            : _vm._e()
-                        ])
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.townset
-                ? _c(
-                    "div",
-                    {
-                      class: {
-                        "form-group": true,
-                        "col-xs-10": true,
-                        "col-xs-offset-1": true,
-                        "has-error": _vm.backend_errors.street
-                      }
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass: " control-label",
-                          attrs: { for: "type" }
-                        },
-                        [_vm._v("Street")]
-                      ),
-                      _vm._v(" "),
-                      _c("div", {}, [
-                        _c("div", [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required|max:20",
-                                expression: "'required|max:20'"
-                              },
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.street_query,
-                                expression: "street_query"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              id: "streetInput",
-                              type: "text",
-                              name: "Street",
-                              placeholder: "Street"
-                            },
-                            domProps: { value: _vm.street_query },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.street_query = $event.target.value
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.errors.has("Street"),
-                                  expression: "errors.has('Street')"
-                                }
-                              ],
-                              staticClass: "help-block"
-                            },
-                            [
-                              _c("i", { staticClass: "fa fa-warning" }),
-                              _vm._v(" "),
-                              _c("small", [
-                                _vm._v(_vm._s(_vm.errors.first("Street")))
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.streets.length
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass: "panel-footer",
-                                  attrs: { id: "street_results" }
-                                },
-                                [
-                                  _vm.streets && _vm.street_query
-                                    ? _c(
-                                        "ul",
-                                        {
-                                          staticClass:
-                                            "list-group autocomplete-results"
-                                        },
-                                        _vm._l(_vm.streets, function(street) {
-                                          return _c(
-                                            "li",
-                                            {
-                                              key: street.id,
-                                              staticClass:
-                                                "list-group-item autocomplete-result",
-                                              on: {
-                                                click: function($event) {
-                                                  _vm.setStreet(street)
-                                                }
-                                              }
-                                            },
-                                            [_vm._v(_vm._s(street.name) + " ")]
-                                          )
-                                        })
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            : _vm._e()
-                        ])
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  class: {
-                    "form-group": true,
-                    "col-xs-10": true,
-                    "col-xs-offset-1": true,
-                    "has-error": _vm.backend_errors.description
-                  },
-                  attrs: { rows: "3", placeholder: "Short details ..." }
-                },
-                [
-                  _c("label", [_vm._v("Description")]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "label",
+                    { staticClass: "control-label", attrs: { for: "name" } },
+                    [_vm._v("Name")]
+                  ),
                   _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.new_property.description,
-                        expression: "new_property.description"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { placeholder: "Short description here.." },
-                    domProps: { value: _vm.new_property.description },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c("div", {}, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required|max:10|min:1",
+                          expression: "'required|max:10|min:1'"
+                        },
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.house.name,
+                          expression: "house.name"
                         }
-                        _vm.$set(
-                          _vm.new_property,
-                          "description",
-                          $event.target.value
-                        )
+                      ],
+                      class: {
+                        "form-control": true,
+                        "has-error": _vm.errors.has("name")
+                      },
+                      attrs: {
+                        id: "name",
+                        type: "text",
+                        name: "name",
+                        required: "",
+                        autofocus: ""
+                      },
+                      domProps: { value: _vm.house.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.house, "name", $event.target.value)
+                        }
                       }
-                    }
-                  })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xs-10" }, [
-            _c("div", { staticClass: "modal-footer" }, [
-              _vm._m(0),
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("name"),
+                            expression: "errors.has('name') "
+                          }
+                        ],
+                        class: {
+                          "help-block": true,
+                          "has-error": _vm.errors.has("name"),
+                          "help-block": true
+                        }
+                      },
+                      [_c("strong", [_vm._v(_vm._s(_vm.errors.first("name")))])]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.validateBeforeSubmit }
-                },
-                [_c("span", { staticClass: "fa fa-save" }), _vm._v(" Save")]
-              )
-            ])
-          ])
+              _vm._m(2)
+            ]
+          )
         ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        attrs: { type: "button", "data-dismiss": "modal" }
-      },
-      [_c("span", { staticClass: "fa fa-close" }), _vm._v("Close")]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-hidden": "true"
+          }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Add House")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { type: "checkbox", id: "exampleCheck1" }
+      }),
+      _vm._v(" "),
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "exampleCheck1" } },
+        [_vm._v("Multiple Units")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-default",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Save changes")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -53603,59 +52732,94 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-368b7a02", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-509abfd3", module.exports)
   }
 }
 
 /***/ }),
-/* 80 */
+/* 105 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['units'],
+    mounted: function mounted() {},
+    data: function data() {
+        return {
+            house: {
+                name: '',
+                price: '',
+                property_id: '',
+                housetype_id: ''
+            },
+            show_modal: true
+        };
+    },
+
+    methods: {
+        validateBeforeSubmit: function validateBeforeSubmit() {
+            var _this = this;
+
+            this.$validator.validateAll().then(function (result) {
+                if (result) {
+                    _this.postHouse();
+                    _this.closeModal();
+                    return;
+                }
+
+                alert('Correct them errors!');
+            });
+        },
+        postHouse: function postHouse() {
+            var vm = this;
+            axios.post('/api/newhouse', vm.house).then(function (response) {
+                alert('house added');
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        closeModal: function closeModal() {
+            $('#modal-default').modal('hide');
+        }
+    },
+    computed: {
+        rate: function rate() {
+            if (this.amount <= 100) return 0;else return 1;
+        },
+        cost: function cost() {
+            return this.amount * this.rate / 100;
+        }
+    },
+    filters: {
+        uppercase: function uppercase(value) {
+            return value.toUpperCase();
+        }
+    }
+});
+
+/***/ }),
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-    _c("div", { staticClass: "box box-solid" }, [
-      _c("div", { staticClass: "box-header with-border" }, [
-        _c("i", { staticClass: "fa fa-building" }),
-        _vm._v(" "),
-        _c("h3", { staticClass: "box-title" }, [
-          _vm._v(_vm._s(_vm.property.name))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "box-body" }, [
-        _c("p", { staticClass: "text-orange" }, [
-          _c("strong", [_vm._v("Type:")]),
-          _vm._v(" " + _vm._s(_vm.property.type))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-green" }, [
-          _c("strong", [_vm._v(" Description: ")]),
-          _vm._v(" " + _vm._s(_vm.property.description))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-blue" }, [
-          _c("strong", [_vm._v(" Town: ")]),
-          _vm._v(" " + _vm._s(_vm.property.town) + " ")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-aqua" }, [
-          _c("strong", [_vm._v(" Street:")]),
-          _vm._v(" " + _vm._s(_vm.property.street))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "box-footer" }, [
-        _c("div", { staticClass: "form-group pull-right" }, [
-          _c(
-            "button",
-            { staticClass: "btn btn-warning", on: { click: _vm.editProperty } },
-            [_vm._v("Edit")]
-          )
-        ])
-      ])
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-md-10 col-md-offset-1" }, [
+      _c("p", [_vm._v(_vm._s(_vm.units))])
     ])
   ])
 }
@@ -53665,15 +52829,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8e44491c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-14c495f4", module.exports)
   }
 }
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

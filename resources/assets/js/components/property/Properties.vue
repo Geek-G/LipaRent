@@ -27,7 +27,7 @@
                         <div v-for="(aproperty,index) in the_landlord_properties" :key="aproperty.key" class="box box-solid">
                             <div class="box-body text-left">
                                 <div>
-                                    <a href="/house"><div> <h4>{{aproperty.name}}</h4></div></a>
+                                    <a v-bind:href="'/house/'+aproperty.id" ><div> <h4>{{aproperty.name}}</h4></div></a>
                                     <div><p><span class="fa fa-folder">  </span>{{aproperty.type}}</p></div>
                                     <div><p><span class="fa fa-location-arrow">   </span>{{aproperty.town}}</p></div>
                                     <div><p><span class="fa fa-building">    </span>{{aproperty.description}}</p></div>                                  
