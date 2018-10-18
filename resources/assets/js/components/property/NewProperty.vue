@@ -136,7 +136,7 @@
 
 <script>
     export default {
-	props: ['landlord','landlord_property','property_types'],	    
+	props: ['landlord','property_types'],	    
         mounted() {
         this.loadCounties();
 		this.loadPropertyTypes();

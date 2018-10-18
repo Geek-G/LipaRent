@@ -38,6 +38,13 @@ class PropertyController extends Controller
         }
     }
 
+    public function show($id){
+        $property= Property::FindorFail($id);  
+        return view('landlord.property', [
+            'property' => new PropertyResource($property)
+        ]);
+    }
+
 
    
 }

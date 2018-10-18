@@ -23,6 +23,7 @@ class Property extends Resource
             'description'=>$this->description,
             'town'=>$this->street->town->name,
             'type'=>$this->property_type->name,
+            'street'=>$this->street->name,
         ];
         
     }

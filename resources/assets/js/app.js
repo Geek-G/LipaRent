@@ -31,6 +31,7 @@ Vue.component('house', require('./components/House.vue'));
 
 Vue.component('propertiez', require('./components/property/Properties.vue'));
 Vue.component('new-property', require('./components/property/NewProperty.vue'));
+Vue.component('show-property', require('./components/property/ShowProperty.vue'));
 
 const app = new Vue({
     el: '#app'

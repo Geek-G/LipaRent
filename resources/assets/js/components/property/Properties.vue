@@ -24,17 +24,16 @@
                     <div class="box-body mb-1">
 
                         <!-- /.box.house -->
-                        <div v-for="property in the_landlord_properties" :key="property.key" class="box box-solid">
+                        <div v-for="aproperty in the_landlord_properties" :key="aproperty.key" class="box box-solid">
                             <div class="box-body text-left">
                                 <div>
-                                    <a href="/house"><div> <h4>{{property.name}}</h4></div></a>
-                                    <div><p><span class="fa fa-folder">  </span>{{property.type}}</p></div>
-                                    <div><p><span class="fa fa-location-arrow">   </span>{{property.town}}</p></div>
-                                    <div><p><span class="fa fa-building">    </span>{{property.description}}</p></div>                                  
+                                    <a href="/house"><div> <h4>{{aproperty.name}}</h4></div></a>
+                                    <div><p><span class="fa fa-folder">  </span>{{aproperty.type}}</p></div>
+                                    <div><p><span class="fa fa-location-arrow">   </span>{{aproperty.town}}</p></div>
+                                    <div><p><span class="fa fa-building">    </span>{{aproperty.description}}</p></div>                                  
                                 </div>    
                                  <div class="pull-right">
-                                    <button class="btn btn-warning" @click="editProperty">Edit</button>
-                                    <button class="btn btn-danger" @click="deleteProperty">Delete</button>
+                                    <a  v-bind:href="'/property/'+aproperty.id" class="btn btn-default">Show</a>
                                 </div>
                             </div>
                             <!-- /.box.house-body -->
@@ -42,7 +41,7 @@
                          <!-- /.box.house -->     
                     </div>
                     <!-- /.box-body -->    
-                    <new-property  v-on:propertyAdded="pushProperty($event)" :landlord="landlord" :landlord_property="landlord_property" :property_types="property_types"></new-property>
+                    <new-property  v-on:propertyAdded="pushProperty($event)" :landlord="landlord" :property_types="property_types"></new-property>
             </div>
       </div>         
 
@@ -52,6 +51,7 @@
 <script>
 import swal from 'sweetalert'
 import NewProperty from './NewProperty'
+import ShowProperty from './ShowProperty'
 
     export default {
         props: ['landlord_properties','landlord','property_types'],
@@ -67,12 +67,12 @@ import NewProperty from './NewProperty'
            },
             has_session:true,
             session_status:'',
-            the_landlord_properties:this.landlord_properties
+            the_landlord_properties:this.landlord_properties,
+            showProperty:[],
        }
        },
 
        methods: {
-
                 editProperty(){
                         swal("Good job!", "You clicked the button!", "success");
                 },
