@@ -1,7 +1,7 @@
 <template>
 
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-10 col-md-offset-1">
             <div class="form-group">
 					<a class="btn btn-primary" data-toggle="modal" data-target="#modal-new"> New </a>
             </div>
@@ -34,7 +34,6 @@
                                 </div>    
                                  <div class="pull-right">
                                     <a  v-bind:href="'/property/'+aproperty.id" class="btn btn-default">Show</a>
-                                    <a  @click="editProperty(index)" class="btn btn-warning">Edit</a>
                                     <a  @click="deleteProperty(aproperty,index)" class="btn btn-danger">Delete</a>
                                     
                                 </div>
@@ -108,8 +107,7 @@ import NewProperty from './NewProperty'
                                 swal("Property Safe!");
                             }
                             });
-                }        
-                
+                }                   
        },
        computed:{
            

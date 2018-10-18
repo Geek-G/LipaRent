@@ -51291,7 +51291,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -52358,7 +52357,7 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c(
       "div",
-      { staticClass: "col-xs-12" },
+      { staticClass: "col-md-10 col-md-offset-1" },
       [
         _vm._m(0),
         _vm._v(" "),
@@ -52446,19 +52445,6 @@ var render = function() {
                         attrs: { href: "/property/" + aproperty.id }
                       },
                       [_vm._v("Show")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-warning",
-                        on: {
-                          click: function($event) {
-                            _vm.editProperty(index)
-                          }
-                        }
-                      },
-                      [_vm._v("Edit")]
                     ),
                     _vm._v(" "),
                     _c(
