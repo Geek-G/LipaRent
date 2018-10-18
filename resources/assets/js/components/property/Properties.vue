@@ -24,7 +24,7 @@
                     <div class="box-body mb-1">
 
                         <!-- /.box.house -->
-                        <div v-for="aproperty in the_landlord_properties" :key="aproperty.key" class="box box-solid">
+                        <div v-for="(aproperty,index) in the_landlord_properties" :key="aproperty.key" class="box box-solid">
                             <div class="box-body text-left">
                                 <div>
                                     <a href="/house"><div> <h4>{{aproperty.name}}</h4></div></a>
@@ -34,6 +34,9 @@
                                 </div>    
                                  <div class="pull-right">
                                     <a  v-bind:href="'/property/'+aproperty.id" class="btn btn-default">Show</a>
+                                    <a  @click="editProperty(index)" class="btn btn-warning">Edit</a>
+                                    <a  @click="deleteProperty(aproperty,index)" class="btn btn-danger">Delete</a>
+                                    
                                 </div>
                             </div>
                             <!-- /.box.house-body -->
@@ -51,7 +54,6 @@
 <script>
 import swal from 'sweetalert'
 import NewProperty from './NewProperty'
-import ShowProperty from './ShowProperty'
 
     export default {
         props: ['landlord_properties','landlord','property_types'],
@@ -73,9 +75,7 @@ import ShowProperty from './ShowProperty'
        },
 
        methods: {
-                editProperty(){
-                        swal("Good job!", "You clicked the button!", "success");
-                },
+
                 pushProperty(event){
                         //this.the_landlord_properties.push(event);
                         this.the_landlord_properties.splice(0, 0, event);
@@ -83,7 +83,7 @@ import ShowProperty from './ShowProperty'
                         //this.set(this.landlord_properties, this.landlord_properties.length, data);
                         //this.$forceUpdate();
                 },
-                deleteProperty(){
+                deleteProperty(aproperty,index){
                         swal({
                             title: "Are you sure?",
                             text: "Once deleted, you will not be able to recover this property!",
@@ -93,15 +93,22 @@ import ShowProperty from './ShowProperty'
                             })
                             .then((willDelete) => {
                             if (willDelete) {
-                                
-                                // swal("Poof! Your imaginary file has been deleted!", {
-                                // icon: "success",
-                                // });
+                                      axios.delete('/api/property/'+aproperty.id)
+                                      .then((response) => {
+                                      swal( JSON.stringify(response.data.name)+" has been deleted!", {
+                                      icon: "success",
+                                      });
+                                      this.the_landlord_properties.splice(index,1)
+                                      })
+                                      .catch(function(error){
+                                      console.log(error);
+                                      swal("Error! Property Not deleted!","warning"); 
+                                      }) 
                             } else {
                                 swal("Property Safe!");
                             }
                             });
-                }      
+                }        
                 
        },
        computed:{

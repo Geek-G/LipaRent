@@ -34,9 +34,7 @@ Route::get('/location/street','Api\LocationControllerApi@getStreets');
 |--------------------------------------------------------------------------
 */
 Route::get('/property/type','Api\PropertyControllerApi@types');
-Route::get('/property/{id}','Api\PropertyControllerApi@show');
 Route::post('/property','Api\PropertyControllerApi@store');
-
 Route::put('/property','Api\PropertyControllerApi@update');
 Route::delete('/property/{id}','Api\PropertyControllerApi@destroy');
 

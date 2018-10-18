@@ -44,7 +44,7 @@ class PropertyController extends Controller
             'property' => new PropertyResource($property)
         ]);
     }
-
+    
 
    
 }

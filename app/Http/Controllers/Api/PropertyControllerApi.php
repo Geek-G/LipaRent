@@ -96,11 +96,6 @@ class PropertyControllerApi extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $property= Property::FindorFail($id);  
-        return new PropertyResource($property);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -134,17 +129,14 @@ class PropertyControllerApi extends Controller
         return new PropertyResource($property);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $property= Property::findOrFail($id);
         $property->delete();
         return new PropertyResource($property);
+        //return redirect()->route('property.index');
+        //return redirect()->action('PropertyController@index');
        
     }
+
 }
